@@ -1,0 +1,30 @@
+@mixin title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 40px;
+  color: black;
+}
+
+@mixin small_title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 17px;
+  color: black;
+}
+
+@mixin sign {
+  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+  color: #88B13E;
+  text-transform: uppercase;
+}
+
+@mixin text { 
+  color: #888888;
+  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+}
+
+@mixin button {
+  color: black;
+  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+}

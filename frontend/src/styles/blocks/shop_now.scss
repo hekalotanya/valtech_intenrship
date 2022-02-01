@@ -15,29 +15,18 @@
     margin-bottom: 22px;
 
     &__sale_sign {
-      font-size: 15px;
-      font-family: 'Jost', sans-serif;
-      color: #88B13E;
+      @include sign;
       margin-bottom: 20px;
     }
   
-    &__big_sign1{
-      font-family: 'Lobster Two', cursive;
+    &__big_sign1, &__big_sign2 {
+      @include title;
       font-size: 70px;
-      color: black;
-    }
-  
-    &__big_sign2{
-      font-family: 'Lobster Two', cursive;
-      font-size: 70px;
-      color: black;
     }
   }
 
   &__text {
-    font-size: 15px;
-    font-family: 'Jost', sans-serif;
-    color: black;
+    @include button;
     margin-bottom: 40px;
   }
 
@@ -53,9 +42,7 @@
     .button {
       width: max-content;
       text-decoration: none;
-      color: black;
-      font-size: 15px;
-      font-family: 'Jost', sans-serif;
+      @include button;
     }
   }
 }

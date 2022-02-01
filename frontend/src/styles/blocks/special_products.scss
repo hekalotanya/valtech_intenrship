@@ -8,15 +8,11 @@
   background-color: #ECECEC;
 
   &__sale_sign {
-    color: #88B13E;
-    font-size: 15px;
-    font-family: 'Jost', sans-serif;
+    @include sign;
   }
 
   &__title {
-    font-size: 42px;
-    color: black;
-    font-family: 'Lobster Two', cursive;
+    @include title;
   }
 
   &__list {

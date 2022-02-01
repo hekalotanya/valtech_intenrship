@@ -8,16 +8,11 @@
   gap: 30px;
 
   &__sign {
-    font-size: 15px;
-    font-family: 'Jost', sans-serif;
-    color: #88B13E;
-    text-transform: uppercase;
+    @include sign;
   }
 
   &__title {
-    font-family: 'Lobster Two', cursive;
-    font-size: 40px;
-    color: black;
+    @include title;
   }
 
   &__button {
@@ -33,9 +28,7 @@
     .button {
       width: max-content;
       text-decoration: none;
-      color: black;
-      font-size: 15px;
-      font-family: 'Jost', sans-serif;
+      @include button;
     }
   }
 }
