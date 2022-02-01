@@ -1,0 +1,59 @@
+.shop_now {
+  display: flex;
+  flex-direction: column; 
+  padding-top: 175px;
+  padding-right: auto;
+  align-items: center;
+  background-color: #F2EEEE;
+  padding-bottom: 177px;
+
+  .main_sign {
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    align-items: center;
+    margin-bottom: 22px;
+
+    &__sale_sign {
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
+      color: #88B13E;
+      margin-bottom: 20px;
+    }
+  
+    &__big_sign1{
+      font-family: 'Lobster Two', cursive;
+      font-size: 70px;
+      color: black;
+    }
+  
+    &__big_sign2{
+      font-family: 'Lobster Two', cursive;
+      font-size: 70px;
+      color: black;
+    }
+  }
+
+  &__text {
+    font-size: 15px;
+    font-family: 'Jost', sans-serif;
+    color: black;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 167px;
+    height: 46px;
+    border: 1px solid black;
+    line-height: 100%;
+
+    .button {
+      width: max-content;
+      text-decoration: none;
+      color: black;
+    }
+  }
+}

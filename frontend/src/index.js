@@ -1,5 +1,1 @@
-const HelloWorld = () => {
-  return 1;
-};
-
-HelloWorld();
+import './styles/main.scss';

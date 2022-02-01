@@ -19,7 +19,7 @@ const plugins = [
   }),
   new ESLintPlugin({
     extensions: ['js'],
-  })
+  }),
 ];
 
 module.exports = {
@@ -41,7 +41,7 @@ module.exports = {
   	rules: [
       { test: /\.(html)$/, use: ['html-loader'] },
       {
-        test: /\.(s[ac]|c)ss$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
