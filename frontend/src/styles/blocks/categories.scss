@@ -1,9 +1,9 @@
 .categories {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 70px;
   align-items: center;
-  padding: 69px 255px;
+  padding: 69px 150px;
   background-color: #F8F8F9;
 
   .buttons {

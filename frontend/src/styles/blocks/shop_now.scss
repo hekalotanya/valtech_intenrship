@@ -47,13 +47,15 @@
     align-items: center;
     width: 167px;
     height: 46px;
-    border: 1px solid black;
+    border: 2px solid black;
     line-height: 100%;
 
     .button {
       width: max-content;
       text-decoration: none;
       color: black;
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
     }
   }
 }

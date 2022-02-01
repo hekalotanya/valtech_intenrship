@@ -1,0 +1,41 @@
+.thank_you {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  align-items: center;
+  background-color: #FCEEE7;
+  gap: 30px;
+
+  &__sign {
+    font-size: 15px;
+    font-family: 'Jost', sans-serif;
+    color: #88B13E;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-family: 'Lobster Two', cursive;
+    font-size: 40px;
+    color: black;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 167px;
+    height: 46px;
+    border: 2px solid black;
+    line-height: 100%;
+    margin-top: 40px;
+
+    .button {
+      width: max-content;
+      text-decoration: none;
+      color: black;
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
+    }
+  }
+}

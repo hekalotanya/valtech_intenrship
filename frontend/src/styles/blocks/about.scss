@@ -1,0 +1,105 @@
+.about {
+  display: flex;
+  gap: 75px;
+  align-items: center;
+  padding-left: 150px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  .title_block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 290px;
+
+    &__clients_sign {
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
+      color: #88B13E;
+      text-transform: uppercase;
+    }
+
+    &__title {
+      font-family: 'Lobster Two', cursive;
+      font-size: 40px;
+      color: black;
+    }
+
+    &__text {
+      color: #888888;
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
+    }
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 167px;
+      height: 46px;
+      border: 2px solid black;
+      line-height: 100%;
+      margin-top: 40px;
+  
+      .button {
+        width: max-content;
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        font-family: 'Jost', sans-serif;
+      }
+    }
+  }
+
+  .quotes_block {
+    display: flex;
+    gap: 30px;
+
+    .quote {
+      width: 330px;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      padding: 40px;
+      background-color: #FFF7EB;
+      border-radius: 20px;
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        &__image {
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          background-color: grey;
+        }
+
+        .information {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          &__name {
+            font-family: 'Lobster Two', cursive;
+            font-size: 17px;
+            color: black;
+          }
+
+          &__country {
+            color: #888888;
+            font-size: 15px;
+            font-family: 'Jost', sans-serif;
+          }
+        }
+      }
+
+      &__text {
+        color: #888888;
+        font-size: 18px;
+        font-family: 'Jost', sans-serif;
+      }
+    }
+  }
+}

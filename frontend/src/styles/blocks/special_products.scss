@@ -1,0 +1,56 @@
+.special_products {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 70px;
+  padding-bottom: 100px;
+  padding-left: 150px;
+  background-color: #ECECEC;
+
+  &__sale_sign {
+    color: #88B13E;
+    font-size: 15px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  &__title {
+    font-size: 42px;
+    color: black;
+    font-family: 'Lobster Two', cursive;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 360px);
+    gap: 30px;
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: white;
+
+      &__image {
+        height: 180px;
+        width: 180px;
+        object-fit: cover;
+      }
+
+      &__title {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .name {
+          font-size: 15px;
+          font-family: 'Jost', sans-serif;
+        }
+
+        .price {
+          font-size: 17px;
+          font-family: 'Jost', sans-serif;
+        }
+      }
+    }
+  }
+}
