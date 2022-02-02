@@ -7,6 +7,11 @@
   padding-top: 70px;
   padding-bottom: 70px;
 
+  @include Full {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
   @include Tablet {
     padding-left: 100px;
     padding-right: 100px;
@@ -88,11 +93,11 @@
     }
 
     .quote:nth-of-type(n+3) {
-      @include Notebook {
+      @include Desktop {
         display: none;
       }
-
-      @include Desktop {
+      
+      @include Notebook {
         display: none;
       }
     }

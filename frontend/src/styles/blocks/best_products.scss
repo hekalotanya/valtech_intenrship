@@ -57,10 +57,15 @@
       flex-direction: column;
       gap: 70px;
       
+      .example:hover {
+        transform: scale(1.1);
+      }
 
       .example {
         display: flex;
         gap: 15px;
+        transition: transform 0.5s;
+        cursor: pointer;
         
         @include Tablet {
           transform: scale(0.7);

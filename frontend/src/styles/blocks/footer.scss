@@ -8,6 +8,11 @@
   padding-top: 80px;
   background-color: #F5F5F5;
 
+  @include Full {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
   @include Tablet {
     padding-left: 100px;
     padding-right: 100px;

@@ -26,6 +26,11 @@
     padding-right: 100px;
   }
 
+  @include Full {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
 
   .buttons {
     display: flex;
@@ -68,7 +73,7 @@
 
   .list {
     position: relative;
-    width: 520px;
+    width: 260px;
     overflow: hidden;
 
     @include Phone {
@@ -81,6 +86,10 @@
 
     @include Notebook {
       width: 520px;
+    }
+
+    @include Desktop {
+      width: 780px;
     }
 
     @include Full {
@@ -118,7 +127,6 @@
         width: 260px;
         display: block;
         object-fit: cover;
-        border: 15px solid transparent;
         border-radius: 10%;
       }
     }

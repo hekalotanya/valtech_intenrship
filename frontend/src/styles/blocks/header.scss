@@ -1,14 +1,16 @@
 .top_bar { 
-  display: flex;
-  padding: 0 40px 0;
-  justify-content: space-between;
-  align-items: center;
-  // height: 36px;
+  padding: 10px;
   background-color: #88B13E;
 
   @include Phone {
+    display: flex;
     padding: 10px;
     justify-content: space-around;
+  }
+
+  @include Full {
+    padding-left: 200px;
+    padding-right: 200px;
   }
 
   &__logo {
@@ -20,6 +22,15 @@
       font-size: 30px;
       display: block;
       width: 90px;
+    }
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+
+    @include Phone {
+      flex-direction: column;
     }
   }
 
@@ -105,6 +116,11 @@
   @include Phone {
     flex-direction: column;
     justify-content: space-around;
+  }
+
+  @include Full {
+    padding-left: 200px;
+    padding-right: 200px;
   }
 
   &__logo {
