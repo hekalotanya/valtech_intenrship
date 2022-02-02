@@ -7,6 +7,11 @@
   align-items: center;
   background-color: #F3FAE6;
 
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .text {
     display: flex;
     flex-direction: column;
@@ -19,10 +24,19 @@
 
     &__name {
       @include title;
+
+      @include Phone {
+        text-align: center;
+        font-size: 40px;
+      }
     }
 
     &__main {
       @include text;
+
+      @include Phone {
+        text-align: center
+      }
     }
   }
 
@@ -32,6 +46,10 @@
 
     @include Tablet {
       gap: 5px;
+    }
+
+    @include Phone {
+      gap: 10px;
     }
 
     &__left, &__right {
@@ -52,27 +70,45 @@
           @include small_title;
           font-size: 21px;
           align-self: center;
+
+          @include Phone {
+            font-size: 15px;
+          }
         }
 
         .image {
           border-radius: 50%;
           height: 70px;
           width: 70px;
-          background-color: grey;
+          background-color: yellowgreen;
 
           @include Tablet {
             height: 50px;
             width: 50px;
           }
+
+          @include Phone {
+            height: 50px;
+            width: 50px;
+          }
+          
         }
 
         .svg {
           align-self: center;
+
+          @include Phone {
+            display: none;
+          }
         }
 
         .svg3 {
           position: relative;
           bottom: 25px;
+
+          @include Phone {
+            display: none;
+          }
         }
       }
     }

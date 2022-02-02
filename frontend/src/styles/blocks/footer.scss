@@ -12,6 +12,12 @@
     padding-left: 100px;
     padding-right: 100px;
   }
+
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+  }
   .contacts {
     display: flex;
     grid-column-start: 1;
@@ -25,6 +31,7 @@
 
     &__title {
       @include title;
+      white-space: nowrap;
     }
 
     &__time, &__adress {
@@ -37,6 +44,7 @@
     &__mail {
       @include text;
       text-decoration: none;
+      white-space: nowrap;
     }
   }
 
@@ -50,6 +58,10 @@
       gap: 25px;
     }
 
+    @include Phone {
+      display: none;
+    }
+
     &__block {
       display: flex;
       flex-direction: column;
@@ -58,6 +70,8 @@
       .block__title {
         @include button;
         line-height: 40px;
+        white-space: nowrap;
+        text-decoration: none;
       }
 
       .block__items {
@@ -68,6 +82,7 @@
         .item {
           @include text;
           cursor: pointer;
+          text-decoration: none;
         }
       }
     }
@@ -86,9 +101,13 @@
       @include text;
     }
 
-    .cards_image {
+    .cards__image {
       height: 32px;
       width: 280px;
+
+      @include Phone {
+        display: none;
+      }
     }
   }
 }

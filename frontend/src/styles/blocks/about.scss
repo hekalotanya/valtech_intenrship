@@ -10,13 +10,23 @@
   @include Tablet {
     padding-left: 100px;
     padding-right: 100px;
+    gap: 40px;
+    justify-content: space-between;
+  }
+
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 40px;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .title_block {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 290px;
+    max-width: 290px;
 
     &__clients_sign {
       @include sign;
@@ -39,11 +49,21 @@
       border: 2px solid black;
       line-height: 100%;
       margin-top: 40px;
+      transition: background-color, 0.5s;
   
       .button {
         width: max-content;
         text-decoration: none;
         @include button;
+        transition: color, 0.5s;
+      }
+    }
+
+    &__button:hover {
+      background-color: black;
+      
+      .button {
+        color: white;
       }
     }
   }
@@ -51,6 +71,31 @@
   .quotes_block {
     display: flex;
     gap: 30px;
+
+    @include Phone {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quote:hover{
+      transform: scale(1.1);
+    }
+
+    .quote:nth-of-type(n+2) {
+      @include Tablet {
+        display: none;
+      }
+    }
+
+    .quote:nth-of-type(n+3) {
+      @include Notebook {
+        display: none;
+      }
+
+      @include Desktop {
+        display: none;
+      }
+    }
 
     .quote {
       width: 300px;
@@ -60,6 +105,16 @@
       padding: 40px;
       background-color: #FFF7EB;
       border-radius: 20px;
+      transition: transform 0.5s;
+      cursor: pointer;
+
+      @include Tablet {
+        width: 250px;
+      }
+
+      @include Notebook {
+        width: 280px;
+      }
 
       .header {
         display: flex;

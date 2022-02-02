@@ -13,6 +13,11 @@
     padding-right: 100px;
   }
 
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   &__sale_sign {
     @include sign;
   }
@@ -26,12 +31,20 @@
     grid-template-columns: repeat(3, 360px);
     gap: 30px;
 
+    @include Phone {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
     @include Tablet {
       grid-template-columns: repeat(1, 1fr);
     }
 
+    @include Notebook {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .card:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     .card {
@@ -48,9 +61,13 @@
         object-fit: cover;
 
         @include Tablet {
-
           width: 50%;
         }
+
+        @include Phone {
+          width: 50%;
+        }
+
       }
 
       &__title {

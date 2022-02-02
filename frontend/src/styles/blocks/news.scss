@@ -17,11 +17,16 @@
 
   &__post_block {
     display: flex;
+    flex-direction: column;
     gap: 30px;
     align-self: center;
 
-    @include Tablet {
-      flex-direction: column;
+    @include Full {
+      flex-direction: row;
+    }
+
+    @include Phone {
+      gap: 0px;
     }
 
     .post {
@@ -30,10 +35,22 @@
       gap: 25px;
       width: 415px;
 
+      @include Phone {
+        transform: scale(0.7);
+        gap: 10px;
+      }
+
+      &__image:hover {
+        transform: scale(1.1);
+      }
+
       &__image {
         width: 415px;
         height: 270px;
         background-color: grey;
+        transition: transform, 0.5s;
+        cursor: pointer;
+        object-fit: cover;
       }
 
       &__sign {
@@ -56,9 +73,18 @@
     }
   }
 
+
   &__view_all {
     @include button;
     text-decoration: none;
     align-self: center;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    transition: border-bottom 0.5s;
+    padding: 5px;
+  }
+
+  &__view_all:hover {
+    border-bottom: 2px solid black;
   }
 }

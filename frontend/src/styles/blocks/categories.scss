@@ -1,10 +1,31 @@
 .categories {
   display: flex;
   flex-direction: row;
-  gap: 70px;
+  gap: 120px;
   align-items: center;
+  justify-content: space-between;
   padding: 69px 150px;
   background-color: #F8F8F9;
+
+  @include Phone {
+    gap: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    flex-direction: column;
+  }
+
+  @include Tablet {
+    gap: 25px;
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  @include Notebook {
+    gap: 70px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
 
   .buttons {
     display: flex;
@@ -34,18 +55,52 @@
     &__view {
       @include button;
       padding-bottom: 5px;
-      border-bottom: 1px solid transparent;
+      width: max-content;
+      border: 2px solid transparent;
       cursor: pointer;
+      transition: border-bottom 0.5s;
+    }
 
-      :hover {
-        border-bottom: #88B13E;
-      }
+    &__view:hover {
+      border-bottom: 2px solid #88B13E;
     }
   }
 
   .list {
-    display: flex;
-    gap: 30px;
+    position: relative;
+    width: 520px;
+    overflow: hidden;
+
+    @include Phone {
+      width: 260px;
+    }
+
+    @include Tablet {
+      width: 260px;
+    }
+
+    @include Notebook {
+      width: 520px;
+    }
+
+    @include Full {
+      width: 780px;
+    }
+
+
+    &__caruosel {
+      display: flex;
+      width: 9999px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0;
+      transition: margin-left 0.5s;
+    }
+
+    &__caruosel li {
+      display: inline-block;
+    }
 
     .item {
       display: flex;
@@ -59,9 +114,12 @@
       }
 
       &__image {
-        height: 150px;
-        width: 150px;
+        height: 260px;
+        width: 260px;
+        display: block;
         object-fit: cover;
+        border: 15px solid transparent;
+        border-radius: 10%;
       }
     }
   }

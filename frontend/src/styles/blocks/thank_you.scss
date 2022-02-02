@@ -7,12 +7,21 @@
   background-color: #FCEEE7;
   gap: 30px;
 
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   &__sign {
     @include sign;
   }
 
   &__title {
     @include title;
+
+    @include Phone {
+      text-align: center;
+    }
   }
 
   &__button {
@@ -24,11 +33,21 @@
     border: 2px solid black;
     line-height: 100%;
     margin-top: 40px;
+    transition: background-color 0.5s;
 
     .button {
       width: max-content;
       text-decoration: none;
       @include button;
+      transition: color 0.5s;
+    }
+  }
+
+  &__button:hover {
+    background-color: black;
+    
+    .button {
+      color: white;
     }
   }
 }
