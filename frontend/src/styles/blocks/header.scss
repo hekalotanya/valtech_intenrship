@@ -68,20 +68,27 @@
 
   &__logo {
     @include title;
+    text-decoration: none;
   }
 
   &__menu {
     display: flex;
     gap: 30px;
+
+    @include Tablet {
+      gap: 15px;
+    }
     
     .menu__item {
       text-decoration: none;
       @include button;
+      padding-bottom: 5px;
       border-bottom: 1px solid transparent;
+      transition: border-bottom 0.5s;
+    }
 
-      :hover {
-        border-bottom: black;
-      }
+    .menu__item:hover {
+      border-bottom: 1px solid black;
     }
   }
 

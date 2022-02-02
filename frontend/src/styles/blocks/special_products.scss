@@ -5,7 +5,13 @@
   padding-top: 70px;
   padding-bottom: 100px;
   padding-left: 150px;
+  padding-right: 150px;
   background-color: #ECECEC;
+
+  @include Tablet {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 
   &__sale_sign {
     @include sign;
@@ -20,16 +26,31 @@
     grid-template-columns: repeat(3, 360px);
     gap: 30px;
 
+    @include Tablet {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card:hover {
+      transform: scale(1.2);
+    }
+
     .card {
       display: flex;
       align-items: center;
       gap: 10px;
       background-color: white;
+      cursor: pointer;
+      transition: transform 0.5s;
 
       &__image {
         height: 180px;
         width: 180px;
         object-fit: cover;
+
+        @include Tablet {
+
+          width: 50%;
+        }
       }
 
       &__title {

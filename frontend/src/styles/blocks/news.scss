@@ -1,0 +1,64 @@
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  &__sign {
+    @include sign;
+    align-self: center;
+  }
+
+  &__title {
+    @include title;
+    align-self: center;
+  }
+
+  &__post_block {
+    display: flex;
+    gap: 30px;
+    align-self: center;
+
+    @include Tablet {
+      flex-direction: column;
+    }
+
+    .post {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 415px;
+
+      &__image {
+        width: 415px;
+        height: 270px;
+        background-color: grey;
+      }
+
+      &__sign {
+        @include sign;
+      }
+
+      &__title {
+        @include small_title;
+      }
+
+      &__text {
+        @include text;
+      }
+
+      &__information {
+        @include text;
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+
+  &__view_all {
+    @include button;
+    text-decoration: none;
+    align-self: center;
+  }
+}

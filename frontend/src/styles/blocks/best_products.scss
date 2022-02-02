@@ -30,6 +30,10 @@
     display: flex;
     gap: 150px;
 
+    @include Tablet {
+      gap: 5px;
+    }
+
     &__left, &__right {
       display: flex;
       flex-direction: column;
@@ -39,6 +43,10 @@
       .example {
         display: flex;
         gap: 15px;
+        
+        @include Tablet {
+          transform: scale(0.7);
+        }
 
         .title {
           @include small_title;
@@ -51,6 +59,11 @@
           height: 70px;
           width: 70px;
           background-color: grey;
+
+          @include Tablet {
+            height: 50px;
+            width: 50px;
+          }
         }
 
         .svg {
