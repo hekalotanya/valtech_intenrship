@@ -1,9 +1,12 @@
 .top_bar { 
   padding: 10px;
   background-color: #88B13E;
+  transition: height 0.5s;
 
   @include Phone {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 10px;
     justify-content: space-around;
   }
@@ -17,11 +20,14 @@
     display: none;
     @include title;
     text-decoration: none;
+    transition: all 0.5s;
 
     @include Phone {
+      display: inline;
+      width: 100%;
       font-size: 30px;
-      display: block;
-      width: 90px;
+      text-align: center;
+      cursor: pointer;
     }
   }
 
@@ -77,6 +83,10 @@
     gap: 20px;
     justify-content: space-around;
     align-items: center;
+
+    @include Phone {
+      flex-direction: column;
+    }
 
     .lang {
       text-decoration: none;
@@ -169,5 +179,41 @@
         height: 20px;
       }
     }
+  }
+}
+
+.top_bar .links {
+  @include Phone {
+    display: none;
+  }
+}
+
+.top_bar:hover .links {
+  @include Phone {
+    display: flex;
+    animation: fade-in 1s;
+  }
+}
+
+.top_bar:not(:hover) .links.did-fade-in {
+  display: block;
+  animation: fade-out 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

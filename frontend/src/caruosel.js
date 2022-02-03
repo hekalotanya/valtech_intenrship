@@ -1,23 +1,46 @@
-const list = document.getElementById('caruosel');
-const listElems = list.querySelectorAll('li');
-const width = 260;
+const images = document.querySelectorAll('.list__caruosel img');
+const sliderLine = document.getElementById('caruosel');
+let count = 0;
+let width;
 
-let position = 0; // положение ленты прокрутки
+const rollSlider = () => {
+  sliderLine.style.transform = `translate(-${width * count}px)`;
+  // eslint-disable-next-line no-console
+  console.log(`translate(-${width * count}px)`);
+};
+
+const init = () => {
+  width = document.getElementById('list').offsetWidth;
+  sliderLine.style.width = width * images.length + 'px';
+
+  images.forEach(item => {
+    item.style.width = width + 'px';
+    item.style.height = 'auto';
+  });
+
+  rollSlider();
+};
+
+init();
+
+window.addEventListener('resize', init);
 
 document.getElementById('arrow_prev').onclick = function() {
-  // const blockWidth = document.getElementById('list').offsetWidth;
-  // const count = blockWidth / 260;
+  count--;
 
-  position += width;
-  position = Math.min(position, 0);
-  list.style.marginLeft = position + 'px';
+  if (count < 0) {
+    count = images.length - 1;
+  }
+
+  rollSlider();
 };
 
 document.getElementById('arrow_next').onclick = function() {
-  const blockWidth = document.getElementById('list').offsetWidth;
-  const count = blockWidth / 260;
+  count++;
 
-  position -= width;
-  position = Math.max(position, -width * (listElems.length - count));
-  list.style.marginLeft = position + 'px';
+  if (count >= images.length) {
+    count = 0;
+  }
+
+  rollSlider();
 };

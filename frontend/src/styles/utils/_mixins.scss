@@ -23,7 +23,13 @@
 }
 
 @mixin Full {
-  @media (min-width: 1440px) {
+  @media (min-width: 1339px) {
+    @content;
+  }
+}
+
+@mixin Full1650 {
+  @media (min-width: 1650px) {
     @content;
   }
 }

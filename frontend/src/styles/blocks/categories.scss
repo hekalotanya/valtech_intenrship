@@ -72,62 +72,19 @@
   }
 
   .list {
-    position: relative;
-    width: 260px;
+    width: 50%;
+    max-width: 600px;
+    max-height: 400px;
     overflow: hidden;
-
-    @include Phone {
-      width: 260px;
-    }
-
-    @include Tablet {
-      width: 260px;
-    }
-
-    @include Notebook {
-      width: 520px;
-    }
-
-    @include Desktop {
-      width: 780px;
-    }
-
-    @include Full {
-      width: 780px;
-    }
-
+    border-radius: 10%;  
 
     &__caruosel {
       display: flex;
-      width: 9999px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-size: 0;
-      transition: margin-left 0.5s;
-    }
+      transition: all ease 1s;
 
-    &__caruosel li {
-      display: inline-block;
-    }
-
-    .item {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
-      &__title {
-        @include button;
-        font-size: 18px;
-        align-self: center;
-      }
-
-      &__image {
-        height: 260px;
-        width: 260px;
-        display: block;
+      .caruosel__image {
         object-fit: cover;
-        border-radius: 10%;
+        cursor: pointer;
       }
     }
   }
