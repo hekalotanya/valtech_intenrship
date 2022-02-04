@@ -71,9 +71,7 @@ var newsSliderLine = document.querySelector('.post_block__caruosel');
 var newsArrowNext = document.querySelector('.post_block__next');
 var newsArrowPrev = document.querySelector('.post_block__prev');
 var newsCount = 0;
-var newsWidth; // eslint-disable-next-line no-console
-
-console.log(newsImages, newsList, newsSliderLine); // функция прокрутки изображений
+var newsWidth; // функция прокрутки изображений
 
 var rollSlider = function rollSlider() {
   newsSliderLine.style.transform = "translate(-".concat(newsWidth * newsCount, "px)");
