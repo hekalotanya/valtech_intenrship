@@ -727,6 +727,7 @@ textarea {
   gap: 10px;
   margin-top: 20px;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .categories .buttons__arrows .arrow {
   width: 30px;
@@ -1657,4 +1658,4 @@ html {
   box-sizing: border-box;
 }
 
-/*# sourceMappingURL=main.3fb95a580c21e14b28e6.css.map*/
+/*# sourceMappingURL=main.6dfcbc00a4e4f3560151.css.map*/
