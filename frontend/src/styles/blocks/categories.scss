@@ -54,6 +54,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
       }
     }
 
@@ -77,6 +78,10 @@
     max-height: 400px;
     overflow: hidden;
     border-radius: 10%;  
+
+    @include Phone {
+      width: 90%;
+    }
 
     &__caruosel {
       display: flex;

@@ -8,9 +8,6 @@ const newsArrowPrev = document.querySelector('.post_block__prev');
 let newsCount = 0;
 let newsWidth;
 
-// eslint-disable-next-line no-console
-console.log(newsImages, newsList, newsSliderLine);
-
 // функция прокрутки изображений
 
 const rollSlider = () => {
