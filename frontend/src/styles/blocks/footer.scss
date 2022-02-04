@@ -104,6 +104,10 @@
 
     .copyright_sign {
       @include text;
+
+      @include Tablet{
+        margin-right: 10px;
+      }
     }
 
     .cards__image {

@@ -8,7 +8,7 @@
     flex-direction: column;
     gap: 10px;
     padding: 10px;
-    justify-content: space-around;
+    height: 50px;
   }
 
   @include Full {
@@ -37,6 +37,7 @@
 
     @include Phone {
       flex-direction: column;
+      transform: translateY(-200%);
     }
   }
 
@@ -183,16 +184,16 @@
   }
 }
 
-.top_bar .links {
+.top_bar:hover .links {
   @include Phone {
-    display: none;
+    transform: translateY(0%);
+    animation: fade-in 1s;
   }
 }
 
-.top_bar:hover .links {
+.top_bar:hover {
   @include Phone {
-    display: flex;
-    animation: fade-in 1s;
+    height: 160px;
   }
 }
 

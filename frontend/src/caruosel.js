@@ -1,19 +1,26 @@
-const images = document.querySelectorAll('.list__caruosel img');
-const sliderLine = document.getElementById('caruosel');
+// переменные для секции categories
+
+const categoriesImages = document.querySelectorAll('.list__caruosel img');
+const categoriesList = document.getElementById('list');
+const categoriesSliderLine = document.getElementById('caruosel');
+const categoriesArrowNext = document.getElementById('arrow_next');
+const categoriesArrowPrev = document.getElementById('arrow_prev');
 let count = 0;
 let width;
 
+// функция прокрутки изображений
+
 const rollSlider = () => {
-  sliderLine.style.transform = `translate(-${width * count}px)`;
-  // eslint-disable-next-line no-console
-  console.log(`translate(-${width * count}px)`);
+  categoriesSliderLine.style.transform = `translate(-${width * count}px)`;
 };
 
-const init = () => {
-  width = document.getElementById('list').offsetWidth;
-  sliderLine.style.width = width * images.length + 'px';
+// установка нужного размера для блока
 
-  images.forEach(item => {
+const init = () => {
+  width = categoriesList.offsetWidth;
+  categoriesSliderLine.style.width = width * categoriesImages.length + 'px';
+
+  categoriesImages.forEach(item => {
     item.style.width = width + 'px';
     item.style.height = 'auto';
   });
@@ -21,26 +28,30 @@ const init = () => {
   rollSlider();
 };
 
-init();
+// добавление событий на кнопки прокрутки
 
-window.addEventListener('resize', init);
-
-document.getElementById('arrow_prev').onclick = function() {
+categoriesArrowPrev.onclick = function() {
   count--;
 
   if (count < 0) {
-    count = images.length - 1;
+    count = categoriesImages.length - 1;
   }
 
-  rollSlider();
+  rollSlider(categoriesSliderLine);
 };
 
-document.getElementById('arrow_next').onclick = function() {
+categoriesArrowNext.onclick = function() {
   count++;
 
-  if (count >= images.length) {
+  if (count >= categoriesImages.length) {
     count = 0;
   }
 
-  rollSlider();
+  rollSlider(categoriesSliderLine);
 };
+
+// вызов функций для карусели на секции categories
+
+init(categoriesList, categoriesSliderLine, categoriesImages);
+
+window.addEventListener('resize', init);

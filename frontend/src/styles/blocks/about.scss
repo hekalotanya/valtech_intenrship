@@ -17,6 +17,7 @@
     padding-right: 100px;
     gap: 40px;
     justify-content: space-between;
+    align-items: flex-start;
   }
 
   @include Phone {
@@ -76,31 +77,117 @@
   .quotes_block {
     display: flex;
     gap: 30px;
+    transition: height 0.5s;
 
     @include Phone {
       flex-direction: column;
       gap: 10px;
+      height: 300px;
+    }
+
+    @include Tablet {
+      flex-direction: column;
+      gap: 10px;
+      height: 300px;
+    }
+
+    .quote--visible {
+      @include Phone {
+        position: relative;
+      }
+
+      @include Tablet {
+        position: relative;
+      }
+    }
+
+
+    .quote--visible::after {
+      @include Phone {
+        content: "↓";
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        animation-duration: .5s;
+        animation-name: moving;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        color: #888888;
+      }
+
+      @include Tablet {
+        content: "↓";
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        animation-duration: .5s;
+        animation-name: moving;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        color: #888888;
+      }
+    }
+
+    @keyframes moving {
+      from {
+        transform: translateY(0);
+      }
+      
+      to {
+        transform: translateY(-20px);
+      }
     }
 
     .quote:hover{
-      transform: scale(1.1);
+
+      @include Notebook {
+        transform: scale(1.1);
+      }
+
+      @include Desktop {
+        transform: scale(1.1);
+      }
+
+      @include Full {
+        transform: scale(1.1);
+      }
+    }
+
+    .quote--visible:hover ~ .quote {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .quote--visible:hover::after {
+      animation-duration: 5s;
     }
 
     .quote:nth-of-type(n+2) {
+      @include Phone {
+        visibility: hidden;
+        opacity: 0;
+      }
+
       @include Tablet {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
       }
     }
 
     .quote:nth-of-type(n+3) {
-      @include Desktop {
-        display: none;
-      }
-      
       @include Notebook {
         display: none;
       }
+
+      @include Desktop {
+        display: none;
+      }
     }
+
 
     .quote {
       width: 300px;
@@ -110,12 +197,9 @@
       padding: 40px;
       background-color: #FFF7EB;
       border-radius: 20px;
-      transition: transform 0.5s;
+      transition:visibility 0.4s linear,opacity 0.4s linear;
       cursor: pointer;
 
-      @include Tablet {
-        width: 250px;
-      }
 
       @include Notebook {
         width: 280px;
@@ -153,5 +237,16 @@
         font-size: 18px; 
       }
     }
+  }
+}
+
+
+.quotes_block:hover {
+  @include Phone {
+    height: 800px;
+  }
+
+  @include Tablet {
+    height: 800px;
   }
 }

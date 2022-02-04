@@ -17,13 +17,13 @@
 }
 
 @mixin Desktop {
-  @media (min-width: 1281px) and (max-width: 1339px) {
+  @media (min-width: 1281px) and (max-width: 1440px) {
     @content;
   }
 }
 
 @mixin Full {
-  @media (min-width: 1339px) {
+  @media (min-width: 1441px) {
     @content;
   }
 }

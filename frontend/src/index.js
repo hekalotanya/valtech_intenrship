@@ -1,3 +1,4 @@
 import './styles/main.scss';
 import './caruosel';
-import './tob_bar';
+import './top_bar';
+import './news_caruosel';

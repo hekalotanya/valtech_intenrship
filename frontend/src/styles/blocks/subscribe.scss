@@ -1,0 +1,72 @@
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  align-items: center;
+  background-color: #FCEEE7;
+  gap: 30px;
+
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  &__sign {
+    @include sign;
+  }
+
+  &__title {
+    @include title;
+
+    @include Phone {
+      text-align: center;
+    }
+  }
+
+  .form {
+    width: 350px;
+    height: 50px;
+    border: 1px solid #E1E1E1;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    @include Phone {
+      width: 80%;
+      min-width: 260px;
+    }
+
+    &__input {
+      @include text;
+      background-color: white;
+      border: none;
+      width: 70%;
+
+      &:invalid:focus:not(:placeholder-shown) {
+        border-bottom: 1px solid #FF5D73;
+      }
+    }
+
+    &__submit {
+      background-color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 10px;
+
+
+    .icon__link {
+      .svg {
+        height: 15px;
+        width: 15px;
+        text-decoration: none;
+      }
+    }
+  }
+}
