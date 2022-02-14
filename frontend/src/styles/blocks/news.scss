@@ -1,22 +1,47 @@
 .news {
+  background-color: white;
+}
+
+
+.news__container {
+  transform: translateY(-100px);
+  background-color: white;
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
   align-items: center;
+  margin-left: 150px;
+  margin-right: 150px;
 
-  &__sign {
+  @include Full {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  @include Tablet {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  @include Phone {
+    margin-left: 20px;
+    margin-right: 20px;
+    transform: none;
+  }
+
+  .sign {
     @include sign;
     align-self: center;
   }
 
-  &__title {
+  .title {
     @include title;
     align-self: center;
   }
 
-  &__post_block {
+  .post_block {
     width: 80%;
     max-width: 600px;
     overflow: hidden;
@@ -86,7 +111,7 @@
   }
 
 
-  &__view_all {
+  .view_all {
     @include button;
     text-decoration: none;
     align-self: center;
@@ -96,7 +121,7 @@
     padding: 5px;
   }
 
-  &__view_all:hover {
+  .view_all:hover {
     border-bottom: 2px solid black;
   }
 }

@@ -1,0 +1,164 @@
+.deal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  padding-left: 150px;
+  padding-right: 150px;
+
+  @include Full {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  @include Tablet {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .title {
+    @include title;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    @include Phone {
+      flex-direction: column
+    }
+
+    @include Tablet {
+      flex-direction: column
+    }
+  }
+
+  .countdown {
+    @include title;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .countdown-number {
+    padding: 2px;
+    background: red;
+    display: inline-block;
+  }
+  
+  .countdown-time {
+    width: 65px;
+    height: 65px;
+    padding: 10px;
+    border-radius: 1px;
+    background: red;
+    display: inline-block;
+  } 
+
+  .products_container {
+    display: flex;
+    gap: 20px;
+    border: 3px solid #88B13E;
+    padding: 15px;
+
+    @include Phone {
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    @include Tablet {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .product_card {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      cursor: pointer;
+
+      &:nth-of-type(n+4) {
+        @include Desktop {
+          display: none;
+        }
+      }
+
+      &:nth-of-type(n+3) {
+        @include Notebook {
+          display: none;
+        }
+      }
+
+      .card__sale {
+        @include text;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+        width: 48px;
+        height: 20px;
+        background-color: red;
+        transform: translateY(25px);
+
+      }
+  
+      .card__image {
+        height: 315px;
+        width: 315px;
+
+        @include Phone {
+          height: 220px;
+          width: 220px;
+        }
+
+        @include Tablet {
+          height: 400px;
+          width: 400px;
+        }
+      }
+  
+      .card__stars {
+        display: flex;
+      }
+  
+      .card__name {
+        @include text;
+      }
+  
+      .card__price {
+        @include text;
+        color: black;
+        font-size: 18px;
+
+        .price__last {
+          @include text;
+          text-decoration: line-through;
+        }
+      }
+  
+      .card__line_sold {
+        width: 200px;
+        height: 8px;
+        background-color: #88B13E;
+      }
+
+      .card__sold {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+
+        .sold {
+          @include button;
+        }
+        .sold_number {
+          @include button;
+        }
+      }
+    }
+  }
+}

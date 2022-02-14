@@ -6,6 +6,8 @@
   padding-bottom: 70px;
   align-items: center;
   background-color: #F3FAE6;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @include Phone {
     padding-left: 20px;
