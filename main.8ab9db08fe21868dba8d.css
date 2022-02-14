@@ -1818,6 +1818,8 @@ html {
 .deal .products_container .product_card .card__image {
   height: 315px;
   width: 315px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 @media (max-width: 640px) {
   .deal .products_container .product_card .card__image {
@@ -1878,4 +1880,4 @@ html {
   box-sizing: border-box;
 }
 
-/*# sourceMappingURL=main.0365a215e68a2bb916cd.css.map*/
+/*# sourceMappingURL=main.8ab9db08fe21868dba8d.css.map*/
