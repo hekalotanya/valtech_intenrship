@@ -58,6 +58,57 @@ window.addEventListener('resize', init);
 
 /***/ }),
 
+/***/ "./src/count_down_clock.js":
+/*!*********************************!*\
+  !*** ./src/count_down_clock.js ***!
+  \*********************************/
+/***/ (() => {
+
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor(t / 1000 % 60);
+  var minutes = Math.floor(t / 1000 / 60 % 60);
+  var hours = Math.floor(t / (1000 * 60 * 60) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+} // const deadline="January 01 2018 00:00:00 GMT+0300"; //for Ukraine
+
+
+var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); // for endless timer
+
+initializeClock('countdown', deadline);
+
+/***/ }),
+
 /***/ "./src/news_caruosel.js":
 /*!******************************!*\
   !*** ./src/news_caruosel.js ***!
@@ -230,6 +281,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _top_bar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_top_bar__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _news_caruosel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./news_caruosel */ "./src/news_caruosel.js");
 /* harmony import */ var _news_caruosel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_news_caruosel__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _count_down_clock__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./count_down_clock */ "./src/count_down_clock.js");
+/* harmony import */ var _count_down_clock__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_count_down_clock__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 

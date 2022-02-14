@@ -10,7 +10,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, strong, sub, sup, tt, const,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -606,8 +606,14 @@ textarea {
   padding-top: 175px;
   padding-right: auto;
   align-items: center;
-  background-color: #F2EEEE;
-  padding-bottom: 177px;
+  background-color: #f2eeee;
+  background-image: url(assets/1ac9a123e8a788ea5b63.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding-bottom: 50px;
 }
 @media (max-width: 640px) {
   .shop_now {
@@ -621,6 +627,7 @@ textarea {
   height: 170px;
   align-items: center;
   margin-bottom: 22px;
+  z-index: 200;
 }
 .shop_now .main_sign__sale_sign {
   font-size: 15px;
@@ -647,6 +654,7 @@ textarea {
   font-family: "Jost", sans-serif;
   margin-bottom: 40px;
   text-align: center;
+  z-index: 200;
 }
 .shop_now__button {
   display: flex;
@@ -657,6 +665,7 @@ textarea {
   border: 2px solid black;
   line-height: 100%;
   transition: background-color, 0.5s;
+  z-index: 200;
   cursor: pointer;
 }
 .shop_now__button .button {
@@ -783,6 +792,8 @@ textarea {
   padding-bottom: 70px;
   align-items: center;
   background-color: #F3FAE6;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @media (max-width: 640px) {
   .best_products {
@@ -1292,6 +1303,7 @@ textarea {
   align-items: center;
   background-color: #FCEEE7;
   gap: 30px;
+  height: 400px;
 }
 @media (max-width: 640px) {
   .thank_you {
@@ -1345,27 +1357,54 @@ textarea {
 }
 
 .news {
+  background-color: white;
+}
+
+.news__container {
+  transform: translateY(-100px);
+  background-color: white;
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
   align-items: center;
+  margin-left: 150px;
+  margin-right: 150px;
 }
-.news__sign {
+@media (min-width: 1441px) {
+  .news__container {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .news__container {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+@media (max-width: 640px) {
+  .news__container {
+    margin-left: 20px;
+    margin-right: 20px;
+    transform: none;
+  }
+}
+.news__container .sign {
   font-size: 15px;
   font-family: "Jost", sans-serif;
   color: #88B13E;
   text-transform: uppercase;
   align-self: center;
 }
-.news__title {
+.news__container .title {
   font-family: "Lobster Two", cursive;
   font-size: 40px;
   color: black;
   align-self: center;
 }
-.news__post_block {
+.news__container .post_block {
   width: 80%;
   max-width: 600px;
   overflow: hidden;
@@ -1374,11 +1413,11 @@ textarea {
   gap: 20px;
   align-items: center;
 }
-.news__post_block .post_block__arrows {
+.news__container .post_block .post_block__arrows {
   display: flex;
   gap: 10px;
 }
-.news__post_block .post_block__arrows .arrow {
+.news__container .post_block .post_block__arrows .arrow {
   width: 10px;
   height: 10px;
   background-color: gray;
@@ -1386,53 +1425,53 @@ textarea {
   border-radius: 50%;
   cursor: pointer;
 }
-.news__post_block .post_block__arrows .arrow:active {
+.news__container .post_block .post_block__arrows .arrow:active {
   background-color: black;
   opacity: 0.8;
 }
-.news__post_block .post_block__caruosel {
+.news__container .post_block .post_block__caruosel {
   display: flex;
   transition: all ease 1s;
   align-self: flex-start;
 }
-.news__post_block .post {
+.news__container .post_block .post {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
-.news__post_block .post__image:hover {
+.news__container .post_block .post__image:hover {
   transform: scale(1.1);
 }
-.news__post_block .post__image {
+.news__container .post_block .post__image {
   transition: transform, 0.5s;
   cursor: pointer;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.news__post_block .post__sign {
+.news__container .post_block .post__sign {
   font-size: 15px;
   font-family: "Jost", sans-serif;
   color: #88B13E;
   text-transform: uppercase;
 }
-.news__post_block .post__title {
+.news__container .post_block .post__title {
   font-family: "Lobster Two", cursive;
   font-size: 17px;
   color: black;
 }
-.news__post_block .post__text {
+.news__container .post_block .post__text {
   color: #888888;
   font-size: 15px;
   font-family: "Jost", sans-serif;
 }
-.news__post_block .post__information {
+.news__container .post_block .post__information {
   color: #888888;
   font-size: 15px;
   font-family: "Jost", sans-serif;
   display: flex;
   gap: 10px;
 }
-.news__view_all {
+.news__container .view_all {
   color: black;
   font-size: 15px;
   font-family: "Jost", sans-serif;
@@ -1443,7 +1482,7 @@ textarea {
   transition: border-bottom 0.5s;
   padding: 5px;
 }
-.news__view_all:hover {
+.news__container .view_all:hover {
   border-bottom: 2px solid black;
 }
 
@@ -1662,9 +1701,181 @@ html {
   text-decoration: none;
 }
 
+.deal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+@media (min-width: 1441px) {
+  .deal {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .deal {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+@media (max-width: 640px) {
+  .deal {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.deal .title {
+  font-family: "Lobster Two", cursive;
+  font-size: 40px;
+  color: black;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .deal .title {
+    flex-direction: column;
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .deal .title {
+    flex-direction: column;
+  }
+}
+.deal .countdown {
+  font-family: "Lobster Two", cursive;
+  font-size: 40px;
+  color: black;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+}
+.deal .countdown-number {
+  padding: 2px;
+  background: red;
+  display: inline-block;
+}
+.deal .countdown-time {
+  width: 65px;
+  height: 65px;
+  padding: 10px;
+  border-radius: 1px;
+  background: red;
+  display: inline-block;
+}
+.deal .products_container {
+  display: flex;
+  gap: 20px;
+  border: 3px solid #88B13E;
+  padding: 15px;
+}
+@media (max-width: 640px) {
+  .deal .products_container {
+    flex-direction: column;
+    gap: 50px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .deal .products_container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+.deal .products_container .product_card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+}
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .deal .products_container .product_card:nth-of-type(n+4) {
+    display: none;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .deal .products_container .product_card:nth-of-type(n+3) {
+    display: none;
+  }
+}
+.deal .products_container .product_card .card__sale {
+  color: #888888;
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  width: 48px;
+  height: 20px;
+  background-color: red;
+  transform: translateY(25px);
+}
+.deal .products_container .product_card .card__image {
+  height: 315px;
+  width: 315px;
+}
+@media (max-width: 640px) {
+  .deal .products_container .product_card .card__image {
+    height: 220px;
+    width: 220px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .deal .products_container .product_card .card__image {
+    height: 400px;
+    width: 400px;
+  }
+}
+.deal .products_container .product_card .card__stars {
+  display: flex;
+}
+.deal .products_container .product_card .card__name {
+  color: #888888;
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+}
+.deal .products_container .product_card .card__price {
+  color: #888888;
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+  color: black;
+  font-size: 18px;
+}
+.deal .products_container .product_card .card__price .price__last {
+  color: #888888;
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+  text-decoration: line-through;
+}
+.deal .products_container .product_card .card__line_sold {
+  width: 200px;
+  height: 8px;
+  background-color: #88B13E;
+}
+.deal .products_container .product_card .card__sold {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+.deal .products_container .product_card .card__sold .sold {
+  color: black;
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+}
+.deal .products_container .product_card .card__sold .sold_number {
+  color: black;
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+}
+
 * {
   padding: 0;
   box-sizing: border-box;
 }
 
-/*# sourceMappingURL=main.32b7bc3dd99212a55d8a.css.map*/
+/*# sourceMappingURL=main.0365a215e68a2bb916cd.css.map*/
