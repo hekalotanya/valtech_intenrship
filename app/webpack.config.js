@@ -10,9 +10,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const plugins = [
-  new HtmlWebpackPlugin({
-    template: './src/index.html',
-  }),
+  // new HtmlWebpackPlugin({
+  //   template: './views/index.hbs',
+  // }),
 
   new MiniCssExtractPlugin({
     filename: '[name].[contenthash].css',
@@ -25,11 +25,19 @@ const plugins = [
 module.exports = {
   mode,
   plugins,
-  entry: './src/index.js',
+  resolve: {
+    fallback: {
+      fs: false,
+      http: false,
+      crypto: false,
+      zlib: false
+    }
+  },
+  entry: './src/javascripts/index.js',
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[hash][ext][query]',
+    filename: 'bundle.js',
     clean: true,
   },
 
@@ -39,7 +47,7 @@ module.exports = {
 
   module: {
   	rules: [
-      { test: /\.(html)$/, use: ['html-loader'] },
+      { test: /\.(hbs)$/, use: ['html-loader'] },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -52,6 +60,9 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
         type: mode === 'production' ? 'asset' : 'asset/resource',
+        generator: {
+          filename: 'assets/images/[hash].min[ext]',
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)$/i,

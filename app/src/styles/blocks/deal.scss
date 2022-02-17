@@ -110,6 +110,7 @@
       .card__image {
         height: 315px;
         width: 315px;
+        object-fit: cover;
 
         @include Phone {
           height: 220px;
