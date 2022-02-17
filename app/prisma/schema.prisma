@@ -8,7 +8,34 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+}
+
+model Category {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.Char(255)
+  Product Product[]
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  last_price  Int
+  price       Int
+  category    Category @relation(fields: [categoryId], references: [id])
+  color       String   @db.VarChar(255)
+  size        Int
+  description String   @db.VarChar(255)
+  images      Image[]
+  sale        Boolean
+  categoryId  Int
+}
+
+model Image {
+  id         Int     @id @default(autoincrement())
+  id_product Product @relation(fields: [productId], references: [id])
+  path       String
+  productId  Int
 }

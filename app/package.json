@@ -13,6 +13,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hekalotanya/valtech_intenrship.git"
