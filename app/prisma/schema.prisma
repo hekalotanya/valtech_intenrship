@@ -3,39 +3,73 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String @db.VarChar(255)
-  email String @unique @db.VarChar(255)
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(255)
+  email    String @unique @db.VarChar(255)
+  password String?
 }
 
 model Category {
-  id      Int       @id @default(autoincrement())
-  name    String    @db.Char(255)
-  Product Product[]
+  id       Int       @id @default(autoincrement())
+  name     String    @db.Char(255)
+  products Product[]
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String   @db.VarChar(255)
-  last_price  Int
-  price       Int
-  category    Category @relation(fields: [categoryId], references: [id])
-  color       String   @db.VarChar(255)
-  size        Int
-  description String   @db.VarChar(255)
-  images      Image[]
-  sale        Boolean
-  categoryId  Int
+  id            Int             @id @default(autoincrement())
+  name          String
+  last_price    Int
+  price         Int
+  category      Category        @relation(fields: [category_id], references: [id])
+  color         String          @db.VarChar(255)
+  size          Int
+  description   String
+  images        Image[]
+  sale          Boolean
+  best_seller   Boolean
+  category_id   Int
+  reviews       Review[]
+  Order_product Order_product[]
 }
 
 model Image {
   id         Int     @id @default(autoincrement())
-  id_product Product @relation(fields: [productId], references: [id])
+  product    Product @relation(fields: [product_id], references: [id])
   path       String
-  productId  Int
+  product_id Int
+}
+
+model Review {
+  id         Int     @id @default(autoincrement())
+  name       String
+  product    Product @relation(fields: [product_id], references: [id])
+  body       String
+  product_id Int
+}
+
+model Order {
+  id          Int             @id @default(autoincrement())
+  user_id     Int?
+  user_name   String
+  user_adress String
+  user_phone  Int
+  user_email  String
+  products    Order_product[]
+  totalPice   Int
+}
+
+model Order_product {
+  id                 Int     @id @default(autoincrement())
+  product_id         Int
+  order              Order   @relation(fields: [orderId], references: [id])
+  product            Product @relation(fields: [productId], references: [id])
+  orderId            Int
+  productId          Int
+  count Int
 }
