@@ -1,0 +1,205 @@
+.footer_grid {
+  padding-left: 260px;
+  padding-right: 260px;
+  padding-top: 65px;
+  background-color: #39413A;
+
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include Tablet {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include Notebook {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .communication {
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);;
+    padding-bottom: 60px;
+
+    .phone_block {
+      display: flex;
+      gap: 30px;
+      border-right: 1px solid rgb(255, 255, 255, 0.2);;
+    }
+
+    .mail_block {
+      display: flex;
+      gap: 30px;
+      justify-self: flex-end;
+
+      .form {
+        width: 100%;
+
+        .input {
+          background-color: #39413A;
+          border: 1px solid white;
+          height: 50px;
+          width: 68%;
+          max-width: 370px;
+          padding: 10px;
+          color: white;
+        }
+
+        .button {
+          background-color: #60A00C;
+          @include text;
+          border: none;
+          font-weight: 700;
+          color: white;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          width: 30%;
+          max-width: 130px;
+          height: 50px;
+        }
+      }
+    }
+
+    .icon_block { 
+      background-color: rgb(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text_block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+
+      .sing_1 {
+        @include small_title;
+        color: white;
+      }
+
+      .sing_2 {
+        @include text;
+        color: white;
+      }
+
+      .number {
+        @include text;
+        font-size: 21px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+  .menu_block {
+    padding-top: 50px;
+    padding-bottom: 70px;
+
+    .time_work {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .logo {
+        @include title;
+        color: white;
+      }
+
+      .time {
+        @include text;
+        color: white;
+      }
+    }
+
+    .navigation {
+      grid-column: 6/12;
+  
+      .menu {
+        display: flex;
+        gap: 100px;
+  
+        @include Tablet {
+          gap: 25px;
+        }
+    
+        @include Phone {
+          display: none;
+        }
+  
+        .block {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+    
+          .block__title {
+            @include button;
+            line-height: 40px;
+            white-space: nowrap;
+            text-decoration: none;
+            color: white;
+          }
+    
+          .block__items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+    
+            .item {
+              @include text;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  height: 50px;
+  background-color: #2b312b;
+  padding: 15px 260px;
+  display: flex;
+  justify-content: space-between;
+
+  @include Phone {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include Tablet {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include Notebook {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  &__sign {
+    @include text;
+    color: white;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 10px;
+
+    .icon__link {
+      .svg {
+        height: 15px;
+        width: 15px;
+        text-decoration: none;
+      }
+    }
+  }
+}
