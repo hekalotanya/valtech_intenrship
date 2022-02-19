@@ -40,14 +40,14 @@ model Product {
 
 model Image {
   id         Int     @id @default(autoincrement())
-  product    Product @relation(fields: [product_id], references: [id])
+  product    Product? @relation(fields: [product_id], references: [id])
   path       String
   product_id Int
 }
 
 model Review {
   id         Int     @id @default(autoincrement())
-  name       String
+  user_id    Int
   product    Product @relation(fields: [product_id], references: [id])
   body       String
   product_id Int
