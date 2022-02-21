@@ -35,7 +35,7 @@ model Product {
   best_seller   Boolean
   category_id   Int
   reviews       Review[]
-  Order_product Order_product[]
+  order_product Order_product[]
 }
 
 model Image {

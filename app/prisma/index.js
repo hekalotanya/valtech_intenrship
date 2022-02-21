@@ -2,9 +2,15 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 // GET ALL PRODCUTS
-async function prodcuts() {
+async function products() {
   const allProducts = await prisma.product.findMany()
   console.log(allProducts, allProducts.length)
+}
+
+// GET ALL IMAGES
+async function images() {
+  const allImages = await prisma.image.findMany()
+  console.log(allImages)
 }
 
 
@@ -49,4 +55,5 @@ async function productById(id) {
 
 // productById(120);
 
+products();
 
