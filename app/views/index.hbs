@@ -115,11 +115,9 @@
       </div>
       <div class="categories__list list" id="list">
         <div class="list__caruosel" id="caruosel">
-          <img src="./images/carrot.jpeg" alt="carrot" class="caruosel__image" id="caruosel_image">
-          <img src="./images/strawberry.jpeg" alt="Strawberry" class="caruosel__image" id="caruosel_image">
-          <img src="./images/blueberry.jpeg" alt="Blueberry" class="caruosel__image" id="caruosel_image">
-          <img src="./images/mix-juices.jpeg" alt="Juice" class="caruosel__image" id="caruosel_image">
-          <img src="./images/watermelon.jpeg" alt="Melon" class="caruosel__image" id="caruosel_image">
+          {{#each categories}}
+            <img src="{{this.images.[0].path}}" alt="category-image" class="caruosel__image" id="caruosel_image">
+          {{/each}}
         </div>
       </div>
     </section>
@@ -142,66 +140,23 @@
         </div>
       </div>
       <div class="deal__products_container products_container">
-        <div class="product_card">
-          <span class="card__sale">-30%</span>
-          <img src="./images/watermelon.jpeg" alt="img" class="card__image">
-          <div class="card__stars"></div>
-          <span class="card__name">Exotic delicious</span>
-          <div class="card__price">
-            $15
-            <span class="price__last">$18</span>
+        {{#each productsDeal}}
+          <div class="product_card">
+            <span class="card__sale">-30%</span>
+            <img src="{{this.images.[0].path}}" alt="img" class="card__image">
+            <div class="card__stars"></div>
+            <span class="card__name">{{this.name}}</span>
+            <div class="card__price">
+              ${{this.last_price}}
+              <span class="price__last">${{this.price}}</span>
+            </div>
+            <div class="card__line_sold"></div>
+            <div class="card__sold">
+              <span class="sold">Sold:</span>
+              <span class="sold_number">18/20</span>
+            </div>
           </div>
-          <div class="card__line_sold"></div>
-          <div class="card__sold">
-            <span class="sold">Sold:</span>
-            <span class="sold_number">18/20</span>
-          </div>
-        </div>
-        <div class="product_card">
-          <span class="card__sale">-30%</span>
-          <img src="./images/carrot.jpeg" alt="img" class="card__image">
-          <div class="card__stars"></div>
-          <span class="card__name">Exotic delicious</span>
-          <div class="card__price">
-            $15
-            <span class="price__last">$18</span>
-          </div>
-          <div class="card__line_sold"></div>
-          <div class="card__sold">
-            <span class="sold">Sold:</span>
-            <span class="sold_number">18/20</span>
-          </div>
-        </div>
-        <div class="product_card">
-          <span class="card__sale">-30%</span>
-          <img src="./images/strawberry.jpeg" alt="img" class="card__image">
-          <div class="card__stars"></div>
-          <span class="card__name">Exotic delicious</span>
-          <div class="card__price">
-            $15
-            <span class="price__last">$18</span>
-          </div>
-          <div class="card__line_sold"></div>
-          <div class="card__sold">
-            <span class="sold">Sold:</span>
-            <span class="sold_number">18/20</span>
-          </div>
-        </div>
-        <div class="product_card">
-          <span class="card__sale">-30%</span>
-          <img src="./images/mix-juices.jpeg" alt="img" class="card__image">
-          <div class="card__stars"></div>
-          <span class="card__name">Exotic delicious</span>
-          <div class="card__price">
-            $15
-            <span class="price__last">$18</span>
-          </div>
-          <div class="card__line_sold"></div>
-          <div class="card__sold">
-            <span class="sold">Sold:</span>
-            <span class="sold_number">18/20</span>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </section>
     <section class="main__best_products best_products">
@@ -270,68 +225,15 @@
       <span class="special_products__sale_sign">SALE OFF 30%</span>
       <h2 class="special_products__title">Special Products</h2>
       <div class="special_products__list list">
-        <div class="list__card card">
-          <img src="./images/blueberry.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
+        {{#each products}}
+          <div class="list__card card">
+            <img src='{{this.images.[0].path}}' alt="img" class="card__image">
+            <div class="card__title title">
+              <span class="name">{{this.name}}</span>
+              <span class="price">${{this.price}}</span>
+            </div>
           </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/carrot.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/strawberry.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/watermelon.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/mix-juices.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/blueberry.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/watermelon.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/mix-juices.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
-        </div>
-        <div class="list__card card">
-          <img src="./images/blueberry.jpeg" alt="img" class="card__image">
-          <div class="card__title title">
-            <span class="name">Exotic delicious</span>
-            <span class="price">$15.0</span>
-          </div>
+        {{/each}}
       </div>
     </section>
     <section class="main__about about" id="about">

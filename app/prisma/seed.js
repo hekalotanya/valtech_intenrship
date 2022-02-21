@@ -2130,19 +2130,61 @@ const images = [
   }
 ]
 
-async function main() {
-  const allProducts = await prisma.product.findMany()
-  console.log(`Start seeding ...`)
-  for (const u of images) {
-    if (allProducts.find(product => product.id === u.product_id)) {
-      const image = await prisma.image.create({
-        data: u,
-      })
-      console.log(`Created image with id: ${image.id}`)
-    }
-  }
-  console.log(`Seeding finished.`)
-}
+// async function main() {
+//   const allProducts = await prisma.product.findMany()
+//   console.log(`Start seeding ...`)
+//   for (const u of images) {
+//     if (allProducts.find(product => product.id === u.product_id)) {
+//       const image = await prisma.image.create({
+//         data: u,
+//       })
+//       console.log(`Created image with id: ${image.id}`)
+//     }
+//   }
+//   console.log(`Seeding finished.`)
+// }
+
+// async function main() {
+//   const users = [
+//     {
+//       'name': 'Tetiana Khekalo',
+//       'email': 'tetitana@gmail.com'
+//     },
+//     {
+//       'name': 'Artem Lebedev',
+//       'email': 'lebedev@gmail.com'
+//     }
+//   ]
+//   for (const u of users) {
+//     const user = await prisma.user.create({
+//       data: u,
+//     })
+//     console.log(`Created user with id: ${user.id}`)
+//   }
+//   console.log(`Seeding finished.`)
+// }
+
+// async function main() {
+//   const reviews = [
+//     {
+//       'user_id': 2,
+//       'body': 'Reprehenderit     "description": "Sit sunt quis anim fugiat aute adipisicing nostrud non. Fugiat enim anim amet exercitation incididunt culpa sunt nisi. Pariatur deserunt et incididunt ipsum non ad exercitation do.',
+//       'product_id': 166
+//     },
+//     {
+//       'user_id': 2,
+//       'body': 'Reprehenderit     "description": "Sit sunt quis anim fugiat aute adipisicing nostrud non. Fugiat enim anim amet exercitation incididunt culpa sunt nisi. Pariatur deserunt et incididunt ipsum non ad exercitation do.',
+//       'product_id': 189
+//     }
+//   ]
+//   for (const u of reviews) {
+//     const review = await prisma.review.create({
+//       data: u,
+//     })
+//     console.log(`Created review with id: ${review.id}`)
+//   }
+//   console.log(`Seeding finished.`)
+// }
 
 // async function main() {
 //   console.log(`Start seeding ...`)
@@ -2158,12 +2200,12 @@ async function main() {
 
 
 
-main()
-  .catch((e) => {
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+// main()
+//   .catch((e) => {
+//     console.error(e)
+//     process.exit(1)
+//   })
+//   .finally(async () => {
+//     await prisma.$disconnect()
+//   })
 

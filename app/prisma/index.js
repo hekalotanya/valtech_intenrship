@@ -2,9 +2,15 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 // GET ALL PRODCUTS
-async function products() {
+async const products = () => {
   const allProducts = await prisma.product.findMany()
   console.log(allProducts, allProducts.length)
+}
+
+// GET ALL USERS
+async function users() {
+  const allUsers = await prisma.user.findMany()
+  console.log(allUsers, allUsers.length)
 }
 
 // GET ALL IMAGES
@@ -46,14 +52,21 @@ async function productById(id) {
     where: {
       id,
     },
+    select: {
+      images: true,
+      reviews: true
+    }
   })
 
-  console.log(product);
+  return product;
 }
 
 // prodcutsByParams('color', 'green');
 
-// productById(120);
+const product = productById(156).then(responce => {
+  console.log(responce.images[0].path);
+})
 
-products();
+// users();
+
 
