@@ -1650,18 +1650,20 @@ const images = [
   }
 ]
 
-// async function main() {
-//   console.log(`Start seeding ...`)
-//   for (const u of images) {
-//     if (productsList.find(product => product.id === u.product_id)) {
-//       const image = await prisma.image.create({
-//         data: u,
-//       })
-//       console.log(`Created image with id: ${image.id}`)
-//     }
-//   }
-//   console.log(`Seeding finished.`)
-// }
+async function main() {
+  const allProducts = await prisma.product.findMany()
+  console.log(`Start seeding ...`)
+  for (const u of images) {
+    if (allProducts.find(product => product.id === u.product_id)) {
+      const image = await prisma.image.create({
+        data: u,
+      })
+      console.log(`Created image with id: ${image.id}`)
+    }
+  }
+  console.log(`Seeding finished.`)
+}
+
 
 // main()
 //   .catch((e) => {
