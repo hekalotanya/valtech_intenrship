@@ -1,4 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
+const { takeCoverage } = require('v8');
 const prisma = new PrismaClient();
 
 const categoryData = [
@@ -1127,1076 +1128,1009 @@ const productData = [
   }
 ]
 
+
 const images = [
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 0
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 1
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 2
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 3
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 4
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 5
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 6
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 7
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 8
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 9
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 10
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 11
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 12
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 13
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 14
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 15
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 16
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 17
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 18
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 19
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 20
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 21
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 22
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 23
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 24
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 25
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 26
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 27
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 28
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 29
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 30
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 31
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 32
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 33
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 34
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 35
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 36
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 37
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 38
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 39
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 40
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 41
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 42
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 43
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 44
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 45
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 46
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 47
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 48
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 49
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 50
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 51
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 52
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 53
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 54
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 55
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 56
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 57
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 58
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 59
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 60
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 61
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 62
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 63
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 64
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 65
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 66
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 67
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 68
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 69
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 70
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 71
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 72
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 73
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 74
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 75
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 76
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 77
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 78
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 79
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 80
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 81
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 82
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 83
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 84
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 85
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 86
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 87
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 88
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 89
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 90
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 91
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 92
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 93
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 94
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 95
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 96
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 97
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 98
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 99
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 100
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 101
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 102
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 103
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 104
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 105
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 106
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 107
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 108
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 109
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 110
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 111
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 112
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 113
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 114
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 115
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 116
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 117
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 118
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 119
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 120
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 121
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 122
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 123
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 124
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 125
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 126
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 127
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 128
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 129
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 130
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 131
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 132
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 133
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 134
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 135
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 136
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 137
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 138
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 139
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 140
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 141
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 142
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 143
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 144
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 145
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 146
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 147
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 148
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 149
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 150
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 151
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 152
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 153
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 154
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 155
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 156
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 157
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 158
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 159
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 160
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 161
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 162
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 163
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 164
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 165
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 166
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 167
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 168
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 169
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 170
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 171
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 172
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 173
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 174
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 175
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 176
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 177
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 178
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 179
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 180
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 181
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 182
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 183
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 184
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 185
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/ampresize/media/img/6/22/756284966358226.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 186
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 187
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 188
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 189
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 190
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 191
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 192
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 193
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 194
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 195
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 196
   },
   {
-    "path": "https://goodies.com.ua/wp-content/uploads/2020/04/2273_%D1%81%D0%B0%D0%BC%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BE%D1%80%D0%B5%D1%85%D0%B8-e1587321530444-1200x720.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 197
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 198
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 199
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 200
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 201
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 202
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 203
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 204
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409480-947731c4-05cc-4da1-ad15-3c300f623af5.jpeg",
     "product_id": 205
   },
   {
-    "path": "https://cdnn1.img.armeniasputnik.am/img/07e5/0a/17/34606269_293:0:1720:1427_1920x0_80_0_0_a18a210d469b09fd2b6e8e4f47552b46.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 206
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 207
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 208
   },
   {
-    "path": "https://roscontrol.com/files/original_images/articles/6f/17/6f178eda01bc71255420.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 209
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 210
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 211
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 212
   },
   {
-    "path": "https://s0.rbk.ru/v6_top_pics/media/img/6/83/755650190202836.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 213
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 214
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 215
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/69c/top_20_maloizvestnykh_no_ochen_interesnykh_ekzoticheskikh_fruktov.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 216
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 217
   },
   {
-    "path": "https://s1.eda.ru/StaticContent/Photos/120213183151/180704103137/p_O.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 218
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 219
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 220
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 221
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 222
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 223
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409432-bd600da1-c1b4-4f8a-94a2-25a236eb63ed.jpeg",
     "product_id": 224
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/kak-vyirastit-gretskiy-oreh-01-1.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 225
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 226
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412158-98b3a0c3-6bbe-45b0-83e5-a462457345b8.png",
     "product_id": 227
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412214-6a876148-86c6-4b5a-8495-42ad10e96e96.jpeg",
     "product_id": 228
   },
   {
-    "path": "https://aif-s3.aif.ru/images/026/713/99b947c3082373115469a37c501520ca.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 229
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 230
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 231
   },
   {
-    "path": "https://inbusiness.kz/ru/images/original/37/images/d8tOhj5F.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412131-526e22c8-95d4-4b04-9209-67a8cc56f98b.jpeg",
     "product_id": 232
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 233
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 234
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413429-66925716-f43d-40ab-9a01-c34d05b04198.jpeg",
     "product_id": 235
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 236
   },
   {
-    "path": "https://new-science.ru/wp-content/uploads/2020/09/6515-2.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412093-037e2ac0-0d69-44e8-8ddc-79b0780b88f3.jpeg",
     "product_id": 237
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/bd8/kakie_yagody_samye_poleznye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412234-43065e91-a83e-41e7-831d-b0134f61aa3f.jpeg",
     "product_id": 238
   },
   {
-    "path": "https://www.agroinvestor.ru/upload/iblock/121/1216f2d145cc1cd86e2dc2ae3fe4c1ee.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412184-3c9c7702-fe0f-4d23-8478-69a33dea3b98.jpeg",
     "product_id": 239
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 240
   },
   {
-    "path": "https://pics.botanichka.ru/wp-content/uploads/2019/01/9-kultur-byistrogo-10.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 241
   },
   {
-    "path": "https://images.ua.prom.st/1606776508_w640_h640_dekorativnye-frukty-krupnye.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155413420-ea8b3093-c903-4b33-997d-a451d2abb4c0.jpeg",
     "product_id": 242
   },
   {
-    "path": "https://257824.selcdn.ru/yamalnews/d77de11e-30d.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 243
   },
   {
-    "path": "https://static.1000.menu/img/content-v2/cb/1d/58130/fruktovyi-smuzi-v-blendere_1629916238_11_max.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412101-39931840-b239-467f-a1fa-38692d232181.jpeg",
     "product_id": 244
   },
   {
-    "path": "https://cdnn21.img.ria.ru/images/07e5/02/10/1597717744_0:74:3072:1802_1920x0_80_0_0_6741380118b142a3de06d8f94be36315.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409391-920e9182-ed0c-4a67-8dc3-252ff880be8e.jpg",
     "product_id": 245
   },
   {
-    "path": "https://rizhky-ta-nizhky.com.ua/sites/default/files/field/image/kak-pravilno-vyibrat-myaso.png",
+    "path": "https://user-images.githubusercontent.com/77466385/155409452-6b61a4f0-bb7b-491e-9251-d88928a73239.jpeg",
     "product_id": 246
   },
   {
-    "path": "https://cyprusbutterfly.com.cy/assets/cache_image/images/news/ostorozhno-yadovitaya-klubnika-na-ferme-v-zigi_0x0_977.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409407-d1c74c67-a5e7-457f-b334-adc6f4797d1d.jpeg",
     "product_id": 247
   },
   {
-    "path": "https://kubnews.ru/upload/iblock/272/272d467b0cee22d8513d9f7d6d1c8bff.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155412072-7c0dfad4-489d-4d60-931e-fd31049d856e.jpeg",
     "product_id": 248
   },
   {
-    "path": "http://www.menslife.com/upload/iblock/309/chto_takoe_smuzi_i_kak_poluchit_ot_nego_maksimalnuyu_polzu.jpg",
+    "path": "https://user-images.githubusercontent.com/77466385/155409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg",
     "product_id": 249
   }
 ]
-
-// async function main() {
-//   const allProducts = await prisma.product.findMany()
-//   console.log(`Start seeding ...`)
-//   for (const u of images) {
-//     if (allProducts.find(product => product.id === u.product_id)) {
-//       const image = await prisma.image.create({
-//         data: u,
-//       })
-//       console.log(`Created image with id: ${image.id}`)
-//     }
-//   }
-//   console.log(`Seeding finished.`)
-// }
-
-// async function main() {
-//   const users = [
-//     {
-//       'name': 'Tetiana Khekalo',
-//       'email': 'tetitana@gmail.com'
-//     },
-//     {
-//       'name': 'Artem Lebedev',
-//       'email': 'lebedev@gmail.com'
-//     }
-//   ]
-//   for (const u of users) {
-//     const user = await prisma.user.create({
-//       data: u,
-//     })
-//     console.log(`Created user with id: ${user.id}`)
-//   }
-//   console.log(`Seeding finished.`)
-// }
-
-// async function main() {
-//   const reviews = [
-//     {
-//       'user_id': 2,
-//       'body': 'Reprehenderit     "description": "Sit sunt quis anim fugiat aute adipisicing nostrud non. Fugiat enim anim amet exercitation incididunt culpa sunt nisi. Pariatur deserunt et incididunt ipsum non ad exercitation do.',
-//       'product_id': 166
-//     },
-//     {
-//       'user_id': 2,
-//       'body': 'Reprehenderit     "description": "Sit sunt quis anim fugiat aute adipisicing nostrud non. Fugiat enim anim amet exercitation incididunt culpa sunt nisi. Pariatur deserunt et incididunt ipsum non ad exercitation do.',
-//       'product_id': 189
-//     }
-//   ]
-//   for (const u of reviews) {
-//     const review = await prisma.review.create({
-//       data: u,
-//     })
-//     console.log(`Created review with id: ${review.id}`)
-//   }
-//   console.log(`Seeding finished.`)
-// }
-
-// async function main() {
-//   console.log(`Start seeding ...`)
-//   for (const u of productData) {
-//     const product = await prisma.product.create({
-//       data: u,
-//     })
-
-//     console.log(`Created product with id: ${product.id}`)
-//   }
-//   console.log(`Seeding finished.`)
-// }
 
 
 
@@ -2208,4 +2142,5 @@ const images = [
 //   .finally(async () => {
 //     await prisma.$disconnect()
 //   })
+
 

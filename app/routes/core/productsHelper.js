@@ -1,10 +1,14 @@
 const { PrismaClient } = require('@prisma/client');
+const { TRUE } = require('sass');
 const prisma = new PrismaClient();
 
 // GET ALL PRODCUTS
-async function products() {
+async function products(skip, take) {
   const allProducts = await prisma.product.findMany({
+    skip,
+    take,
     include: {
+      category: true,
       images: true,
       reviews: true
     }
@@ -13,12 +17,11 @@ async function products() {
 }
 
 //GET ALL PRODCUTS BY PARAMS
-async function prodcutsByParams(param, value) {
+async function productsByParams(paramsObject) {
   const products = await prisma.product.findMany({
-    where: {
-      [param]: value,
-    },
+    where: paramsObject,
     include: {
+      category: true,
       images: true,
       reviews: true
     }
@@ -34,6 +37,7 @@ async function productById(id) {
       id,
     },
     include: {
+      category: true,
       images: true,
       reviews: true
     }
@@ -73,8 +77,9 @@ async function deleteProduct(id) {
 }
 
 module.exports.products = products;
-module.exports.prodcutsByParams = prodcutsByParams;
+module.exports.productsByParams = productsByParams;
 module.exports.productById = productById;
 module.exports.createProduct = createProduct;
 module.exports.updateProduct = updateProduct;
 module.exports.deleteProduct = deleteProduct;
+

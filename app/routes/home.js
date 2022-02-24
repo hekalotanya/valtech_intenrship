@@ -10,10 +10,9 @@ productsHelper.products().then(result => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(allProducts[0]);
   res.render('index', {
-    products: [...allProducts].slice(0,9),
-    productsDeal: [...allProducts].slice(11,15),
+    products: [...allProducts].slice(0,4),
+    productsDeal: [...allProducts].slice(31,35),
     categories: [...allProducts].slice(20,24)
   });
 });

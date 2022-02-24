@@ -15,11 +15,11 @@ const plugins = [
   // }),
 
   new MiniCssExtractPlugin({
-    filename: '[name].[contenthash].css',
+    filename: 'main.css',
   }),
-  new ESLintPlugin({
-    extensions: ['js'],
-  }),
+  // new ESLintPlugin({
+  //   extensions: ['js'],
+  // }),
 ];
 
 module.exports = {

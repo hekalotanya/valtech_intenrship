@@ -1,253 +1,242 @@
-.top_bar { 
-  padding: 10px 0px;
-  background-color: black;
-  transition: height 0.5s;
-  padding-left: 260px;
-  padding-right: 260px;
-
-  @include Phone {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @include Tablet {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
-  @include Notebook {
+.grid {
+  .top_bar { 
+    padding: 10px 0px;
+    background-color: black;
+    transition: height 0.5s;
     padding-left: 100px;
     padding-right: 100px;
-  }
-
-
-  &__logo {
-    display: none;
-    @include title;
-    text-decoration: none;
-    transition: all 0.5s;
-
+  
     @include Phone {
-      display: inline;
-      width: 100%;
-      font-size: 30px;
-      text-align: center;
-      cursor: pointer;
-      color: white;
-    }
-  }
-
-  .links {
-    display: flex;
-    justify-content: space-between;
-
-    @include Phone {
-      flex-direction: column;
-      transform: translateY(-200%);
-    }
-  }
-
-  &__contacts { 
-    display: flex;
-    flex-direction: row;
-    // height: 36px;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
-
-    @include Phone {
-      gap: 10px;
-      flex-direction: column;
-    }
-
-
-    &__tel {
-      .tel__link {
-        text-decoration: none;
-        font-size: 15px;
-        font-family: 'Jost', sans-serif;
-        color: white;
-      }
-    }
-
-    &__mail {
-      .mail__link {
-        text-decoration: none;
-        font-size: 15px;
-        font-family: 'Jost', sans-serif;
-        color: white;
-      }
-
-      @include Phone {
-        padding-bottom: 10px;
-      }
-    }
-  }
-
-  &__lang {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: space-around;
-    align-items: center;
-
-    @include Phone {
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .lang {
-      text-decoration: none;
-      font-size: 15px;
-      font-family: 'Jost', sans-serif;
-      color: white;
-      cursor: pointer;
-    }
-
-    .USD {
-      text-decoration: none;
-      font-size: 15px;
-      font-family: 'Jost', sans-serif;
-      color: white;
       display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 50px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  
+    @include Tablet {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  
+  
+    &__logo {
+      display: none;
+      @include title;
+      text-decoration: none;
+      transition: all 0.5s;
+  
+      @include Phone {
+        display: inline;
+        width: 100%;
+        font-size: 30px;
+        text-align: center;
+        cursor: pointer;
+        color: white;
+      }
+    }
+  
+    .links {
+      display: flex;
+      justify-content: space-between;
+  
+      @include Phone {
+        flex-direction: column;
+        transform: translateY(-200%);
+      }
+    }
+  
+    &__contacts { 
+      display: flex;
+      flex-direction: row;
+      // height: 36px;
+      gap: 20px;
+      justify-content: space-between;
       align-items: center;
-      cursor: pointer;
-
-      svg {
-        height: 20px;
-        width: 20px;
-        object-fit: cover;
+  
+      @include Phone {
+        gap: 10px;
+        flex-direction: column;
+      }
+  
+  
+      &__tel {
+        .tel__link {
+          text-decoration: none;
+          font-size: 15px;
+          font-family: 'Jost', sans-serif;
+          color: white;
+        }
+      }
+  
+      &__mail {
+        .mail__link {
+          text-decoration: none;
+          font-size: 15px;
+          font-family: 'Jost', sans-serif;
+          color: white;
+        }
+  
+        @include Phone {
+          padding-bottom: 10px;
+        }
+      }
+    }
+  
+    &__lang {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: space-around;
+      align-items: center;
+  
+      @include Phone {
+        flex-direction: column;
+        gap: 10px;
+      }
+  
+      .lang {
+        text-decoration: none;
+        font-size: 15px;
+        font-family: 'Jost', sans-serif;
+        color: white;
+        cursor: pointer;
+      }
+  
+      .USD {
+        text-decoration: none;
+        font-size: 15px;
+        font-family: 'Jost', sans-serif;
+        color: white;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+  
+        svg {
+          height: 20px;
+          width: 20px;
+          object-fit: cover;
+        }
       }
     }
   }
-}
-
-.nav {
-  // display: flex;
-  // flex-direction: row;
-  align-items: center;
-  height: 80px;
-  padding-left: 260px;
-  padding-right: 260px;
-
-  @include Phone {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @include Tablet {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
-  @include Notebook {
+  
+  .nav {
     padding-left: 100px;
     padding-right: 100px;
-  }
-
-  .logo {
-    @include title;
-    text-decoration: none;
-    color: #60A00C;
-    justify-self: center;
-
+  
     @include Phone {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding-left: 20px;
+      padding-right: 20px;
     }
-
-    &--color--black {
-      color: black;
-    }
-  }
-
-  &__menu {
-    display: flex;
-    gap: 30px;
-
+  
     @include Tablet {
-      padding: 0px 0px;
+      padding-left: 50px;
+      padding-right: 50px;
     }
-
-    @include Phone {
-      padding: 0px 0px;
-    }
-
-    @include Tablet {
-      gap: 15px;
-    }
-
-    @include Phone {
-      gap: 15px;
-    }
-    
-    .menu__item {
+  
+    .logo {
+      @include title;
       text-decoration: none;
-      @include button;
-      padding-bottom: 5px;
-      border-bottom: 1px solid transparent;
-      transition: border-bottom 0.5s;
+      color: #60A00C;
+      justify-self: center;
+  
+      @include Phone {
+        display: none;
+      }
+  
+      &--color--black {
+        color: black;
+      }
     }
-
-    .menu__item:hover {
-      border-bottom: 1px solid black;
+  
+    &__menu {
+      display: flex;
+      gap: 30px;
+      
+  
+      @include Tablet {
+        padding: 0px 0px;
+      }
+  
+      @include Phone {
+        padding: 0px 0px;
+      }
+  
+      @include Tablet {
+        gap: 15px;
+      }
+  
+      @include Phone {
+        gap: 15px;
+      }
+      
+      .menu__item {
+        text-decoration: none;
+        @include button;
+        padding-bottom: 5px;
+        border-bottom: 1px solid transparent;
+        transition: border-bottom 0.5s;
+      }
+  
+      .menu__item:hover {
+        border-bottom: 1px solid black;
+      }
     }
-  }
-
-  &__right_side_bar {
-    display: flex;
-    gap: 20px;
-    justify-self: flex-end;
-
-    .right_side_bar__icon {
-      height: 100%;
-
-      .icon {
-        width: 20px;
-        height: 20px;
+  
+    &__right_side_bar {
+      display: flex;
+      gap: 20px;
+      justify-self: flex-end;
+  
+      .right_side_bar__icon {
+        height: 100%;
+  
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }
-}
-
-.top_bar:hover .links {
-  @include Phone {
-    transform: translateY(0%);
-    animation: fade-in 1s;
+  
+  .top_bar:hover .links {
+    @include Phone {
+      transform: translateY(0%);
+      animation: fade-in 1s;
+    }
   }
-}
-
-.top_bar:hover {
-  @include Phone {
-    height: 160px;
+  
+  .top_bar:hover {
+    @include Phone {
+      height: 160px;
+    }
   }
-}
-
-.top_bar:not(:hover) .links.did-fade-in {
-  display: block;
-  animation: fade-out 1s;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
+  
+  .top_bar:not(:hover) .links.did-fade-in {
+    display: block;
+    animation: fade-out 1s;
   }
-  to {
-    opacity: 1;
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 }

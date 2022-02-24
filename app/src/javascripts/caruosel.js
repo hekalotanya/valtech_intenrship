@@ -1,57 +1,65 @@
-// переменные для секции categories
+if (document.location.href === 'http://localhost:3000/') {
+  // переменные для секции categories
 
-const categoriesImages = document.querySelectorAll('.list__caruosel img');
-const categoriesList = document.getElementById('list');
-const categoriesSliderLine = document.getElementById('caruosel');
-const categoriesArrowNext = document.getElementById('arrow_next');
-const categoriesArrowPrev = document.getElementById('arrow_prev');
-let count = 0;
-let width;
+  const categoriesImages = document.querySelectorAll('.list__caruosel img');
+  const categoriesList = document.getElementById('list');
+  const categoriesSliderLine = document.getElementById('caruosel');
+  const categoriesArrowNext = document.getElementById('arrow_next');
+  const categoriesArrowPrev = document.getElementById('arrow_prev');
+  let count = 0;
+  let width;
 
-// функция прокрутки изображений
+  // функция прокрутки изображений
 
-const rollSlider = () => {
-  categoriesSliderLine.style.transform = `translate(-${width * count}px)`;
-};
+  const rollSlider = () => {
+    categoriesSliderLine.style.transform = `translate(-${width * count}px)`;
+  };
 
-// установка нужного размера для блока
+  // установка нужного размера для блока
 
-const init = () => {
-  width = categoriesList.offsetWidth;
-  categoriesSliderLine.style.width = width * categoriesImages.length + 'px';
+  const init = () => {
+    if (categoriesList) {
+      width = categoriesList.offsetWidth;
+    }
+    categoriesSliderLine.style.width = width * categoriesImages.length + 'px';
 
-  categoriesImages.forEach(item => {
-    item.style.width = width + 'px';
-    item.style.height = 'auto';
-  });
+    categoriesImages.forEach(item => {
+      item.style.width = width + 'px';
+      item.style.height = 'auto';
+    });
 
-  rollSlider();
-};
+    rollSlider();
+  };
 
-// добавление событий на кнопки прокрутки
+  // добавление событий на кнопки прокрутки
 
-categoriesArrowPrev.onclick = function() {
-  count--;
+  if (categoriesArrowPrev) {
+    categoriesArrowPrev.onclick = function() {
+      count--;
 
-  if (count < 0) {
-    count = categoriesImages.length - 1;
+      if (count < 0) {
+        count = categoriesImages.length - 1;
+      }
+
+      rollSlider(categoriesSliderLine);
+    };
   }
 
-  rollSlider(categoriesSliderLine);
-};
+  if (categoriesArrowNext) {
+    categoriesArrowNext.onclick = function() {
+      count++;
 
-categoriesArrowNext.onclick = function() {
-  count++;
+      if (count >= categoriesImages.length) {
+        count = 0;
+      }
 
-  if (count >= categoriesImages.length) {
-    count = 0;
+      rollSlider(categoriesSliderLine);
+    };
   }
 
-  rollSlider(categoriesSliderLine);
-};
+  // вызов функций для карусели на секции categories
 
-// вызов функций для карусели на секции categories
+  init(categoriesList, categoriesSliderLine, categoriesImages);
 
-init(categoriesList, categoriesSliderLine, categoriesImages);
-
-window.addEventListener('resize', init);
+  window.addEventListener('resize', init);
+}
