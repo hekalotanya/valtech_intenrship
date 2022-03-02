@@ -7,5 +7,8 @@ import './url';
 import './slider_range_price';
 import './reviews_pagination';
 import './product_quantity';
+<<<<<<< HEAD
 import './sort_menu';
 import './showing_prodcuts';
+=======
+>>>>>>> 9ab55d1 (layout pdp)

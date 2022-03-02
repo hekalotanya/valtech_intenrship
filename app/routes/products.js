@@ -81,7 +81,6 @@ router.get('/sort', async function(req, res, next) {
     }
   }
 
-
   if (searchProducts.length) {
       res.render('products', {
         products: searchProducts.slice(firstProduct,lastProduct),
