@@ -23,10 +23,34 @@
     border-bottom: 1px solid rgb(255, 255, 255, 0.2);;
     padding-bottom: 60px;
 
+    @include Phone {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    @include Tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
     .phone_block {
       display: flex;
       gap: 30px;
-      border-right: 1px solid rgb(255, 255, 255, 0.2);;
+      border-right: 1px solid rgb(255, 255, 255, 0.2);
+
+      @include Phone {
+        border-right: none;
+        border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+        padding-bottom: 25px;
+      }
+  
+      @include Tablet {
+        border-right: none;
+        border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+        padding-bottom: 25px;
+      }
     }
 
     .mail_block {
@@ -37,6 +61,12 @@
       .form {
         width: 100%;
 
+        @include Phone {
+          display: flex;
+          gap: 5px;
+          flex-direction: column;
+        }
+
         .input {
           background-color: #39413A;
           border: 1px solid white;
@@ -45,6 +75,10 @@
           max-width: 370px;
           padding: 10px;
           color: white;
+
+          @include Phone {
+            width: 100%;
+          }
         }
 
         .button {
@@ -58,6 +92,11 @@
           width: 30%;
           max-width: 130px;
           height: 50px;
+
+          @include Phone {
+            width: 100%;
+            max-width: 370px;
+          }
         }
       }
     }
@@ -70,6 +109,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @include Notebook {
+        width: 80px;
+        height: 80px;
+      }
+
+      @include Tablet {
+        width: 80px;
+        height: 80px;
+      }
+
+      @include Phone {
+        display: none;
+      }
     }
 
     .text_block {
@@ -102,6 +155,10 @@
     padding-top: 50px;
     padding-bottom: 70px;
 
+    @include Phone {
+      padding-bottom: 30px;
+    }
+
     .time_work {
       display: flex;
       flex-direction: column;
@@ -119,14 +176,22 @@
     }
 
     .navigation {
-      grid-column: 6/12;
-  
+      grid-column: 5/12;
+
       .menu {
         display: flex;
         gap: 100px;
   
+        @include Desktop {
+          gap: 75px;
+        }
+
+        @include Notebook {
+          gap: 50px;
+        }
+
         @include Tablet {
-          gap: 25px;
+          gap: 8px;
         }
     
         @include Phone {
@@ -171,8 +236,11 @@
   justify-content: space-between;
 
   @include Phone {
+    height: auto;
     padding-left: 20px;
     padding-right: 20px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   @include Tablet {
