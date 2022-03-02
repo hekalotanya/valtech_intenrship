@@ -4,6 +4,12 @@
   color: black;
 }
 
+@mixin title_jost {
+  font-family: 'Jost', sans-serif;
+  font-size: 40px;
+  color: black;
+}
+
 @mixin small_title {
   font-family: 'Lobster Two', cursive;
   font-size: 17px;

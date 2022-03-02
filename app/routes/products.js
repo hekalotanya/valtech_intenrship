@@ -28,6 +28,7 @@ router.get('/', function(req, res, next) {
     lastProduct: 6,
     categories: [...allCategories],
     length: allProducts.length,
+    title: 'Shop List Side Bar',
   });
 });
 
@@ -64,26 +65,6 @@ router.get('/sort', async function(req, res, next) {
 
   searchProducts = await getProducts();
 
-
-  // if (product_name) {
-  //   searchProducts = searchProducts.filter(product => product.name == product_name);
-  // }
-  // if (categoryId) {
-  //   searchProducts = searchProducts.filter(product => product.category_id == categoryId);
-  // }
-
-  // if (price) {
-  //   searchProducts = searchProducts.filter(product => product.price == price);
-  // }
-
-  // if (color) {
-  //   searchProducts = searchProducts.filter(product => product.color == color);
-  // }
-
-  // if (size) {
-  //   searchProducts = searchProducts.filter(product => product.size == size);
-  // }
-
   console.log('2',searchProducts);
 
   if (searchProducts.length) {
@@ -93,12 +74,14 @@ router.get('/sort', async function(req, res, next) {
         length: searchProducts.length,
         firstProduct: firstProduct+1,
         lastProduct,
+        title: 'Shop List Side Bar',
       });
   } else {
       res.render('products', {
         noResult: true,
         categories: [...allCategories],
         length: searchProducts.length,
+        title: 'Shop List Side Bar',
       });
     }
 });

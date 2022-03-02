@@ -8,6 +8,7 @@ const hbs = require('hbs');
 
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
+const productDetailRouter = require('./routes/product_detail');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.set('view engine', '.hbs');
 const publicPath = path.join(__dirname, 'dist');
 app.use('/', express.static(publicPath));
 
+hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('product', function(products, page, limit) { 
   let result = ''
   let firstProduct = (page-1) * limit;
@@ -146,6 +148,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
+app.use('/productDetail', productDetailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
