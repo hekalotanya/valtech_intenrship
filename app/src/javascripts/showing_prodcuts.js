@@ -20,7 +20,8 @@ showingTwoCard.addEventListener('click', () => {
 
   for (let i = 0; i < productCard.length; i++) {
     productCard[i].style.width = '48%';
-    productCard[i].style.flexDirection = 'column';
+    productCard[i].style.flexDirection = 'row';
+    productCard[i].style.flexWrap = 'wrap';
     productCard[i].style.alignItems = 'flex-start';
     productCard[i].style.gap = '10px';
     productCard[i].style.padding = '10px';

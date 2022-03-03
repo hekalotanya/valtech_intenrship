@@ -8,7 +8,6 @@ const hbs = require('hbs');
 
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
-const productDetailRouter = require('./routes/product_detail');
 
 const app = express();
 
@@ -148,7 +147,6 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
-app.use('/productDetail', productDetailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

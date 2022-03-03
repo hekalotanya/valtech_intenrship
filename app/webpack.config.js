@@ -33,7 +33,7 @@ module.exports = {
       zlib: false
     }
   },
-  entry: './src/javascripts/index.js',
+  entry: ['babel-polyfill', './src/javascripts/index.js'],
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),

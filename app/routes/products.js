@@ -34,6 +34,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET products with params. */
 router.get('/sort', async function(req, res, next) {
   const { page } = req.query;
   let { price } = req.query;
@@ -100,6 +101,24 @@ router.get('/sort', async function(req, res, next) {
         title: 'Shop List Side Bar',
       });
     }
+});
+
+
+
+/* GET product detail. */
+router.get('/:productId', async function(req, res, next) {
+  let product;
+  function getProduct() {
+    const result =  productsHelper.productById(parseInt(req.params.productId));
+    return result;
+  }
+
+  product = await getProduct();
+
+  res.render('product_detail', {
+    title: 'Product Detail',
+    product,
+  });
 });
 
 

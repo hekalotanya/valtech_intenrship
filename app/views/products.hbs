@@ -49,9 +49,7 @@
             <path d="M30 26.6665H16.6666V28.8887H30V26.6665Z" fill="#111111"/>
           </svg>
           </div>
-          <select name="sort" id="sort" class="select">
-              <option value="default">Default sorting</option>
-          </select>
+          <a href="/products" class="sorting__default">Default sorting</a>
         </div>
       </div>
     </section>
@@ -110,7 +108,7 @@
             <h1 class="products__result">No result</h1>
         {{/if}}
         {{#each products}}
-          <div class="products__product_card product_card">
+          <div class="products__product_card product_card" id={{this.id}}>
             <img src="{{this.images.[0].path}}" alt="" class="product_card__image">
             <div class="product_card__block">
               <div class="product_card__text text">

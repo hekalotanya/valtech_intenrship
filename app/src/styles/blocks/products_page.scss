@@ -121,10 +121,21 @@
         flex-direction: column;
       }
 
-      .select {
+      &__default {
+        @include button;
         width: 220px;
-        padding: 5px 30px;
-        border: 1px solid #ECECEC;
+        border: 1px solid #60A00C;
+        text-align: center;
+        background-color: white;
+        transition: all 0.5s;
+        color: #60A00C;
+        text-decoration: none;
+        line-height: 40px;
+
+        &:hover {
+          background-color: #60A00C;
+          color: white;
+        }
       }
     }
   }
@@ -482,6 +493,7 @@
   }
 
   .product_card {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -490,9 +502,11 @@
     padding-bottom: 25px;
     padding-right: 50px;
     border: 1px solid #ECECEC;
+    max-width: 920px;
 
     @include Phone {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       align-items: flex-start;
       gap: 10px;
     }
@@ -515,6 +529,7 @@
       object-fit: cover;
       width: 210px;
       height: 210px;
+      border-radius: 20%;
 
       @include Phone {
         width: 100px;
