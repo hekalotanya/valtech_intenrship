@@ -3,7 +3,11 @@ const prisma = new PrismaClient();
 
 // GET ALL REVIEWS
 async function reviews() {
-  const allReviews = await prisma.review.findMany()
+  const allReviews = await prisma.review.findMany({
+    include: {
+      user: true,
+    }
+  })
   return allReviews;
 }
 

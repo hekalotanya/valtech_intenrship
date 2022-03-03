@@ -9,10 +9,11 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String @db.VarChar(255)
-  email    String @unique @db.VarChar(255)
+  id       Int      @id @default(autoincrement())
+  name     String   @db.VarChar(255)
+  email    String   @unique @db.VarChar(255)
   password String?
+  Review   Review[]
 }
 
 model Category {
@@ -39,7 +40,7 @@ model Product {
 }
 
 model Image {
-  id         Int     @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   product    Product? @relation(fields: [product_id], references: [id])
   path       String
   product_id Int
@@ -48,9 +49,11 @@ model Image {
 model Review {
   id         Int     @id @default(autoincrement())
   user_id    Int
+  user       User    @relation(fields: [userId], references: [id])
   product    Product @relation(fields: [product_id], references: [id])
   body       String
   product_id Int
+  userId     Int
 }
 
 model Order {
@@ -65,11 +68,11 @@ model Order {
 }
 
 model Order_product {
-  id                 Int     @id @default(autoincrement())
-  product_id         Int
-  order              Order   @relation(fields: [orderId], references: [id])
-  product            Product @relation(fields: [productId], references: [id])
-  orderId            Int
-  productId          Int
-  count Int
+  id         Int     @id @default(autoincrement())
+  product_id Int
+  order      Order   @relation(fields: [orderId], references: [id])
+  product    Product @relation(fields: [productId], references: [id])
+  orderId    Int
+  productId  Int
+  count      Int
 }

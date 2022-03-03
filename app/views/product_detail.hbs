@@ -17,22 +17,22 @@
   {{> header_grid }}
   <main class="grid grid__item--1--12">
     {{> title_section }}
-    <div class="section__product_card product_card grid__item--1--12 grid">
+    <div class="section__product_card grid__item--1--12 grid">
       <div class="product_card__images grid__item--1--6">
-        <img class="main_image" src="" alt="main_image">
+        <img class="main_image" src={{product.images.[0].path}} alt="main_image">
         <div class="list_of_images">
-          <img class="list_image" src="" alt="img">
-          <img class="list_image" src="" alt="img">
-          <img class="list_image" src="" alt="img">
-          <img class="list_image" src="" alt="img">
+          <img class="list_image" src={{product.images.[1].path}} alt="img">
+          <img class="list_image" src={{product.images.[2].path}} alt="img">
+          <img class="list_image" src={{product.images.[0].path}} alt="img">
+          <img class="list_image" src={{product.images.[1].path}} alt="img">
         </div>
       </div>
       <div class="product_card__description description grid__item--7--12">
-        <h1 class="description__name">NAME</h1>
+        <h1 class="description__name">{{product.name}}</h1>
         <div class="description__stars"></div>
-        <span class="description__price">PRICE</span>
-        <div class="description__text">TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT</div>
-        <span class="description__category">CATEGORY</span>
+        <span class="description__price"> ${{product.price}}</span>
+        <div class="description__text">{{product.description}}</div>
+        <span class="description__category">Category: {{product.category.name}}</span>
         <div class="description__buttons_menu">
           <div class="quantity">
             <span class="quantity__title">Quantity:</span>
@@ -62,11 +62,13 @@
         <div class="description__reviews_menu reviews_menu">
           <nav class="reviews_menu__nav">
             <a class="reviews_menu__nav__item--isActive" id="nav__item__description">Description</a>
-            <a class="reviews_menu__nav__item" id="nav__item__reviews">Reviews (3)</a>
+            <a  class="reviews_menu__nav__item" id="nav__item__reviews">Reviews ({{product.reviews.length}})</a>
           </nav>
           <div class="reviews_menu__text">
-            <div class="text--isActive" id="text__description">Description</div>
-            <div class="text" id="text__reviews">Reviews</div>
+            <div class="text--isActive" id="text__description">{{product.description}}</div>
+            <div class="text" id="text__reviews">
+              {{product.reviews.[0].body}}
+            </div>
           </div>
         </div>
       </div>
