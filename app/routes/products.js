@@ -29,17 +29,21 @@ router.get('/', function(req, res, next) {
     categories: [...allCategories],
     length: allProducts.length,
     title: 'Shop List Side Bar',
+    priceGre: '0',
+    priceLess: '200',
   });
 });
 
 router.get('/sort', async function(req, res, next) {
   const { page } = req.query;
+  let { price } = req.query;
   params = req.query;
-  console.log(params);
   let searchProducts = [];
   let limit = 6;
   let firstProduct = 0;
   let lastProduct = firstProduct + limit;
+  let priceGre = 0;
+  let priceLess = 200;
 
   if (params.category_id) {
     params.category_id = parseInt(params.category_id);
@@ -49,23 +53,33 @@ router.get('/sort', async function(req, res, next) {
     params.size = parseInt(params.size);
   }
 
-  delete params.page;
-
-  console.log(params);
-
-  if (page) {
-    firstProduct = limit * (page - 1);
-    lastProduct = firstProduct + limit;
+  if (price) {
+    console.log(price);
+    const priceAmount = price.split('-');
+    priceGre = priceAmount[0];
+    priceLess = priceAmount[1];
   }
 
+  delete params.page;
+  delete params.price;
+
   function getProducts() {
-    const result =  productsHelper.productsByParams({ ...params });
+    const result =  productsHelper.productsByParams({ ...params, price: {
+      lte: parseInt(priceLess),
+      gte: parseInt(priceGre),
+    } });
     return result;
   }
 
   searchProducts = await getProducts();
 
-  console.log('2',searchProducts);
+  if (page) {
+    if (searchProducts.length > limit) {
+      firstProduct = limit * (page - 1);
+      lastProduct = firstProduct + limit;
+    }
+  }
+
 
   if (searchProducts.length) {
       res.render('products', {
@@ -75,6 +89,8 @@ router.get('/sort', async function(req, res, next) {
         firstProduct: firstProduct+1,
         lastProduct,
         title: 'Shop List Side Bar',
+        priceGre,
+        priceLess
       });
   } else {
       res.render('products', {

@@ -45,22 +45,29 @@
   height: 50px;
   margin-top: 80px;
   margin-bottom: 50px;
-
   padding-left: 100px;
   padding-right: 100px;
   
   @include Phone {
+    height: max-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 50px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 20px;
   }
   
   @include Tablet {
+    height: max-content;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding-left: 50px;
     padding-right: 50px;
+    margin-top: 50px;
   }
 
   &__input_block {
@@ -96,6 +103,12 @@
     padding-bottom: 20px;
     border-bottom: 1px solid #ECECEC;
 
+    @include Phone {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
     .number_of_results {
       @include button;
     }
@@ -103,6 +116,10 @@
     .sorting {
       display: flex;
       gap: 10px;
+
+      @include Phone {
+        flex-direction: column;
+      }
 
       .select {
         width: 220px;
@@ -121,22 +138,82 @@
   @include Phone {
     padding-left: 20px;
     padding-right: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   @include Tablet {
     padding-left: 50px;
     padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   @include Notebook {
     padding-left: 100px;
     padding-right: 100px;
+    gap: 20px;
+  }
+
+  .phone_filter {
+    display: none;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: max-content;
+
+    @include Phone {
+      display: flex;
+      gap: 5px;
+
+      .filter_icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .filter_sign {
+        @include sign;
+        font-size: 20px;
+        align-self: flex-end;
+      }
+    }
   }
 
   .left_side_bar {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    transition: all 1s;
+
+    @include Phone {
+      transform: translateX(-100%);
+      display: flex;
+      position: fixed;
+      gap: 70px;
+      top: 0;
+      left: 0;
+      align-items: flex-start;
+      width: 100%;
+      height: 100vh;
+      background-color: white;
+      padding: 20px;
+    }
+  
+    @include Tablet {
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+
+    &__close {
+      display: none;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      @include Phone {
+        display: block;
+      }
+    }
 
     &__categories {
       display: flex;
@@ -163,12 +240,28 @@
       gap: 25px;
       flex-direction: column;
 
+      @include Phone {
+        gap: 15px;
+      }
+    
+      @include Tablet {
+        gap: 15px;
+      }
+
       .range-slider {
         width: 100%;
         margin: auto;
         text-align: center;
         position: relative;
         height: 40px;
+
+        @include Phone {
+          margin: 0;
+        }
+      
+        @include Tablet {
+          margin: 0;
+        }
 
         &__sign {
           width: 100%;
@@ -189,11 +282,15 @@
       }
       input[type="text"]:invalid,
       input[type="text"]:out-of-range {
-          border: 2px solid #ff6347;
+          border: 1px solid #ff6347;
       }
       input[type="range"] {
           -webkit-appearance: none;
-          width: 200px;
+          width: 100%;
+
+          @include Phone {
+            width: 200px;
+          }
       }
       input[type="range"]:focus {
           outline: none;
@@ -208,30 +305,36 @@
           background: #111111;
       }
       input[type="range"]::-webkit-slider-runnable-track {
+          max-width: 225px;
           width: 100%;
-          height: 5px;
+          height: 2px;
           cursor: pointer;
           background: #111111;
           border-radius: 1px;
           box-shadow: none;
           border: 0;
+
+          @include Phone {
+            width: 200px;
+          }
       }
       input[type="range"]::-webkit-slider-thumb {
           z-index: 2;
           position: relative;
           box-shadow: 0px 0px 0px #000;
           border: 1px solid #111111;
-          height: 18px;
-          width: 18px;
+          height: 6px;
+          width: 6px;
           border-radius: 25px;
           background: #111111;
           cursor: pointer;
           -webkit-appearance: none;
-          margin-top: -7px;
+          margin-top: -2px;
       }
       input[type="range"]::-moz-range-track {
+          max-width: 225px;
           width: 100%;
-          height: 5px;
+          height: 3px;
           cursor: pointer;
           background: #111111;
           border-radius: 1px;
@@ -243,15 +346,15 @@
           position: relative;
           box-shadow: 0px 0px 0px #000;
           border: 1px solid #111111;
-          height: 18px;
-          width: 18px;
+          height: 5px;
+          width: 5px;
           border-radius: 25px;
           background: #686868;
           cursor: pointer;
       }
       input[type="range"]::-ms-track {
           width: 100%;
-          height: 5px;
+          height: 3px;
           cursor: pointer;
           background: transparent;
           border-color: transparent;
@@ -285,6 +388,18 @@
       .color__circles {
         display: flex;
         gap: 10px;
+
+        @include Phone {
+          flex-direction: row;
+          flex-flow: row wrap;
+          gap: 10px;
+        }
+      
+        @include Tablet {
+          flex-direction: row;
+          flex-flow: row wrap;
+          gap: 5px;
+        }
 
         .circle {
           width: 20px;
@@ -323,6 +438,18 @@
       .sizes { 
         display: flex;
         gap: 10px;
+
+        @include Phone {
+          flex-direction: row;
+          flex-flow: row wrap;
+          gap: 5px;
+        }
+      
+        @include Tablet {
+          flex-direction: row;
+          flex-flow: row wrap;
+          gap: 5px;
+        }
 
         .size {
           width: 55px;
@@ -364,10 +491,35 @@
     padding-right: 50px;
     border: 1px solid #ECECEC;
 
+    @include Phone {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    &__block {
+      display: flex;
+
+      @include Phone {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      @include Tablet {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
     &__image {
       object-fit: cover;
       width: 210px;
       height: 210px;
+
+      @include Phone {
+        width: 100px;
+        height: 100px;
+      }
     }
 
     .text {
@@ -375,12 +527,27 @@
       flex-direction: column;
       border-right: 1px solid #ECECEC;
       padding-left: 15px;
+      padding-right: 10px;
+      min-width: 110px;
+
+      @include Phone {
+        border: none;
+        padding: 0;
+      }
+
+      @include Tablet {
+        border: none;
+      }
 
       &__name {
         color: black;
         font-size: 25px;
         font-family: 'Jost', sans-serif;
         margin-bottom: 5px;
+
+        @include Phone {
+          font-size: 20px;
+        }
       }
 
       &__price {
@@ -411,9 +578,18 @@
     &__buttons {
       display: flex;
       flex-direction: column;
-      padding-left: 50px;
+      padding-left: 10px;
       justify-content: space-between;
       gap: 10px;
+
+      @include Phone {
+        flex-direction: row;
+        padding: 0;
+      }
+
+      @include Tablet {
+        flex-direction: row;
+      }
 
       .icon {
         width: 35px;

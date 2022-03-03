@@ -7,3 +7,5 @@ import './url';
 import './slider_range_price';
 import './reviews_pagination';
 import './product_quantity';
+import './sort_menu';
+import './showing_prodcuts';
