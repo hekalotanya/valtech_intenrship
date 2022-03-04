@@ -14,13 +14,22 @@ let products;
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-  const productsCart = await Promise.all(products);
-  console.log('productsAFTER', productsCart);
+  let productsCart;
+  if (products) {
+    productsCart = await Promise.all(products);
+  }
 
-  res.render('shop_cart',{
-    title: 'Shop Cart',
-    products: productsCart,
-  });
+  if (productsCart) {
+    res.render('shop_cart',{
+      title: 'Shop Cart',
+      products: productsCart,
+    });
+  } else {
+    res.render('shop_cart',{
+      title: 'Shop Cart',
+      noResult: true,
+    });
+  }
 });
 
 router.post('/', function(req, res, next) {
