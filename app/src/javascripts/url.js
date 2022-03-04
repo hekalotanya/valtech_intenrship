@@ -60,9 +60,12 @@ const setParam  = (paramName) => (e) => {
 }
 
 async function getProductDetail(e) {
-  const productId = e.currentTarget.id;
-  const path = new URL(`http://localhost:3000/products/${productId}`);
-  document.location.href = path;
+  if (e.target.tagName === 'IMG' || e.target.tagName === 'SPAN') {
+    console.log(e.target.tagName);
+    const productId = e.currentTarget.id;
+    const path = new URL(`http://localhost:3000/products/${productId}`);
+    document.location.href = path;
+  }
 }
 
 

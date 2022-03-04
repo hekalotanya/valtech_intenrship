@@ -493,7 +493,6 @@
   }
 
   .product_card {
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -530,6 +529,7 @@
       width: 210px;
       height: 210px;
       border-radius: 20%;
+      cursor: pointer;
 
       @include Phone {
         width: 100px;
@@ -544,6 +544,7 @@
       padding-left: 15px;
       padding-right: 10px;
       min-width: 110px;
+      cursor: pointer;
 
       @include Phone {
         border: none;
@@ -559,6 +560,7 @@
         font-size: 25px;
         font-family: 'Jost', sans-serif;
         margin-bottom: 5px;
+        cursor: pointer;
 
         @include Phone {
           font-size: 20px;
@@ -596,6 +598,7 @@
       padding-left: 10px;
       justify-content: space-between;
       gap: 10px;
+      cursor: pointer;
 
       @include Phone {
         flex-direction: row;

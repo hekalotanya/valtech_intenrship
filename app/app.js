@@ -3,12 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bp = require('body-parser')
 const logger = require('morgan');
 const hbs = require('hbs');
 
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
-const productDetailRouter = require('./routes/product_detail');
+const shopCart = require('./routes/shop_cart');
 
 const app = express();
 
@@ -145,10 +146,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
-app.use('/productDetail', productDetailRouter);
+app.use('/cart', shopCart);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

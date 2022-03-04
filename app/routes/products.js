@@ -3,7 +3,6 @@ const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
 const categoriesHelper = require('./core/categoriesHelper');
-const { get } = require('request');
 
 router.use(cors());
 

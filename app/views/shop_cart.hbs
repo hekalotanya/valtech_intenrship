@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Cart</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+    </style>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body class="cart_page grid">
+  {{> header_grid }}
+  <main class="grid grid__item--1--12">
+    {{> title_section }}
+    <section class="cart_list cart_list grid__item--1--12 grid">
+      <div class="cart_list__names_of_column grid__item--1--12 grid">
+        <span class="name_of_column grid__item--1--5">Product name</span>
+        <span class="name_of_column grid__item--6--7">Price</span>
+        <span class="name_of_column grid__item--8--10">Quantity</span>
+        <span class="name_of_column grid__item--11--12">Total</span>
+      </div>
+      <div class="cart_list__products grid__item--1--12">
+        {{#each products}}
+          <div class="cart_list__products__item item grid" id={{this.id}}>
+            <div class="item__name grid__item--1--5">
+              <img class="item__name__image" src={{this.images.[0].path}} alt="">
+              <div class="item__name__block">
+                <span class="block__name">{{this.name}}</span>
+                <span class="block__category">{{this.category.name}}</span>
+              </div>
+            </div>
+            <div class="item__price grid__item--6--7">${{this.price}}</div>
+            <div class="item__quantity grid__item--8--10">
+              <div class="quantity__block">
+                <svg class="quantity__block__decrease arrow" width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.771484 4.22852L3.81836 7.27539C4.0332 7.49023 4.24805 7.49023 4.46289 7.27539C4.56055 7.17773 4.60938 7.07031 4.60938 6.95312C4.60938 6.81641 4.56055 6.70898 4.46289 6.63086L1.76758 3.90625L4.46289 1.18164C4.69727 0.966797 4.69727 0.751953 4.46289 0.537109C4.24805 0.322266 4.0332 0.322266 3.81836 0.537109L0.771484 3.58398C0.673828 3.66211 0.625 3.76953 0.625 3.90625C0.625 4.04297 0.673828 4.15039 0.771484 4.22852Z" fill="#888888"/>
+                </svg>
+                <span class="quantity__block__value">1</span>
+                <svg class="quantity__block__increase arrow" width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.474609 6.63086C0.240234 6.8457 0.230469 7.06055 0.445312 7.27539C0.679688 7.49023 0.904297 7.49023 1.11914 7.27539L4.16602 4.22852C4.26367 4.15039 4.3125 4.04297 4.3125 3.90625C4.3125 3.76953 4.26367 3.66211 4.16602 3.58398L1.11914 0.537109C0.904297 0.322266 0.679688 0.322266 0.445312 0.537109C0.230469 0.751953 0.240234 0.966797 0.474609 1.18164L3.16992 3.90625L0.474609 6.63086Z" fill="#888888"/>
+                </svg>
+              </div>
+            </div>
+            <div class="item__total grid__item--11--12">Total</div>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+    <section class="cart_menu grid__item--1--12 grid">
+      <div class="cart_menu__buttons grid__item--1--6">
+        <button class="cart_menu__buttons__update">UPDATE CART</button>
+        <a  href="/products" class="cart_menu__buttons__continue">CONTINUE SHOPPING</a>
+      </div>
+      <div class="cart_menu__totals grid__item--8--12">
+        <h2 class="cart_menu__totals__sign">CART TOTALS</h2>
+        <div class="cart_menu__totals__amount">
+          <span class="amount__sign">Total</span>
+          <span class="amount__summ">15</span>
+        </div>
+        <button class="cart_menu__totals__checkout">PROCEED TO CHECKOUT</button>
+      </div>
+    </section>
+  </main>
+  {{> footer_grid }}
+  {{> copyright }}
+  <script src="/bundle.js"></script>
+</body>
+</html>
