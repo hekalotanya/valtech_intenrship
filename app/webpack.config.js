@@ -33,7 +33,7 @@ module.exports = {
       zlib: false
     }
   },
-  entry: ['babel-polyfill', './src/javascripts/index.js'],
+  entry: './src/javascripts/index.js',
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -58,15 +58,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
-        type: mode === 'production' ? 'asset' : 'asset/resource',
-        generator: {
-          filename: 'assets/images/[hash].min[ext]',
-        },
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        include: path.resolve(__dirname, './src/images'),
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images',
+          }
+        }]
       },
       {
         test: /\.js$/,

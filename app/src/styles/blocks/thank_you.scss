@@ -13,6 +13,11 @@
     padding-right: 20px;
   }
 
+  @include Tablet {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
   &__sign {
     @include sign;
   }

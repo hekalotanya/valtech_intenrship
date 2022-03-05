@@ -115,10 +115,6 @@
             width: 100px;
           }
 
-          @include Phone {
-            width: 50px;
-          }
-
           &__value {
             @include button;
             font-size: 18px;
@@ -126,6 +122,8 @@
           }
 
           .arrow {
+            width: 11px;
+            height: 11px;
             cursor: pointer;
           }
         }

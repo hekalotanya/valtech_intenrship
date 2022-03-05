@@ -4,7 +4,6 @@ const sizes = document.querySelector('.sizes');
 const pages = document.querySelector('.products__pages');
 const priceGre = document.querySelector('.range-slider_gre');
 const priceLess = document.querySelector('.range-slider_less');
-const productCards = document.querySelectorAll('.products__product_card');
 const url = new URL('http://localhost:3000/products/sort');
 
 const setParam  = (paramName) => (e) => {
@@ -59,44 +58,29 @@ const setParam  = (paramName) => (e) => {
   }
 }
 
-async function getProductDetail(e) {
-  if (e.target.tagName === 'IMG' || e.target.tagName === 'SPAN') {
-    console.log(e.target.tagName);
-    const productId = e.currentTarget.id;
-    const path = new URL(`http://localhost:3000/products/${productId}`);
-    document.location.href = path;
-  }
+
+if (circles) {
+  circles.onclick = setParam('color');
+}
+
+if (categories) {
+  categories.onclick = setParam('category_id');
+}
+
+if (sizes) {
+  sizes.onclick = setParam('size');
+}
+
+if (pages) {
+  pages.onclick = setParam('page');
+}
+
+if (priceGre) {
+  priceGre.onchange = setParam('price');
+}
+
+if (priceLess) {
+  priceLess.onchange = setParam('price');
 }
 
 
-if (document.location.href.includes('/products')) {
-  if (circles) {
-    circles.onclick = setParam('color');
-  }
-
-  if (categories) {
-    categories.onclick = setParam('category_id');
-  }
-
-  if (sizes) {
-    sizes.onclick = setParam('size');
-  }
-
-  if (pages) {
-    pages.onclick = setParam('page');
-  }
-
-  if (priceGre) {
-    priceGre.onchange = setParam('price');
-  }
-
-  if (priceLess) {
-    priceLess.onchange = setParam('price');
-  }
-
-  if (productCards) {
-    for (let i = 0; i < productCards.length; i++) {
-      productCards[i].onclick = (e) => getProductDetail(e);
-    }
-  }
-};

@@ -2,20 +2,16 @@
   display: grid;
   grid-template-columns: 1fr, 2fr, 3fr;
   grid-template-rows: 330px, 65px;
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 100px;
+  padding-right: 100px;
   padding-bottom: 15px;
   padding-top: 80px;
   background-color: #F5F5F5;
 
-  @include Full {
-    padding-left: 200px;
-    padding-right: 200px;
-  }
 
   @include Tablet {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   @include Phone {

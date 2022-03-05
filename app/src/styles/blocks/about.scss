@@ -2,19 +2,15 @@
   display: flex;
   gap: 75px;
   align-items: center;
-  padding-left: 150px;
-  padding-right: 150px;
+  justify-content: center;
   padding-top: 70px;
   padding-bottom: 70px;
-
-  @include Full {
-    padding-left: 200px;
-    padding-right: 200px;
-  }
+  padding-left: 100px;
+  padding-right: 100px;
 
   @include Tablet {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
     gap: 40px;
     justify-content: space-between;
     align-items: flex-start;
@@ -206,12 +202,12 @@
         width: 280px;
       }
 
-      .header {
+      .quote__header {
         display: flex;
         align-items: center;
         gap: 20px;
 
-        &__image {
+        .header__image {
           height: 60px;
           width: 60px;
           border-radius: 50%;

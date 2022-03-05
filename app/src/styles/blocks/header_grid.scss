@@ -1,126 +1,134 @@
-.grid {
-  .top_bar { 
-    padding: 10px 0px;
-    background-color: black;
-    transition: height 0.5s;
-    padding-left: 100px;
-    padding-right: 100px;
-  
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2000;
+}
+
+.top_bar { 
+  padding: 10px 0px;
+  background-color: black;
+  transition: height 0.5s;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  @include Phone {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include Tablet {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+
+  &__logo {
+    display: none;
+    @include title;
+    text-decoration: none;
+    transition: all 0.5s;
+
     @include Phone {
-      display: flex;
+      display: inline;
+      width: 100%;
+      font-size: 30px;
+      text-align: center;
+      cursor: pointer;
+      color: white;
+    }
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+
+    @include Phone {
       flex-direction: column;
+      transform: translateY(-200%);
+    }
+  }
+
+  &__contacts { 
+    display: flex;
+    flex-direction: row;
+    // height: 36px;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    @include Phone {
       gap: 10px;
-      height: 50px;
-      padding-left: 20px;
-      padding-right: 20px;
+      flex-direction: column;
     }
-  
-    @include Tablet {
-      padding-left: 50px;
-      padding-right: 50px;
-    }
-  
-  
-    &__logo {
-      display: none;
-      @include title;
-      text-decoration: none;
-      transition: all 0.5s;
-  
-      @include Phone {
-        display: inline;
-        width: 100%;
-        font-size: 30px;
-        text-align: center;
-        cursor: pointer;
-        color: white;
-      }
-    }
-  
-    .links {
-      display: flex;
-      justify-content: space-between;
-  
-      @include Phone {
-        flex-direction: column;
-        transform: translateY(-200%);
-      }
-    }
-  
-    &__contacts { 
-      display: flex;
-      flex-direction: row;
-      // height: 36px;
-      gap: 20px;
-      justify-content: space-between;
-      align-items: center;
-  
-      @include Phone {
-        gap: 10px;
-        flex-direction: column;
-      }
-  
-  
-      &__tel {
-        .tel__link {
-          text-decoration: none;
-          font-size: 15px;
-          font-family: 'Jost', sans-serif;
-          color: white;
-        }
-      }
-  
-      &__mail {
-        .mail__link {
-          text-decoration: none;
-          font-size: 15px;
-          font-family: 'Jost', sans-serif;
-          color: white;
-        }
-  
-        @include Phone {
-          padding-bottom: 10px;
-        }
-      }
-    }
-  
-    &__lang {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-      justify-content: space-around;
-      align-items: center;
-  
-      @include Phone {
-        flex-direction: column;
-        gap: 10px;
-      }
-  
-      .lang {
+
+
+    &__tel {
+      .tel__link {
         text-decoration: none;
         font-size: 15px;
         font-family: 'Jost', sans-serif;
         color: white;
-        cursor: pointer;
       }
-  
-      .USD {
+    }
+
+    &__mail {
+      .mail__link {
         text-decoration: none;
         font-size: 15px;
         font-family: 'Jost', sans-serif;
         color: white;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-  
-        svg {
-          height: 20px;
-          width: 20px;
-          object-fit: cover;
-        }
+      }
+
+      @include Phone {
+        padding-bottom: 10px;
       }
     }
   }
+
+  &__lang {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+
+    @include Phone {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .lang {
+      text-decoration: none;
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
+      color: white;
+      cursor: pointer;
+    }
+
+    .USD {
+      text-decoration: none;
+      font-size: 15px;
+      font-family: 'Jost', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        height: 20px;
+        width: 20px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.grid {
   
   .nav {
     padding-left: 100px;
@@ -156,8 +164,16 @@
   
     &__menu {
       display: flex;
-      gap: 30px;
+      justify-content: space-between;
+      max-width: 400px;
       
+      @include Phone {
+        gap: 10px;
+      }
+
+      @include Tablet {
+        gap: 10px;
+      }
   
       @include Tablet {
         padding: 0px 0px;
@@ -165,14 +181,6 @@
   
       @include Phone {
         padding: 0px 0px;
-      }
-  
-      @include Tablet {
-        gap: 15px;
-      }
-  
-      @include Phone {
-        gap: 15px;
       }
       
       .menu__item {
@@ -195,6 +203,27 @@
   
       .right_side_bar__icon {
         height: 100%;
+
+        .icon__block {
+          position: relative;
+          transition: all 0.6s;
+
+          .icon__count {
+            position: absolute;
+            left: 18px;
+            bottom: 10px;
+            font-size: 15px;
+            font-family: "Jost", sans-serif;
+            z-index: 20;
+            color: white;
+          }
+
+          .icon__circle {
+            position: absolute;
+            left: 12px;
+            bottom: 8px;
+          }
+        }
   
         .icon {
           width: 20px;

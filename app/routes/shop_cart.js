@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
-const categoriesHelper = require('./core/categoriesHelper');
-const { list } = require('postcss');
-const { get } = require('./home');
 
 router.use(cors());
 
