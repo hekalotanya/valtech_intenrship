@@ -1,7 +1,7 @@
 
 // OPEN AND UPDATE BASKET 
 
-const buttonsCart = document.querySelectorAll('.basket');
+const buttonsCart = document.querySelectorAll('.basket__block');
 const buttonUpdate = document.querySelector('.cart_menu__buttons__update');
 
 async function fetchBasket() {
@@ -91,13 +91,16 @@ if (buttonsAdd) {
 
       const basketCircle = document.querySelector(`.basket__circle${buttonsAdd[i].id}`);
       const basketPath = document.querySelector(`.basket__path${buttonsAdd[i].id}`);
-      basketCircle.style.fill = '#60A00C';
-      basketPath.style.fill = 'white';
 
-      setTimeout(() => {
-        basketCircle.style.fill = 'white';
-        basketPath.style.fill = 'black';
-      }, 500);
+      if (basketCircle && basketPath) {
+        basketCircle.style.fill = '#60A00C';
+        basketPath.style.fill = 'white';
+  
+        setTimeout(() => {
+          basketCircle.style.fill = 'white';
+          basketPath.style.fill = 'black';
+        }, 500);
+      }
 
       const basketIconBlock = document.querySelector('.basket__block');
       basketIconBlock.style.transform =  'scale(1.5)';

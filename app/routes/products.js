@@ -97,6 +97,8 @@ router.get('/sort', async function(req, res, next) {
         categories: [...allCategories],
         length: searchProducts.length,
         title: 'Shop List Side Bar',
+        priceGre,
+        priceLess
       });
     }
 });

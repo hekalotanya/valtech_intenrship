@@ -208,6 +208,7 @@
       height: 100vh;
       background-color: white;
       padding: 20px;
+      z-index: 3000;
     }
   
     @include Tablet {

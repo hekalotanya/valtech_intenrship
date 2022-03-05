@@ -53,6 +53,7 @@ if (showingOneCard) {
     for (let i = 0; i < productCard.length; i++) {
       productCard[i].style.width = 'auto';
       productCard[i].style.flexDirection = productCardFlex;
+      productCard[i].style.flexWrap = 'nowrap';
       productCard[i].style.alignItems = productCardAlign;
       // productCard[i].style.gap = '0';
       productCard[i].style.padding = '25px 50px 25px 30px';
