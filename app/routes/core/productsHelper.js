@@ -5,26 +5,28 @@ const prisma = new PrismaClient();
 // GET ALL PRODCUTS
 async function products(skip, take) {
   const allProducts = await prisma.product.findMany({
-    skip,
-    take,
     include: {
       category: true,
       images: true,
       reviews: true
-    }
+    },
+    skip,
+    take,
   })
   return allProducts;
 }
 
 //GET ALL PRODCUTS BY PARAMS
-async function productsByParams(paramsObject) {
+async function productsByParams(paramsObject, skip, take) {
   const products = await prisma.product.findMany({
     where: paramsObject,
     include: {
       category: true,
       images: true,
       reviews: true
-    }
+    },
+    skip,
+    take,
   })
 
   return products;

@@ -6,17 +6,6 @@ const categoriesHelper = require('./core/categoriesHelper');
 
 router.use(cors());
 
-// // let allProducts;
-// // let allCategories;
-
-// // categoriesHelper.categories().then(result => {
-// //   allCategories = [...result];
-// // })
-
-// productsHelper.products().then(result => {
-//   allProducts = [...result];
-// })
-
 function getCategories() {
   const result =  categoriesHelper.categories();
   return result;
@@ -31,11 +20,6 @@ router.get('/', async function(req, res, next) {
     const result =  productsHelper.products();
     return result;
   }
-
-  // function getCategories() {
-  //   const result =  categoriesHelper.categories();
-  //   return result;
-  // }
 
   let allProducts = await getProducts();
   let allCategories = await getCategories();

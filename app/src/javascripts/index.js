@@ -12,4 +12,5 @@ import './showing_prodcuts';
 import './product_images_caruosel';
 import './basket';
 import './product_detail';
+import './category_detail';
 import './images';
