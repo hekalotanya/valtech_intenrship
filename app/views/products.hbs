@@ -203,12 +203,12 @@
             </div>
           </div>
         {{/each}}
-        {{#if noResult}}
+      </div>
+      <div class="products__pages">
+         {{#if noResult}}
           {{true}}
         {{else}}
-          <div class="products__pages">
-            {{{ page2 length}}}
-          </div>
+          {{{ page2 length}}}
         {{/if}}
       </div>
     </section>

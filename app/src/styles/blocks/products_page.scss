@@ -492,6 +492,8 @@
 
   &__result {
     @include sign;
+    text-align: center;
+    padding-top: 50px;
   }
 
   .product_card {
@@ -506,8 +508,8 @@
     max-width: 920px;
 
     @include Phone {
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
+      // flex-wrap: wrap;
       align-items: flex-start;
       gap: 10px;
     }
