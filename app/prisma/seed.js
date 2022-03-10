@@ -1,5 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-const { takeCoverage } = require('v8');
 const prisma = new PrismaClient();
 
 const categoryData = [
@@ -3850,27 +3849,31 @@ const arrayId = [ 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
   252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263,
   264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276 ];
 
-async function main() {
-  console.log(`Start seeding ...`)
-  for (const u of images) {
-    const image = await prisma.image.create({
-      data: u,
-    })
-    console.log(`Created image with id: ${image.id}`)
-  }
-  console.log(`Seeding finished.`)
+// async function main() {
+//   const updateImage = await prisma.image.update({
+//     select: {
+//       product: {
+//         category_id: 1
+//       }
+//     },
+//     data: {
+//       path: 'https://user-images.githubusercontent.com/77466385/157712579-9956d78f-a482-4467-9a1f-05653f729942.jpeg',
+//     },
+//   })
+  
+//     return updateImage;
 
-}
+// }
 
 
 
-main()
-  .catch((e) => {
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+// main()
+//   .catch((e) => {
+//     console.error(e)
+//     process.exit(1)
+//   })
+//   .finally(async () => {
+//     await prisma.$disconnect()
+//   })
 
 

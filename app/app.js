@@ -10,6 +10,7 @@ const hbs = require('hbs');
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
 const shopCart = require('./routes/shop_cart');
+const checkout = require('./routes/checkout');
 
 const app = express();
 
@@ -152,6 +153,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/cart', shopCart);
+app.use('/checkout', checkout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

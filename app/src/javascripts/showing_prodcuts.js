@@ -20,70 +20,72 @@ if (document.location.href.includes('http://localhost:3000/products')) {
   const productCardButtons = document.querySelectorAll('.product_card__buttons');
   
   
-  function showTwoCards() {
-    products.style.flexDirection = 'row';
-    products.style.flexWrap = 'wrap';
-    products.style.gap = '4%';
-    showingTwoCardRect.style.fill = '#60A00C';
-    showingOneCardRect.style.fill = 'white'
-  
-    for (let i = 0; i < productCard.length; i++) {
-      productCard[i].style.width = '48%';
-      productCard[i].style.flexDirection = 'row';
-      productCard[i].style.flexWrap = 'wrap';
-      productCard[i].style.alignItems = 'flex-start';
-      productCard[i].style.gap = '10px';
-      productCard[i].style.padding = '10px';
-      productCard[i].style.marginBottom = '15px';
+  if (products) {
+    function showTwoCards() {
+      products.style.flexDirection = 'row';
+      products.style.flexWrap = 'wrap';
+      products.style.gap = '4%';
+      showingTwoCardRect.style.fill = '#60A00C';
+      showingOneCardRect.style.fill = 'white'
+    
+      for (let i = 0; i < productCard.length; i++) {
+        productCard[i].style.width = '48%';
+        productCard[i].style.flexDirection = 'row';
+        productCard[i].style.flexWrap = 'wrap';
+        productCard[i].style.alignItems = 'flex-start';
+        productCard[i].style.gap = '10px';
+        productCard[i].style.padding = '10px';
+        productCard[i].style.marginBottom = '15px';
+      }
+    
+      for (let i = 0; i < productCardButtons.length; i++) {
+        productCardButtons[i].style.display = 'none';
+      }
+    
+      localStorage.showing_two_card = JSON.stringify(true);   
     }
-  
-    for (let i = 0; i < productCardButtons.length; i++) {
-      productCardButtons[i].style.display = 'none';
+    
+    function showOneCard() {
+      products.style.flexDirection = 'column';
+      products.style.flexWrap = 'nowrap';
+      products.style.gap = '40px';
+      showingTwoCardRect.style.fill = 'white';
+      showingOneCardRect.style.fill = '#60A00C'
+    
+      for (let i = 0; i < productCard.length; i++) {
+        productCard[i].style.width = 'auto';
+        productCard[i].style.flexDirection = productCardFlex;
+        productCard[i].style.flexWrap = 'nowrap';
+        productCard[i].style.alignItems = productCardAlign;
+        productCard[i].style.padding = '25px 50px 25px 30px';
+        productCard[i].style.marginBottom = '0';
+      }
+    
+      for (let i = 0; i < productCardButtons.length; i++) {
+        productCardButtons[i].style.display = 'flex';
+      }
+    
+      localStorage.showing_two_card = JSON.stringify(false);
+      console.log(localStorage.showing_two_card);
     }
-  
-    localStorage.showing_two_card = JSON.stringify(true);   
-  }
-  
-  function showOneCard() {
-    products.style.flexDirection = 'column';
-    products.style.flexWrap = 'nowrap';
-    products.style.gap = '40px';
-    showingTwoCardRect.style.fill = 'white';
-    showingOneCardRect.style.fill = '#60A00C'
-  
-    for (let i = 0; i < productCard.length; i++) {
-      productCard[i].style.width = 'auto';
-      productCard[i].style.flexDirection = productCardFlex;
-      productCard[i].style.flexWrap = 'nowrap';
-      productCard[i].style.alignItems = productCardAlign;
-      productCard[i].style.padding = '25px 50px 25px 30px';
-      productCard[i].style.marginBottom = '0';
+    
+    if (showingTwoCard) {
+      showingTwoCard.addEventListener('click', () => {
+        showTwoCards(); 
+      })
     }
-  
-    for (let i = 0; i < productCardButtons.length; i++) {
-      productCardButtons[i].style.display = 'flex';
+    
+    if (showingOneCard) {
+      showingOneCard.addEventListener('click', () => {
+        showOneCard();
+      })
     }
-  
-    localStorage.showing_two_card = JSON.stringify(false);
-    console.log(localStorage.showing_two_card);
-  }
-  
-  if (showingTwoCard) {
-    showingTwoCard.addEventListener('click', () => {
-      showTwoCards(); 
-    })
-  }
-  
-  if (showingOneCard) {
-    showingOneCard.addEventListener('click', () => {
+    
+    
+    if (localStorage.showing_two_card === 'true') {
+      showTwoCards();
+    } else {
       showOneCard();
-    })
-  }
-  
-  
-  if (localStorage.showing_two_card === 'true') {
-    showTwoCards();
-  } else {
-    showOneCard();
+    }
   }
 }
