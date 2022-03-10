@@ -27,6 +27,25 @@
       border-right: 1px solid #ECECEC;
       display: flex;
       flex-direction: column;
+
+      &:focus {
+        border-bottom: 1px solid black;
+      }
+
+      &:invalid:not(:focus):not(:placeholder-shown) {
+        color: #eb5757;
+        border-bottom: 1px solid #eb5757 ;
+      }
+
+      &:invalid:focus:not(:placeholder-shown) {
+        color: #eb5757;
+        border-bottom: 1px solid #eb5757 ;
+      }
+
+      &:valid:not(:placeholder-shown) {
+        color: $dark-green;
+        border-bottom: 1px solid #60A00C;
+      }
   
       @include Phone {
         border-right: none;
