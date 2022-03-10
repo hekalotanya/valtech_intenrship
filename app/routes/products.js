@@ -6,21 +6,40 @@ const categoriesHelper = require('./core/categoriesHelper');
 
 router.use(cors());
 
-let allProducts;
-let allCategories;
+// // let allProducts;
+// // let allCategories;
 
-categoriesHelper.categories().then(result => {
-  allCategories = [...result];
-})
+// // categoriesHelper.categories().then(result => {
+// //   allCategories = [...result];
+// // })
 
-productsHelper.products().then(result => {
-  allProducts = [...result];
-})
+// productsHelper.products().then(result => {
+//   allProducts = [...result];
+// })
+
+function getCategories() {
+  const result =  categoriesHelper.categories();
+  return result;
+}
 
 
 
 /* GET products listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+
+  function getProducts() {
+    const result =  productsHelper.products();
+    return result;
+  }
+
+  // function getCategories() {
+  //   const result =  categoriesHelper.categories();
+  //   return result;
+  // }
+
+  let allProducts = await getProducts();
+  let allCategories = await getCategories();
+
   res.render('products', {
     products: [...allProducts].slice(0,6),
     firstProduct: 1,
@@ -44,6 +63,7 @@ router.get('/sort', async function(req, res, next) {
   let lastProduct = firstProduct + limit;
   let priceGre = 0;
   let priceLess = 200;
+  let allCategories = await getCategories();
 
   if (params.category_id) {
     params.category_id = parseInt(params.category_id);
