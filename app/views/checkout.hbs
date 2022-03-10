@@ -17,6 +17,91 @@
   {{> header_grid }}
   <main class="grid grid__item--1--12">
     {{> title_section }}
+    <div class="main_block grid__item--1--12 grid">
+      <section class="checkout_page__information_block grid__item--1--8">
+      <form class="checkout_page__form_block form_block">
+        <div class="form_block__contact_information contact_information">
+          <div class="contact_information__titles titles">
+            <h2 class="titles__main_title">Contact information</h2>
+            <span class="titles__log_in">Already have an account?
+              <span class="span__log_in">Log in</span>
+            </span>
+          </div>
+          <input required type="email" class="contact_information__email form__input" placeholder="Enter your email">
+          <div class="contact_information__checkbox">
+            <input type="checkbox" name="checkbox">
+            <label for="checkbox" class="contact_information__checkbox__label">Keep me up to date on news and exclusive offers</label>
+          </div>
+        </div>
+        <div class="form_block__shipping_adress shipping_adress">
+        <h2 class="shipping_adress__title">Shipping Adress</h2>
+        <div class="shipping_adress__name">
+          <input required minlength='2' type="text" name="first_name" id="first_name" class="shipping_adress__name__input form__input" placeholder="First name">
+          <input required type="text" name="second_name" id="second_name" class="shipping_adress__name__input form__input" placeholder="Second name">
+        </div>
+        <div class="shipping_adress__country">
+          <input required type="text" name="country" id="country" placeholder="Country/Region" class="shipping_adress__country__input form__input">
+          <input required type="text" name="postcode" id="postcode" placeholder="Postcode" class="shipping_adress__country__input form__input">
+        </div>
+        <input required type="text" name="city" id="city" placeholder="City" class="shipping_adress__input form__input">
+        <input required type="text" name="adress" id="adress" placeholder="Adress" class="shipping_adress__input form__input">
+        </div>
+        <button type="submit" class="form_block__submit">PLACE ORDER</button>
+    </form>
+    </section>
+    <section class="checkout_page__products_block grid__item--9--12">
+      <div class="products_block__list">
+        <div class="list__product_card">
+          <img src="" alt="" class="product_card__image">
+          <div class="prodcut_card___des">
+            <span class="des__name">Fruit</span>
+            <span class="des__size">5kg</span>
+          </div>
+          <span class="product_card__price">$18</span>
+        </div>
+        <div class="list__product_card">
+          <img src="" alt="" class="product_card__image">
+          <div class="prodcut_card___des">
+            <span class="des__name">Fruit</span>
+            <span class="des__size">5kg</span>
+          </div>
+          <span class="product_card__price">$18</span>
+        </div>
+        <div class="list__product_card">
+          <img src="" alt="" class="product_card__image">
+          <div class="prodcut_card___des">
+            <span class="des__name">Fruit</span>
+            <span class="des__size">5kg</span>
+          </div>
+          <span class="product_card__price">$18</span>
+        </div>
+        <div class="list__product_card">
+          <img src="" alt="" class="product_card__image">
+          <div class="prodcut_card___des">
+            <span class="des__name">Fruit</span>
+            <span class="des__size">5kg</span>
+          </div>
+          <span class="product_card__price">$18</span>
+        </div>
+      </div>
+      <div class="products_block__bill bill">
+        <div class="bill__calculation">
+          <div class="calculation__subtotal calculation">
+            <span class="subtotal__sign calculation__sign">Subtotal</span>
+            <span class="subtotal_amount calculation__amount">$18</span>
+          </div>
+          <div class="calculation__taxes calculation">
+            <span class="taxes__sign calculation__sign">Taxes</span>
+            <span class="taxes_amount calculation__amount">$1</span>
+          </div>
+        </div>
+        <div class="bill__total">
+          <span class="bill__total__sign">Total</span>
+          <span class="bill__total__amount">Amount</span>
+        </div>
+      </div>
+    </section>
+    </div>
   </main>
   {{> footer_grid }}
   {{> copyright }}

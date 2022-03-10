@@ -1,0 +1,279 @@
+.main_block {
+  padding: 80px 100px;
+  height: max-content;
+
+  @include Phone {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  @include Tablet {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .checkout_page__information_block {
+    @include Phone {
+      order: 2;
+    }
+
+    .form_block {
+      width: 100%;
+      max-width: 810px;
+      padding-right: 75px;
+      border-right: 1px solid #ECECEC;
+      display: flex;
+      flex-direction: column;
+  
+      @include Phone {
+        border-right: none;
+        padding: 0;
+      }
+  
+      .form__input {
+        height: 46px;
+        background-color: #F5F5F5;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 20px;
+        @include text;
+        border: none;
+      }
+  
+      .contact_information {
+        display: flex;
+        flex-direction: column;
+  
+        .titles {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 30px;
+  
+          @include Notebook {
+            flex-direction: column;
+            gap: 10px;
+          }
+  
+          @include Tablet {
+            flex-direction: column;
+            gap: 10px;
+          }
+  
+          @include Phone {
+            flex-direction: column;
+            gap: 10px;
+          }
+  
+          &__main_title {
+            @include button;
+            font-size: 20px;
+            font-weight: 800;
+          }
+  
+          &__log_in {
+            @include text;
+            color: black;
+            
+  
+            .span__log_in {
+              @include text;
+              color: #88B13E;
+              cursor: pointer;
+            }
+          }
+        }
+  
+        &__email {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+  
+        &__checkbox {
+          display: flex;
+          gap: 5px;
+          margin-bottom: 40px;
+  
+          &__label {
+            @include text;
+            color: black;
+          }
+        }
+      }
+  
+      .shipping_adress {
+        display: flex;
+        flex-direction: column;
+  
+        &__title {
+          @include button;
+          font-size: 20px;
+          font-weight: 800;
+          margin-bottom: 30px;
+        }
+  
+        &__name {
+          display: flex;
+          gap: 4%;
+          margin-bottom: 20px;
+
+          @include Phone {
+            flex-direction: column;
+            gap: 20px;
+          }
+  
+          &__input {
+            width: 48%;
+
+            @include Phone {
+              width: 100%;
+            }
+          }
+        }
+  
+        &__country {
+          display: flex;
+          gap: 4%;
+          margin-bottom: 20px;
+
+          @include Phone {
+            flex-direction: column;
+            gap: 20px;
+          }
+  
+          &__input {
+            width: 48%;
+
+            @include Phone {
+              width: 100%;
+            }
+          }
+        }
+  
+        &__input {
+          margin-bottom: 20px;
+        }
+      }
+  
+      &__submit {
+        width: 100%;
+        max-width: 470px;
+        align-self: center;
+        border: none;
+        padding: 0 5px;
+        background-color: black;
+        height: 46px;
+        @include button;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100%;
+        transition: all 0.5s;
+        color: white;
+  
+        &:hover {
+          background-color: white;
+          color: black
+        }
+      }
+    }
+  }
+
+  .checkout_page__products_block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .products_block__list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #ECECEC;
+
+      .list__product_card {
+        display: flex;
+        position: relative;
+
+
+        .product_card__image {
+          width: 70px;
+          height: 70px;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+
+        .prodcut_card___des {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          .des__name {
+            @include text;
+            color: black;
+          }
+
+          .des__size {
+            @include text;
+          }
+        }
+
+        .product_card__price {
+          @include button;
+          font-weight: bold;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+
+    .bill {
+      display: flex;
+      flex-direction: column;
+
+      &__calculation {
+        padding-bottom: 30px;
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border-bottom: 1px solid #ECECEC;
+
+        .calculation {
+          display: flex;
+          justify-content: space-between;
+
+          .calculation__sign {
+            @include text;
+            color: black;
+          }
+
+          .calculation__amount {
+            @include text;
+            color: black;
+            font-weight: bold;
+          }
+        }
+      }
+
+      &__total {
+        padding-top: 30px;
+        display: flex;
+        justify-content: space-between;
+
+        &__sign {
+          @include text;
+          color: black;
+        }
+
+        &__amount {
+          @include text;
+          color: black;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
