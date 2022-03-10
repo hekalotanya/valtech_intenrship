@@ -37,14 +37,14 @@
         <h2 class="shipping_adress__title">Shipping Adress</h2>
         <div class="shipping_adress__name">
           <input required minlength='2' type="text" name="first_name" id="first_name" class="shipping_adress__name__input form__input" placeholder="First name">
-          <input required type="text" name="second_name" id="second_name" class="shipping_adress__name__input form__input" placeholder="Second name">
+          <input required minlength='2' type="text" name="second_name" id="second_name" class="shipping_adress__name__input form__input" placeholder="Second name">
         </div>
         <div class="shipping_adress__country">
-          <input required type="text" name="country" id="country" placeholder="Country/Region" class="shipping_adress__country__input form__input">
-          <input required type="text" name="postcode" id="postcode" placeholder="Postcode" class="shipping_adress__country__input form__input">
+          <input required minlength='3' type="text" name="country" id="country" placeholder="Country/Region" class="shipping_adress__country__input form__input">
+          <input required pattern="[0-9]{3,10}" type="text" name="postcode" id="postcode" placeholder="Postcode" class="shipping_adress__country__input form__input">
         </div>
-        <input required type="text" name="city" id="city" placeholder="City" class="shipping_adress__input form__input">
-        <input required type="text" name="adress" id="adress" placeholder="Adress" class="shipping_adress__input form__input">
+        <input required minlength='2' type="text" name="city" id="city" placeholder="City" class="shipping_adress__input form__input">
+        <input required type="text" minlength='5' pattern="(?=.*\d)(?=.*[a-z]).{8,}" name="adress" id="adress" placeholder="Adress" class="shipping_adress__input form__input">
         </div>
         <button type="submit" class="form_block__submit">PLACE ORDER</button>
     </form>
