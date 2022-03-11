@@ -170,6 +170,10 @@
             }
           }
         }
+
+        &__phone__input {
+          margin-bottom: 20px;
+        }
   
         &__input {
           margin-bottom: 20px;
@@ -234,7 +238,7 @@
             color: black;
           }
 
-          .des__size {
+          .des__count {
             @include text;
           }
         }

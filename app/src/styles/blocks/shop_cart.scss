@@ -17,6 +17,27 @@
     padding-right: 50px;
   }
 
+  .cart__message {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    @include title;
+    color: #88B13E;
+    text-align: center;
+
+
+    @include Tablet {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    @include Phone {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+
   &__names_of_column {
     border-bottom: 1px solid #ECECEC;
     padding-bottom: 12px;

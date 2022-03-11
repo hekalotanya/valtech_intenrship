@@ -67,13 +67,6 @@ if (buttonsAdd) {
         let value = [];
         localStorage.shop_cart = JSON.stringify(value);
       }
-
-       if (quantity) {
-         if (!localStorage.quantity) {
-           let value = {};
-           localStorage.quantity = JSON.stringify(value);
-         }
-       }
   
       let shopList = [...JSON.parse(localStorage.shop_cart)];
       let quantityList = JSON.parse(localStorage.quantity);
@@ -182,3 +175,20 @@ function setCountBasket () {
 }
 
 setCountBasket();
+
+
+
+// MESSAGE FOR EMPTY CART
+const cartElement = document.querySelector('.cart_list');
+const menuElement = document.querySelector('.cart_list__names_of_column');
+if (document.location.href === 'http://localhost:3000/cart') {
+  if (JSON.parse(localStorage.shop_cart).length === 0) {
+    const message = document.createElement('span');
+    message.className = 'cart__message grid__item--1--12';
+    message.innerHTML = `It's empty :(`
+    cartElement.append(message);
+    menuElement.style.display = 'none';
+  } else {
+    menuElement.style.display = 'grid';
+  }
+}

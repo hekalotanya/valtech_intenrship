@@ -49,11 +49,10 @@ model Image {
 model Review {
   id         Int     @id @default(autoincrement())
   user_id    Int
-  user       User    @relation(fields: [userId], references: [id])
+  user       User    @relation(fields: [user_id], references: [id])
   product    Product @relation(fields: [product_id], references: [id])
   body       String
   product_id Int
-  userId     Int
 }
 
 model Order {
@@ -61,17 +60,18 @@ model Order {
   user_id     Int?
   user_name   String
   user_adress String
-  user_phone  Int
+  user_phone  String
   user_email  String
   products    Order_product[]
-  totalPice   Int
+  total_price   Int
+  date        String
 }
 
 model Order_product {
   id         Int     @id @default(autoincrement())
   product_id Int
-  order      Order   @relation(fields: [orderId], references: [id])
+  order      Order   @relation(fields: [order_id], references: [id])
   product    Product @relation(fields: [product_id], references: [id])
-  orderId    Int
+  order_id    Int
   count      Int
 }

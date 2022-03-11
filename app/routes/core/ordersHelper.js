@@ -18,11 +18,11 @@ async function orderById(id) {
   return order;
 }
 
-//CREATE ORDERS
+//CREATE ORDER
 async function createOrder(orderObject) {
   const order = await prisma.order.create({ data: orderObject })
 
-  return order;
+  return order.id;
 }
 
 
@@ -37,7 +37,17 @@ async function deleteOrder(id) {
   return deleteOrder;
 }
 
+
+// CREATE ORDER PRODUCT
+async function createOrderProduct(orderProductObject) {
+  const orderProduct = await prisma.order_product.create({ data: orderProductObject })
+
+  return orderProduct;
+}
+
+
 module.exports.orders = orders;
 module.exports.orderById = orderById;
 module.exports.createOrder = createOrder;
 module.exports.deleteOrder = deleteOrder;
+module.exports.createOrderProduct = createOrderProduct;

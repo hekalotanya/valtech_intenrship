@@ -27,7 +27,7 @@
               <span class="span__log_in">Log in</span>
             </span>
           </div>
-          <input required type="email" class="contact_information__email form__input" placeholder="Enter your email">
+          <input required type="email" name="email" class="contact_information__email form__input" placeholder="Enter your email">
           <div class="contact_information__checkbox">
             <input type="checkbox" name="checkbox">
             <label for="checkbox" class="contact_information__checkbox__label">Keep me up to date on news and exclusive offers</label>
@@ -41,63 +41,42 @@
         </div>
         <div class="shipping_adress__country">
           <input required minlength='3' type="text" name="country" id="country" placeholder="Country/Region" class="shipping_adress__country__input form__input">
-          <input required pattern="[0-9]{3,10}" type="text" name="postcode" id="postcode" placeholder="Postcode" class="shipping_adress__country__input form__input">
+          <input required pattern="[0-9]{3,10}" type="number" name="postcode" id="postcode" placeholder="Postcode" class="shipping_adress__country__input form__input">
         </div>
         <input required minlength='2' type="text" name="city" id="city" placeholder="City" class="shipping_adress__input form__input">
         <input required type="text" minlength='5' pattern="(?=.*\d)(?=.*[a-z]).{8,}" name="adress" id="adress" placeholder="Adress" class="shipping_adress__input form__input">
+        <input required type="text" minlength='16' maxlegth="16" name="phone" id="phone" placeholder="Phone Number" class="shipping_adress__phone__input form__input">
         </div>
         <button type="submit" class="form_block__submit">PLACE ORDER</button>
     </form>
     </section>
     <section class="checkout_page__products_block grid__item--9--12">
       <div class="products_block__list">
+        {{#each products}}
         <div class="list__product_card">
-          <img src="" alt="" class="product_card__image">
+          <img src="{{this.images.[0].path}}" alt="product_image" class="product_card__image">
           <div class="prodcut_card___des">
-            <span class="des__name">Fruit</span>
-            <span class="des__size">5kg</span>
+            <span class="des__name">{{this.name}}</span>
+            <span class="des__count count{{this.id}}" id="{{this.id}}">1</span>
           </div>
-          <span class="product_card__price">$18</span>
+          <span class="product_card__price total{{this.id}}">{{this.price}}</span>
         </div>
-        <div class="list__product_card">
-          <img src="" alt="" class="product_card__image">
-          <div class="prodcut_card___des">
-            <span class="des__name">Fruit</span>
-            <span class="des__size">5kg</span>
-          </div>
-          <span class="product_card__price">$18</span>
-        </div>
-        <div class="list__product_card">
-          <img src="" alt="" class="product_card__image">
-          <div class="prodcut_card___des">
-            <span class="des__name">Fruit</span>
-            <span class="des__size">5kg</span>
-          </div>
-          <span class="product_card__price">$18</span>
-        </div>
-        <div class="list__product_card">
-          <img src="" alt="" class="product_card__image">
-          <div class="prodcut_card___des">
-            <span class="des__name">Fruit</span>
-            <span class="des__size">5kg</span>
-          </div>
-          <span class="product_card__price">$18</span>
-        </div>
+        {{/each}}
       </div>
       <div class="products_block__bill bill">
         <div class="bill__calculation">
           <div class="calculation__subtotal calculation">
             <span class="subtotal__sign calculation__sign">Subtotal</span>
-            <span class="subtotal_amount calculation__amount">$18</span>
+            <span class="subtotal_amount calculation__amount"></span>
           </div>
           <div class="calculation__taxes calculation">
             <span class="taxes__sign calculation__sign">Taxes</span>
-            <span class="taxes_amount calculation__amount">$1</span>
+            <span class="taxes_amount calculation__amount"></span>
           </div>
         </div>
         <div class="bill__total">
           <span class="bill__total__sign">Total</span>
-          <span class="bill__total__amount">Amount</span>
+          <span class="bill__total__amount"></span>
         </div>
       </div>
     </section>

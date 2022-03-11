@@ -15,3 +15,4 @@ import './product_detail';
 import './category_detail';
 import './checkout';
 import './images';
+import './auto_format_phone_input';
