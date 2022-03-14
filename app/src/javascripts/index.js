@@ -16,3 +16,5 @@ import './category_detail';
 import './checkout';
 import './images';
 import './auto_format_phone_input';
+import './autho_forms_change';
+import './error_message_auth';

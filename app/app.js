@@ -6,15 +6,23 @@ const cookieParser = require('cookie-parser');
 const bp = require('body-parser')
 const logger = require('morgan');
 const hbs = require('hbs');
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+const session = require('express-session')
 
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
-const shopCart = require('./routes/shop_cart');
-const checkout = require('./routes/checkout');
+const shopCartRouter = require('./routes/shop_cart');
+const checkoutRouter = require('./routes/checkout');
+const authorizationRouter = require('./routes/authorization');
 
 const app = express();
 
+app.use(session({
+  secret: 'cat'
+}));
 app.use(cors());
+app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -152,8 +160,10 @@ app.use(bp.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
-app.use('/cart', shopCart);
-app.use('/checkout', checkout);
+app.use('/cart', shopCartRouter);
+app.use('/checkout', checkoutRouter);
+app.use('/authorization', authorizationRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

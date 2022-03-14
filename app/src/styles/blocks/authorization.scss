@@ -1,0 +1,87 @@
+.authorization_page {
+  padding-top: 15%;
+  padding-bottom: 25%;
+  background-color: #F3FAE6;
+
+  .error__message {
+    margin-top: 3px;
+    width: 100%;
+    max-width: 520px;
+    padding: 30px;
+    background-color: rgba(247, 0, 0, 20%);
+    border: none;
+    border-radius: 10px;
+    @include button;
+  }
+
+  .registration {
+    display: none;
+  }
+
+  .autho__block {
+    max-width: 520px;
+  
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 30px;
+      background-color: #60A00C;
+      border: none;
+      border-radius: 10px;
+
+      .form__input {
+        height: 46px;
+        background-color: #F5F5F5;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 20px;
+        @include text;
+        border: none;
+        margin-bottom: 20px;
+
+        &:focus {
+          border-bottom: 1px solid black;
+        }
+  
+        &:invalid:not(:focus):not(:placeholder-shown) {
+          color: #eb5757;
+          border-bottom: 1px solid #eb5757 ;
+        }
+  
+        &:invalid:focus:not(:placeholder-shown) {
+          color: #eb5757;
+          border-bottom: 1px solid #eb5757 ;
+        }
+  
+        &:valid:not(:placeholder-shown) {
+          color: #60A00C;
+          border-bottom: 1px solid #60A00C;
+        }
+      }
+
+      .form__button {
+        width: 100%;
+        max-width: 470px;
+        align-self: center;
+        border: none;
+        padding: 0 5px;
+        background-color: white;
+        height: 46px;
+        @include button;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100%;
+        transition: all 0.5s;
+        color: black;
+        line-height: 46px;
+
+        &-active {
+          color: white;
+          background-color: black;
+        }
+      }
+    }
+  }
+}

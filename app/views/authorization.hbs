@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authorization</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+    </style>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body class="authorization_page grid">
+  <main class="grid grid__item--1--12">
+    <div class="autho__block grid__item--4--9" id="sign_form">
+      <form
+        action="authorization/login"
+        method="POST"
+        class="autho__block__form"
+      >
+        <input
+          required
+          class="form__user_email__input form__input"
+          type="email"
+          name="email"
+          placeholder="email"
+        >
+        <input
+          required
+          class="form__user_password__input form__input"
+          type="text"
+          name="password"
+          placeholder="password"
+        >
+        <button type="submit" class="autho__block__form__sign_in form__button form__button-active">Sign in</button>
+        <button class="autho__block__form__join form__button switch_join">Join</button>
+      </form>
+    </div>
+    <div class="autho__block registration grid__item--4--9" id="registration_form">
+      <form action="authorization/registration" method="POST" class="autho__block__form">
+        <input
+          class="form__user_first_name__input form__input"
+          type="text" name="first_name" 
+          required
+          placeholder="first name"
+          minlength="2"
+        >
+        <input
+          class="form__user_secont_name__input form__input"
+          type="text" name="second_name"
+          required
+          placeholder="second name"
+          minlength="2"
+        >
+        <input
+        class="form__user_tel__input form__input"
+        type="text"
+        name="phone"
+        minlength="16"
+        required
+        placeholder="phone number"
+        >
+        <input
+          class="form__user_email__input form__input"
+          type="email"
+          name="email"
+          required
+          placeholder="email"
+        >
+        <input
+          class="form__user_password__input form__input"
+          type="text"
+          name="password"
+          required
+          placeholder="password"
+          minlength="5"
+        >
+        <button type="submit" class="autho__block__form__join form__button form__button-active">Join</button>
+        <button class="autho__block__form__sign_in sign_in form__button form__button switch_signin">I have an account</button>
+      </form>
+    </div>
+    {{#if error}}
+    <div class="error__message grid__item--4--9">{{error}}</div>
+    {{/if}}
+  </main>
+  <script src="/bundle.js"></script>
+</body>
+</html>

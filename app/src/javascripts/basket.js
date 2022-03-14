@@ -171,7 +171,9 @@ if (document.location.href === 'http://localhost:3000/cart') {
 
 function setCountBasket () {
   let elementCount = document.querySelector('.basket__count');
-  elementCount.innerHTML = `${JSON.parse(localStorage.shop_cart).length}`;
+  if (elementCount) {
+    elementCount.innerHTML = `${JSON.parse(localStorage.shop_cart).length}`;
+  }
 }
 
 setCountBasket();

@@ -5,6 +5,8 @@ const productsHelper = require('./core/productsHelper');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  const { authorization, user } = req.session;
+  console.log(authorization, user);
   function getProducts() {
     const result =  productsHelper.products(10,4);
     return result;
@@ -28,7 +30,9 @@ router.get('/', async function(req, res, next) {
     products: allProducts,
     specialProducts: specialProducts,
     productsDeal: dealProducts,
-    categories: allProducts
+    categories: allProducts,
+    authorization,
+    user,
   });
 });
 
