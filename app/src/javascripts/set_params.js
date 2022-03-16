@@ -52,7 +52,32 @@ const setParam  = (paramName) => (e) => {
       }
     }
     url.search = params;
-    document.location.href = url;
+    // document.location.href = url;
+    async function fetchProdcuts() {
+      const response = await fetch(url, {
+        mode:"cors",
+        method: 'GET',
+      })
+      return response.text();
+    }
+
+    fetchProdcuts().then( html => {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, 'text/html');
+      const productBlock = document.querySelector('.products');
+      productBlock.innerHTML = doc.querySelector('.products').innerHTML;
+
+      const numberOfResults = document.querySelector('.number_of_results');
+      numberOfResults.innerHTML = doc.querySelector('.number_of_results').innerHTML;
+
+      const prodcutsPages = document.querySelector('.products__pages');
+      prodcutsPages.innerHTML = doc.querySelector('.products__pages').innerHTML;
+    });
+    const nextTitle = 'My new page title';
+    const nextState = { additionalInformation: 'Updated the URL with JS' };
+
+    // This will create a new entry in the browser's history, without reloading
+    window.history.pushState(nextState, nextTitle, url);
   } else {
     return;
   }

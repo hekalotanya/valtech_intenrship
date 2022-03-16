@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cabinet</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+    </style>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body class="cabinet_page grid">
+  {{> header_grid }}
+  {{> title_section }}
+  <main class="grid__item--1--12 grid">
+    <div class="main_block__menu grid__item--1--12">
+        <div class="main_block__menu__item--active">My information</div>
+        <div class="main_block__menu__item">My orders</div>
+        <div class="main_block__menu__item">My favorites</div>
+    </div>
+  </main>
+  {{> footer_grid }}
+  {{> copyright }}
+  <script src="/bundle.js"></script>
+</body>
+</html>

@@ -15,6 +15,7 @@ const productsRouter = require('./routes/products');
 const shopCartRouter = require('./routes/shop_cart');
 const checkoutRouter = require('./routes/checkout');
 const authorizationRouter = require('./routes/authorization');
+const cabinetRouter = require('./routes/cabinet');
 
 const app = express();
 
@@ -163,6 +164,7 @@ app.use('/products', productsRouter);
 app.use('/cart', shopCartRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/authorization', authorizationRouter);
+app.use('/cabinet', cabinetRouter);
 
 
 // catch 404 and forward to error handler

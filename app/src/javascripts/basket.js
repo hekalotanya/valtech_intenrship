@@ -1,3 +1,13 @@
+// SET LOCAL STORAGE
+
+if (!localStorage.shop_cart) {
+  localStorage.shop_cart = JSON.stringify([]);
+}
+
+if (!localStorage.quantity) {
+  localStorage.quantity = JSON.stringify({});
+}
+
 
 // OPEN AND UPDATE BASKET 
 
