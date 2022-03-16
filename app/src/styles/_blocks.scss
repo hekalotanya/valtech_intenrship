@@ -1,18 +1,20 @@
-@import './blocks/header.scss';
-@import './blocks/shop_now.scss';
-@import './blocks/categories.scss';
-@import './blocks/best_products.scss';
-@import './blocks/special_products.scss';
-@import './blocks/about.scss';
-@import './blocks/thank_you.scss';
-@import './blocks/news.scss';
-@import './blocks/footer.scss';
-@import './blocks/page.scss';
-@import './blocks/subscribe.scss';
-@import './blocks/deal.scss';
-@import './blocks/footer_grid.scss';
 @import './blocks/grid.scss';
-@import './blocks/header_grid.scss';
+
+@import './blocks/header.scss';
+@import './blocks/footer.scss';
+@import './blocks/footer_hp.scss';
+
+@import './blocks/homepage/shop_now.scss';
+@import './blocks/homepage/categories.scss';
+@import './blocks/homepage/best_products.scss';
+@import './blocks/homepage/special_products.scss';
+@import './blocks/homepage/about.scss';
+@import './blocks/homepage/thank_you.scss';
+@import './blocks/homepage/news.scss';
+@import './blocks/homepage/subscribe.scss';
+@import './blocks/homepage/deal.scss';
+
+
 @import './blocks/products_page.scss';
 @import './blocks/product_detail_page.scss';
 @import './blocks/shop_cart.scss';

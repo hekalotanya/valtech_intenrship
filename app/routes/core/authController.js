@@ -21,8 +21,6 @@ class authController {
 
       const { first_name, second_name, email, phone, password } = req.body;
 
-      console.log(req.body,'req');
-
       let newUser = await usersHelper.userFirst({ email });
       if (newUser) {
         req.session.error = 'User with this login already exists';
@@ -40,13 +38,11 @@ class authController {
         password: hashPassword,
       });
 
-      console.log(newUser,'newUser');
       req.session.user = user;
       req.session.authorization = true;
       res.redirect('/');
 
     } catch (e) {
-      console.log(e);
       res.status(400, {
         message: 'Registration error',
       })
@@ -58,7 +54,6 @@ class authController {
       const { email, password } = req.body;
 
       const user = await usersHelper.userFirst({email});
-      console.log(user);
 
       if (!user) {
         req.session.error = 'User with this login does not exist';
@@ -77,7 +72,6 @@ class authController {
       req.session.authorization = true;
       res.redirect('/');
     } catch (e) {
-      console.log(e);
       res.status(400, {
         message: 'Registration error',
       })

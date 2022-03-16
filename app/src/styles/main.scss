@@ -1,9 +1,9 @@
 @import "reset";
 @import "utils";
 @import "blocks";
-@import "fonts";
 
 * {
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }

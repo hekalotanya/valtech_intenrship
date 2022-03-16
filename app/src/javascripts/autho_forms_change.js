@@ -7,7 +7,6 @@ if (joinButton) {
   joinButton.onclick = (e) => {
     e.preventDefault();
     registrationForm.style.display = 'block';
-    console.log(registrationForm);
     signForm.style.display = 'none';
   }
 }

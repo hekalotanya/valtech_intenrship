@@ -33,7 +33,6 @@ if (document.location.href.includes('http://localhost:3000/checkout')) {
   if (quantityValues) {
     quantityValues.map(value => {
       let key = value.id;
-      console.log(value, value.id);
       value.innerHTML = quantityList[key];
   
       const amountElement = document.querySelector(`.total${key}`);

@@ -58,7 +58,6 @@ router.get('/sort', async function(req, res, next) {
   }
 
   if (price) {
-    console.log(price);
     const priceAmount = price.split('-');
     priceGre = priceAmount[0];
     priceLess = priceAmount[1];

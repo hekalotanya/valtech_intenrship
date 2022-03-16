@@ -67,7 +67,6 @@ function initShowingFunctions() {
         }
       
         localStorage.showing_two_card = JSON.stringify(false);
-        console.log(localStorage.showing_two_card);
       }
       
       if (showingTwoCard) {

@@ -21,7 +21,6 @@ function initEvents() {
     for (let i = 0; i < buttonsDelete.length; i++) {
 
       buttonsDelete[i].onclick = () => {
-        console.log('ckicked');
         let shopList = [...JSON.parse(localStorage.shop_cart)];
         shopList = shopList.filter(product => product !== parseInt(buttonsDelete[i].id));
         localStorage.shop_cart = JSON.stringify(shopList);

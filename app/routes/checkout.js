@@ -54,11 +54,7 @@ router.post('/order', async function(req, res, next) {
       count: parseInt(quantityList[key]),
     }
     const orderProduct = ordersHelper.createOrderProduct(product);
-    console.log(orderProduct);
   }
-
-  console.log(orderResult);
-
 
   res.redirect('/checkout/order');
 });
