@@ -1,3 +1,6 @@
+const basketFile = require('./basket');
+const producFile = require('./product_detail');
+
 const circles = document.querySelector('.color__circles');
 const categories = document.querySelector('.categories__list');
 const sizes = document.querySelector('.sizes');
@@ -53,7 +56,7 @@ const setParam  = (paramName) => (e) => {
     }
     url.search = params;
     // document.location.href = url;
-    async function fetchProdcuts() {
+    async function fetchProducts() {
       const response = await fetch(url, {
         mode:"cors",
         method: 'GET',
@@ -61,7 +64,7 @@ const setParam  = (paramName) => (e) => {
       return response.text();
     }
 
-    fetchProdcuts().then( html => {
+    fetchProducts().then( html => {
       let parser = new DOMParser();
       let doc = parser.parseFromString(html, 'text/html');
       const productBlock = document.querySelector('.products');
@@ -72,6 +75,8 @@ const setParam  = (paramName) => (e) => {
 
       const prodcutsPages = document.querySelector('.products__pages');
       prodcutsPages.innerHTML = doc.querySelector('.products__pages').innerHTML;
+      basketFile.initEvents();
+      producFile.initProductDetail();
     });
     const nextTitle = 'My new page title';
     const nextState = { additionalInformation: 'Updated the URL with JS' };

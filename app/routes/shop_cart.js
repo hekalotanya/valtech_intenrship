@@ -5,31 +5,15 @@ const productsHelper = require('./core/productsHelper');
 
 router.use(cors());
 
-let products;
-
-
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-  let productsCart;
-  if (products) {
-    productsCart = await Promise.all(products);
-  }
-
-  if (productsCart) {
-    res.render('shop_cart',{
-      title: 'Shop Cart',
-      products: productsCart,
-    });
-  } else {
-    res.render('shop_cart',{
-      title: 'Shop Cart',
-      noResult: true,
-    });
-  }
+  res.render('shop_cart',{
+        title: 'Shop Cart',
+  });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
   let cartProducts = [];
   const listOfId = req.body;
 
@@ -43,9 +27,21 @@ router.post('/', function(req, res, next) {
     cartProducts.push(product);
   })
 
-  products = [...cartProducts];
-  res.redirect("/cart");
+  if (cartProducts) {
+    cartProducts = await Promise.all(cartProducts);
+  }
 
+  if (cartProducts) {
+    res.render('shop_cart',{
+      title: 'Shop Cart',
+      products: cartProducts,
+    });
+  } else {
+    res.render('shop_cart',{
+      title: 'Shop Cart',
+      noResult: true,
+    });
+  }
 });
 
 module.exports = router;
