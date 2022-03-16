@@ -1,5 +1,6 @@
 const basketFile = require('./basket');
 const producFile = require('./product_detail');
+const initShowingFunctions = require('./showing_prodcuts');
 
 const circles = document.querySelector('.color__circles');
 const categories = document.querySelector('.categories__list');
@@ -77,6 +78,7 @@ const setParam  = (paramName) => (e) => {
       prodcutsPages.innerHTML = doc.querySelector('.products__pages').innerHTML;
       basketFile.initEvents();
       producFile.initProductDetail();
+      initShowingFunctions.initShowingFunctions();
     });
     const nextTitle = 'My new page title';
     const nextState = { additionalInformation: 'Updated the URL with JS' };
@@ -103,6 +105,7 @@ if (sizes) {
 
 if (pages) {
   pages.onclick = setParam('page');
+  window.scrollTo(window.pageXOffset, 0);
 }
 
 if (priceGre) {

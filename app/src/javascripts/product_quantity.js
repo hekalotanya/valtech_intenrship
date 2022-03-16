@@ -47,4 +47,6 @@ if (document.location.href.includes('http://localhost:3000/products')) {
     }
   }
 
+initQuantityEvents();
+
 export { initQuantityEvents };
