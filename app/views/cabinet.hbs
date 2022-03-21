@@ -24,7 +24,7 @@
     </div>
     <div class="main__block__pages grid__item--1--12 grid">
       <div class="pages__my_information pages__page grid__item--1--12 show">
-        <form action="authorization/registration" method="POST" class="my_information__form form">
+        <form action="cabinet/updateData" method="POST" class="my_information__form form">
         <span class="form__label">Change data</span>
         <input
           class="form__user_name__input form__input"
@@ -51,7 +51,7 @@
         >
         <button type="submit" class="my_information__submit__button form__button">Save</button>
         </form>
-        <form action="authorization/registration" method="POST" class="my_information__form_password form">
+        <form action="cabinet/updatePassword" method="POST" class="my_information__form_password form">
         <span class="form__label">Change password</span>
         <input
           class="form_password__last_password__input form__input"
@@ -68,8 +68,13 @@
           minlength="5"
         >
         <button type="submit" class="my_information__submit_password__button form__button">Save</button>
-      </form>
-
+        </form>
+        {{#if error}}
+        <div class="error__message">{{error}}</div>
+        {{/if}}
+        {{#if success}}
+        <div class="success__message">{{success}}</div>
+        {{/if}}
       </div>
       <div class="pages__my_orders pages__page grid__item--1--12">
         <div class="pages__my_orders__order">

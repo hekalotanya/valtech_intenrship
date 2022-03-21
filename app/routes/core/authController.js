@@ -73,6 +73,8 @@ class authController {
       }
 
       const token = generateAccessToken(user.id, user.role);
+      let updatedUser = await usersHelper.updateUser(user.id, { token });
+      res.cookie('token', token, { maxAge: 900000, httpOnly: true });
       res.redirect('/');
     } catch (e) {
       res.status(400, {
@@ -81,16 +83,19 @@ class authController {
     }
   }
 
-  async logout(req, res) {
+  logout(req, res) {
+    console.log(0);
     try {
-      res.cookie('token', token, { maxAge: 0, httpOnly: true });
+      res.clearCookie('token')
+      console.log(1);
       res.redirect('/authorization');
     }
-
     catch (e) {
       res.status(400, {
         message: 'Registration error',
       })
+
+      console.log(3);
     }
   }
 }
