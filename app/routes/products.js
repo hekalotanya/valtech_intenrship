@@ -3,6 +3,7 @@ const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
 const categoriesHelper = require('./core/categoriesHelper');
+const usersHelper = require('./core/usersHelper');
 
 router.use(cors());
 
@@ -24,6 +25,12 @@ router.get('/', async function(req, res, next) {
   let allProducts = await getProducts();
   let allCategories = await getCategories();
 
+  const { token } = req.cookies;
+
+  let authorization = !!token;
+
+  const user = await usersHelper.userFirst({ token });
+
   res.render('products', {
     products: [...allProducts].slice(0,6),
     firstProduct: 1,
@@ -33,6 +40,8 @@ router.get('/', async function(req, res, next) {
     title: 'Shop List Side Bar',
     priceGre: '0',
     priceLess: '200',
+    user,
+    authorization,
   });
 });
 
@@ -48,6 +57,12 @@ router.get('/sort', async function(req, res, next) {
   let priceGre = 0;
   let priceLess = 200;
   let allCategories = await getCategories();
+
+  const { token } = req.cookies;
+
+  let authorization = !!token;
+
+  const user = await usersHelper.userFirst({ token });
 
   if (params.category_id) {
     params.category_id = parseInt(params.category_id);
@@ -92,7 +107,9 @@ router.get('/sort', async function(req, res, next) {
         lastProduct,
         title: 'Shop List Side Bar',
         priceGre,
-        priceLess
+        priceLess,
+        user,
+        authorization,
       });
   } else {
       res.render('products', {
@@ -101,7 +118,9 @@ router.get('/sort', async function(req, res, next) {
         length: searchProducts.length,
         title: 'Shop List Side Bar',
         priceGre,
-        priceLess
+        priceLess,
+        user,
+        authorization,
       });
     }
 });
@@ -111,6 +130,12 @@ router.get('/sort', async function(req, res, next) {
 /* GET product detail. */
 router.get('/:productId', async function(req, res, next) {
   let product;
+   const { token } = req.cookies;
+
+  let authorization = !!token;
+
+  const user = await usersHelper.userFirst({ token });
+
   function getProduct() {
     const result =  productsHelper.productById(parseInt(req.params.productId));
     return result;
@@ -121,6 +146,8 @@ router.get('/:productId', async function(req, res, next) {
   res.render('product_detail', {
     title: 'Product Detail',
     product,
+    user,
+    authorization,
   });
 });
 

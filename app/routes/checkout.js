@@ -4,12 +4,18 @@ const cors = require('cors');
 router.use(cors());
 const productsHelper = require('./core/productsHelper');
 const ordersHelper = require('./core/ordersHelper');
+const usersHelper = require('./core/usersHelper');
 
 let products;
 let orderId;
 
 router.get('/', async function(req, res, next) {
   let productsCart;
+   const { token } = req.cookies;
+
+  let authorization = !!token;
+
+  const user = await usersHelper.userFirst({ token });
 
   if (products) {
     productsCart = await Promise.all(products);
@@ -20,11 +26,15 @@ router.get('/', async function(req, res, next) {
     res.render('checkout',{
       title: 'Checkout',
       products: productsCart,
+      user,
+      authorization,
     });
   } else {
     res.render('checkout',{
       title: 'Checkout',
       noResult: true,
+      user,
+      authorization,
     });
   }
 });
@@ -59,10 +69,15 @@ router.post('/order', async function(req, res, next) {
   res.redirect('/checkout/order');
 });
 
-router.get('/order', function(req, res, next) {
+router.get('/order', async function(req, res, next) {
+  const { token } = req.cookies;
+
+  let authorization = !!token;
+
   res.render('order', {
     orderId,
     title: 'Checkout',
+    authorization,
   })
 });
 

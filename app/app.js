@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bp = require('body-parser')
 const logger = require('morgan');
 const hbs = require('hbs');
-const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const session = require('express-session')
 
@@ -24,6 +23,7 @@ app.use(session({
 }));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -155,7 +155,6 @@ hbs.registerHelper('page2', (value) => {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 

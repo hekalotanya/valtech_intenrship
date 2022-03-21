@@ -36,13 +36,33 @@ async function userById(id) {
 
 //CREATE USER
 async function createUser(userObject) {
-  const user = await prisma.user.create({ data: userObject })
+  try {
+    const user = await prisma.user.create({ data: userObject })
+    return user;
+  } catch(e) {
+    console.log(e);
+  }}
 
-  return user;
+//UPDATE USER
+async function updateUser(userId, userData) {
+  try {
+    const user = await prisma.user.update({ 
+      where: {
+        id: userId,
+      },
+      data: userData,
+    })
+    return user;
+  } catch(e) {
+    console.log(e);
+}}
+
+
+module.exports = {
+  users,
+  userById,
+  createUser,
+  usersByParams,
+  userFirst,
+  updateUser,
 }
-
-module.exports.users = users;
-module.exports.userById = userById;
-module.exports.createUser = createUser;
-module.exports.usersByParams = usersByParams;
-module.exports.userFirst = userFirst;

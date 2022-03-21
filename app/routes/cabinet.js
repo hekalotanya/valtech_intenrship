@@ -3,11 +3,22 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const usersHelper = require('./core/usersHelper');
 
-
 /* GET cabinet page. */
-router.get('/', function(req, res, next) {
-  console.log('cabinet page')
-  res.render('cabinet', { title: 'Cabinet' });
+router.get('/', async function(req, res, next) {
+  const { token } = req.cookies;
+  let authorization = !!token;
+  
+  try {
+    const user = await usersHelper.userFirst({ token });
+
+    if (user) {
+      res.render('cabinet', { title: 'Cabinet', user, authorization});
+    } 
+  }
+
+  catch(e) {
+    res.send(e)
+  }
 });
 
 

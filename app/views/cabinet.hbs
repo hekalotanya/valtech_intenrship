@@ -30,7 +30,7 @@
           class="form__user_name__input form__input"
           type="text" name="name" 
           required
-          placeholder="full name"
+          value='{{user.name}}'
           minlength="5"
         >
         <input
@@ -39,7 +39,7 @@
           name="phone"
           minlength="16"
           required
-          placeholder="phone number"
+          value='{{user.phone}}'
         >
         <input
           class="form__user_email__input form__input"
@@ -47,7 +47,7 @@
           name="email"
           minlength="5"
           required
-          placeholder="email"
+          value='{{user.email}}'
         >
         <button type="submit" class="my_information__submit__button form__button">Save</button>
         </form>

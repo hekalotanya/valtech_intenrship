@@ -11,7 +11,7 @@ const generateAccessToken = (id, role) => {
     role,
   }
 
-  return jwt.sign(payload, secret, {expiresIn: '24h'});
+  return jwt.sign(payload, secret, { expiresIn: '24h' });
 }
 
 
@@ -31,15 +31,20 @@ class authController {
       const fullName = `${first_name} ${second_name}`;
 
       newUser = await usersHelper.createUser({
-        role: 'member',
         email,
         name: fullName,
         phone,
         password: hashPassword,
       });
 
-      req.session.user = user;
-      req.session.authorization = true;
+      const token = generateAccessToken(newUser.id, newUser.role);
+
+
+      let updatedUser = await usersHelper.updateUser(newUser.id, { token });
+
+      console.log(updatedUser.token);
+
+      res.cookie('token', token, { maxAge: 900000, httpOnly: true });
       res.redirect('/');
 
     } catch (e) {
@@ -68,10 +73,21 @@ class authController {
       }
 
       const token = generateAccessToken(user.id, user.role);
-      req.session.user = user;
-      req.session.authorization = true;
       res.redirect('/');
     } catch (e) {
+      res.status(400, {
+        message: 'Registration error',
+      })
+    }
+  }
+
+  async logout(req, res) {
+    try {
+      res.cookie('token', token, { maxAge: 0, httpOnly: true });
+      res.redirect('/authorization');
+    }
+
+    catch (e) {
       res.status(400, {
         message: 'Registration error',
       })

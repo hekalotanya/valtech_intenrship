@@ -13,9 +13,10 @@ model User {
   role     String   @default("member")
   name     String   @db.VarChar(255)
   email    String   @unique @db.VarChar(255)
-  phone    String?   @db.VarChar(255)
+  phone    String?  @db.VarChar(255)
   password String?
-  Review   Review[]
+  token    String?  
+  reviews  Review[]
 }
 
 model Category {
@@ -59,13 +60,13 @@ model Review {
 
 model Order {
   id          Int             @id @default(autoincrement())
-  user_id     Int?
+  user_id     Int?             @default(1)
   user_name   String
   user_adress String
   user_phone  String
   user_email  String
   products    Order_product[]
-  total_price   Int
+  total_price Int
   date        String
 }
 
@@ -74,6 +75,6 @@ model Order_product {
   product_id Int
   order      Order   @relation(fields: [order_id], references: [id])
   product    Product @relation(fields: [product_id], references: [id])
-  order_id    Int
+  order_id   Int
   count      Int
 }

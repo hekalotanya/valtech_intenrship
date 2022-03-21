@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const productsHelper = require('./core/productsHelper');
+const usersHelper = require('./core/usersHelper');
 
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const { authorization, user } = req.session;
-  console.log(authorization, user);
+  const { token } = req.cookies;
+
+  let authorization = !!token;
+
+  const user = await usersHelper.userFirst({ token });
+
   function getProducts() {
     const result =  productsHelper.products(10,4);
     return result;
@@ -25,6 +30,7 @@ router.get('/', async function(req, res, next) {
   let allProducts = await getProducts();
   let dealProducts = await getDealProducts();
   let specialProducts = await getSpecialProducts();
+
 
   res.render('index', {
     products: allProducts,

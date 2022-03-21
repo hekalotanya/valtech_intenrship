@@ -2,20 +2,32 @@ const express = require('express');
 const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
+const usersHelper = require('./core/usersHelper');
 
 router.use(cors());
 
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-  res.render('shop_cart',{
-        title: 'Shop Cart',
-  });
+  const { token } = req.cookies;
+
+  let authorization = !!token;
+
+  const user = await usersHelper.userFirst({ token });
+
+  res.render('shop_cart',
+    {
+      title: 'Shop Cart',
+      user,
+      authorization,
+    },
+  );
 });
 
 router.post('/', async function(req, res, next) {
   let cartProducts = [];
   const listOfId = req.body;
+  const { authorization, user } = req.session;
 
   async function getProduct(id) {
     const response =  await productsHelper.productById(id);
@@ -35,11 +47,15 @@ router.post('/', async function(req, res, next) {
     res.render('shop_cart',{
       title: 'Shop Cart',
       products: cartProducts,
+      user,
+      authorization,
     });
   } else {
     res.render('shop_cart',{
       title: 'Shop Cart',
       noResult: true,
+      user,
+      authorization,
     });
   }
 });
