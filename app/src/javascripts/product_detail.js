@@ -5,6 +5,7 @@ function initProductDetail() {
     if (e.target.tagName === 'IMG' || e.target.tagName === 'SPAN') {
       const productId = e.currentTarget.id;
       const path = new URL(`http://localhost:3000/products/${productId}`);
+
       document.location.href = path;
     }
   }

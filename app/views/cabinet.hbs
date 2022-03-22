@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="/main.css">
 </head>
 <body class="cabinet_page grid">
+  {{#if error}}
+    <div class="error__message">{{error}}</div>
+  {{/if}}
+  {{#if success}}
+    <div class="success__message">{{success}}</div>
+  {{/if}}
   {{> header_grid }}
   {{> title_section }}
   <main class="grid__item--1--12 grid">
@@ -69,116 +75,30 @@
         >
         <button type="submit" class="my_information__submit_password__button form__button">Save</button>
         </form>
-        {{#if error}}
-        <div class="error__message">{{error}}</div>
-        {{/if}}
-        {{#if success}}
-        <div class="success__message">{{success}}</div>
-        {{/if}}
       </div>
       <div class="pages__my_orders pages__page grid__item--1--12">
-        <div class="pages__my_orders__order">
-          <span class="order__id">#2377373</span>
-          <span class="order__date">15/22/2022</span>
-          <div class="order__product_list">
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
+        {{#each orders}}
+          <div class="pages__my_orders__order">
+            <span class="order__id">#{{this.id}}</span>
+            <span class="order__date">{{this.date}}</span>
+            <div class="order__product_list">
+              {{#each this.products}}
+                <div class="product_list__product">
+                  <img class="product__image" src={{this.product.images.[0].path}} alt="product_img">
+                  <div class="product__information">
+                    <span class="product__information__name">{{this.product.name}}</span>
+                    <span class="product__information__count">{{this.count}}</span>
+                    <span class="product__information__total_price">${{this.total_price}}</span>
+                  </div>
+                </div>
+              {{/each}}
             </div>
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
+            <div class="order__total_price">
+              <span class="order__total_price__title">Totall price</span>
+              <span class="order__total_price__amount">${{this.total_price}}</span>
             </div>
           </div>
-          <div class="order__total_price">
-            <span class="order__total_price__title">Totall price</span>
-            <span class="order__total_price__amount">$200</span>
-          </div>
-        </div>
-        <div class="pages__my_orders__order">
-          <span class="order__id">#2377373</span>
-          <span class="order__date">15/22/2022</span>
-          <div class="order__product_list">
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-          </div>
-          <div class="order__total_price">
-            <span class="order__total_price__title">Totall price</span>
-            <span class="order__total_price__amount">$200</span>
-          </div>
-        </div>
-        <div class="pages__my_orders__order">
-          <span class="order__id">#2377373</span>
-          <span class="order__date">15/22/2022</span>
-          <div class="order__product_list">
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-            <div class="product_list__product">
-              <img class="product__image" src="" alt="product_img">
-              <div class="product__information">
-                <span class="product__information__name">Orange</span>
-                <span class="product__information__count">3</span>
-                <span class="product__information__total_price">$40</span>
-              </div>
-            </div>
-          </div>
-          <div class="order__total_price">
-            <span class="order__total_price__title">Totall price</span>
-            <span class="order__total_price__amount">$200</span>
-          </div>
-        </div>
+        {{/each}}
       </div>
       <div class="pages__my_fav pages__page grid__item--1--12">
          <div class="my__fav__product_card product_card pr__detail" id={{this.id}}>

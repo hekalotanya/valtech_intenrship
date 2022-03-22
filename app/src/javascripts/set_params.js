@@ -10,23 +10,26 @@ const priceGre = document.querySelector('.range-slider_gre');
 const priceLess = document.querySelector('.range-slider_less');
 const url = new URL('http://localhost:3000/products/sort');
 
-const setParam  = (paramName) => (e) => {
+const setParam = (paramName) => (e) => {
   if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') {
     let params = document.location.search;
+
     if (params) {
-      let resultParams = [];
+      const resultParams = [];
+
       if (params.includes(`${paramName}`)) {
-        let splitParams = params.split('&');
+        const splitParams = params.split('&');
 
         splitParams.map(param => {
-          let splitParam = param.split('=');
+          const splitParam = param.split('=');
+
           if (param.includes(`${paramName}`)) {
             if (e.target.id === 'increase') {
               splitParam[1]++;
             } else {
               if (paramName === 'price') {
                 if (priceGre.valueAsNumber < priceLess.valueAsNumber) {
-                  splitParam[1] =  `${priceGre.valueAsNumber}-${priceLess.valueAsNumber}`;
+                  splitParam[1] = `${priceGre.valueAsNumber}-${priceLess.valueAsNumber}`;
                 }
               } else {
                 splitParam[1] = e.target.id;
@@ -35,7 +38,7 @@ const setParam  = (paramName) => (e) => {
           }
           resultParams.push(splitParam.join('='));
         });
-        
+
         params = resultParams.join('&');
       } else {
         if (paramName === 'price') {
@@ -49,14 +52,13 @@ const setParam  = (paramName) => (e) => {
     } else {
       if (paramName === 'price') {
         if (priceGre.valueAsNumber < priceLess.valueAsNumber) {
-          params = `?${paramName}=${priceGre.valueAsNumber}-${priceLess.valueAsNumber}`
+          params = `?${paramName}=${priceGre.valueAsNumber}-${priceLess.valueAsNumber}`;
         }
       } else {
-        params = (e.target.id === 'increase') ? `?${paramName}=4` : `?${paramName}=${e.target.id}`; 
+        params = (e.target.id === 'increase') ? `?${paramName}=4` : `?${paramName}=${e.target.id}`;
       }
     }
     url.search = params;
-    // document.location.href = url;
     async function fetchProducts() {
       const response = await fetch(url, {
         mode:"cors",
@@ -115,5 +117,3 @@ if (priceGre) {
 if (priceLess) {
   priceLess.onchange = setParam('price');
 }
-
-

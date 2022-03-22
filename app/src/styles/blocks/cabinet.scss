@@ -3,34 +3,30 @@
   position: absolute;
 
   .error__message {
-    margin-top: 3px;
-    width: 100%;
-    max-width: 520px;
-    padding: 30px;
-    background-color: rgba(247, 0, 0, 20%);
-    border: none;
-    border-radius: 10px;
-    justify-self: center;
-    @include button;
-
-    @include Phone {
-      grid-column: 2/12;
-    }
-
-  }
-
-  .success__message {
-    height: 60px;
     width: 300px;
-    position: relative;
-    top: 0;
-    right: 0;
+    position: fixed;
+    top: 168px;
+    right: -350px;
     padding: 30px;
     background-color: #88B13E;
     border: none;
     border-radius: 10px;
-    justify-self: center;
     @include button;
+    background-color: rgba(247, 0, 0, 20%);
+    transition: all 1s;   
+  }
+
+  .success__message {
+    width: 300px;
+    position: fixed;
+    top: 168px;
+    right: -350px;
+    padding: 30px;
+    background-color: rgba(136, 177, 62, 20%);
+    border: none;
+    border-radius: 10px;
+    @include button;
+    transition: all 1s;
   }
 
   .main_block__menu {

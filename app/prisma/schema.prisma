@@ -60,7 +60,7 @@ model Review {
 
 model Order {
   id          Int             @id @default(autoincrement())
-  user_id     Int?             @default(1)
+  user_id     Int?
   user_name   String
   user_adress String
   user_phone  String
@@ -77,4 +77,5 @@ model Order_product {
   product    Product @relation(fields: [product_id], references: [id])
   order_id   Int
   count      Int
+  total_price Int?
 }

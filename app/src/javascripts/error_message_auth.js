@@ -2,13 +2,17 @@ const errorMessage = document.querySelector('.error__message');
 const successMessage = document.querySelector('.success__message');
 
 if (errorMessage) {
+  errorMessage.style.right = '12px';
+
   setTimeout(() => {
-    element.style.display = 'none';
-  }, 6000)
+    errorMessage.style.right = '-350px';
+  }, 6000);
 }
 
 if (successMessage) {
+  successMessage.style.right = '12px';
+
   setTimeout(() => {
-    successMessage.style.display = 'none';
-  }, 3000)
+    successMessage.style.right = '-350px';
+  }, 3000);
 }

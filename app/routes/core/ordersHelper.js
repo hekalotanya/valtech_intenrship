@@ -46,8 +46,34 @@ async function createOrderProduct(orderProductObject) {
 }
 
 
+// GET ORDER BY USER ID
+async function ordersByUserId(userId) {
+  const order = await prisma.order.findMany({
+    where: {
+      user_id: userId,
+    },
+    include: {
+      products: true,
+      products: {
+        include: {
+          product: true,
+          product: {
+            include: {
+              images: true,
+            }
+          }
+        }
+      },
+    }
+  })
+
+  return order;
+}
+
+
 module.exports.orders = orders;
 module.exports.orderById = orderById;
 module.exports.createOrder = createOrder;
 module.exports.deleteOrder = deleteOrder;
 module.exports.createOrderProduct = createOrderProduct;
+module.exports.ordersByUserId = ordersByUserId;

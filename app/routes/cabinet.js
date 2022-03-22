@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const usersHelper = require('./core/usersHelper');
+const orderHelper = require('./core/ordersHelper');
 const bcrypt = require('bcryptjs');
 
 /* GET cabinet page. */
 router.get('/', async function(req, res, next) {
   const { token } = req.cookies;
   const { error, success } = req.session;
+  req.session.destroy();
   let authorization = !!token;
   let user;
   
@@ -17,7 +19,8 @@ router.get('/', async function(req, res, next) {
     }
 
     if (user) {
-      res.render('cabinet', { title: 'Cabinet', user, authorization, error, success });
+      const orders = await orderHelper.ordersByUserId(user.id);
+      res.render('cabinet', { title: 'Cabinet', user, authorization, error, success, orders });
     } 
   }
 
@@ -64,11 +67,11 @@ router.post('/updatePassword', async function(req, res, next) {
 
       if (!validPassword) {
         req.session.error = 'Invalid password';
-        req.session.success = 'Data was apdated';
         res.redirect('/cabinet');
       } else {
         const hashPassword = bcrypt.hashSync(new_password, 7);
         const updatedUser = usersHelper.updateUser(user.id, {password: hashPassword});
+        req.session.success = 'Data was apdated';
         res.redirect('/cabinet')
       }
     }

@@ -1,23 +1,23 @@
-const description_link = document.getElementById('nav__item__description');
-const reviews_link = document.getElementById('nav__item__reviews');
+const descriptionLink = document.getElementById('nav__item__description');
+const reviewsLink = document.getElementById('nav__item__reviews');
 
-const text_description = document.getElementById('text__description');
-const text_reviews = document.getElementById('text__reviews');
+const textDescription = document.getElementById('text__description');
+const textReviews = document.getElementById('text__reviews');
 
-if (description_link) {
-  description_link.addEventListener('click', () => {
-    description_link.className = 'reviews_menu__nav__item--isActive';
-    reviews_link.className = 'reviews_menu__nav__item';
-    text_description.className = 'text--isActive';
-    text_reviews.className = 'text';
-  })
+if (descriptionLink) {
+  descriptionLink.addEventListener('click', () => {
+    descriptionLink.className = 'reviews_menu__nav__item--isActive';
+    reviewsLink.className = 'reviews_menu__nav__item';
+    textDescription.className = 'text--isActive';
+    textReviews.className = 'text';
+  });
 }
 
-if (reviews_link) {
-  reviews_link.addEventListener('click', () => {
-    reviews_link.className = 'reviews_menu__nav__item--isActive';
-    description_link.className = 'reviews_menu__nav__item';
-    text_reviews.className = 'text--isActive';
-    text_description.className = 'text';
-  })
+if (reviewsLink) {
+  reviewsLink.addEventListener('click', () => {
+    reviewsLink.className = 'reviews_menu__nav__item--isActive';
+    descriptionLink.className = 'reviews_menu__nav__item';
+    textReviews.className = 'text--isActive';
+    textDescription.className = 'text';
+  });
 }
