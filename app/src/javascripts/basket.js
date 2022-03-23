@@ -69,21 +69,16 @@ function initEvents() {
         const basketCircle = document.querySelector(`.basket__circle${buttonsAdd[i].id}`);
         const basketPath = document.querySelector(`.basket__path${buttonsAdd[i].id}`);
 
-        if (basketCircle && basketPath) {
-          basketCircle.style.fill = '#60A00C';
-          basketPath.style.fill = 'white';
-    
-          setTimeout(() => {
-            basketCircle.style.fill = 'white';
-            basketPath.style.fill = 'black';
-          }, 500);
+        const basketIconBlock = document.querySelector('.basket__block');
+        basketIconBlock.classList.toggle('icon__block--change', true);
+        const iconCircle = document.querySelector(`.basket__circle${buttonsAdd[i].id}`);
+
+        if (iconCircle) {
+          iconCircle.classList.toggle('icon__circle--checked', true);
         }
 
-        const basketIconBlock = document.querySelector('.basket__block');
-        basketIconBlock.style.transform =  'scale(1.5)';
-
         setTimeout(() => {
-          basketIconBlock.style.transform = 'scale(1)';
+          basketIconBlock.classList.toggle('icon__block--change', false);
         }, 2000)
 
         setCountBasket();

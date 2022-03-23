@@ -2,6 +2,7 @@ const usersHelper = require('../core/usersHelper');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const favouriteHelper = require('../core/favouriteHelper');
 
 const { secret } = require('../config');
 
@@ -20,6 +21,7 @@ class authController {
     try {
 
       const { first_name, second_name, email, phone, password } = req.body;
+      const favouritesCount = 0
 
       let newUser = await usersHelper.userFirst({ email });
       if (newUser) {
@@ -45,6 +47,7 @@ class authController {
       console.log(updatedUser.token);
 
       res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+      res.cookie('favouritesCount', favouritesCount, { maxAge: 900000, httpOnly: true });
       res.redirect('/');
 
     } catch (e) {
@@ -57,8 +60,9 @@ class authController {
   async login(req, res) {
     try {
       const { email, password } = req.body;
-
       const user = await usersHelper.userFirst({email});
+      const favourites = await favouriteHelper.favouritesByUserId(user.id);
+      const favouritesCount = favourites.length;
 
       if (!user) {
         req.session.error = 'User with this login does not exist';
@@ -75,6 +79,7 @@ class authController {
       const token = generateAccessToken(user.id, user.role);
       let updatedUser = await usersHelper.updateUser(user.id, { token });
       res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+      res.cookie('favouritesCount', favouritesCount, { maxAge: 900000, httpOnly: true });
       res.redirect('/');
     } catch (e) {
       res.status(400, {

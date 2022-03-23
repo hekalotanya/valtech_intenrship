@@ -2,14 +2,17 @@ const express = require('express');
 const router = express.Router();
 const productsHelper = require('./core/productsHelper');
 const usersHelper = require('./core/usersHelper');
+const favouriteHelper = require('./core/favouriteHelper');
 
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const { token } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
+  if (!favouritesCount) {
+    favouritesCount = 0;
+  }
 
   let authorization = !!token;
-
   const user = await usersHelper.userFirst({ token });
 
   function getProducts() {
@@ -39,7 +42,9 @@ router.get('/', async function(req, res, next) {
     categories: allProducts,
     authorization,
     user,
+    favouritesCount,
   });
 });
+
 
 module.exports = router;

@@ -3,14 +3,17 @@ const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
 const usersHelper = require('./core/usersHelper');
+const favouriteHelper = require('./core/favouriteHelper');
 
 router.use(cors());
 
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-  const { token } = req.cookies;
-
+  let { token, favouritesCount } = req.cookies;
+  if (!favouritesCount) {
+    favouritesCount = 0;
+  }
   let authorization = !!token;
 
   const user = await usersHelper.userFirst({ token });
@@ -20,6 +23,7 @@ router.get('/', async function(req, res, next) {
       title: 'Shop Cart',
       user,
       authorization,
+      favouritesCount
     },
   );
 });

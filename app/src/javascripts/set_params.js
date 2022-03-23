@@ -1,6 +1,7 @@
 const basketFile = require('./basket');
 const producFile = require('./product_detail');
 const initShowingFunctions = require('./showing_prodcuts');
+const initFavFunctions = require('./fav_funtions');
 
 const circles = document.querySelector('.color__circles');
 const categories = document.querySelector('.categories__list');
@@ -81,6 +82,7 @@ const setParam = (paramName) => (e) => {
       basketFile.initEvents();
       producFile.initProductDetail();
       initShowingFunctions.initShowingFunctions();
+      initFavFunctions.initFunction();
     });
     const nextTitle = 'My new page title';
     const nextState = { additionalInformation: 'Updated the URL with JS' };

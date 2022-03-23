@@ -4,6 +4,7 @@ const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
 const categoriesHelper = require('./core/categoriesHelper');
 const usersHelper = require('./core/usersHelper');
+const favouriteHelper = require('./core/favouriteHelper');
 
 router.use(cors());
 
@@ -25,7 +26,10 @@ router.get('/', async function(req, res, next) {
   let allProducts = await getProducts();
   let allCategories = await getCategories();
 
-  const { token } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
+  if (!favouritesCount) {
+    favouritesCount = 0;
+  }
 
   let authorization = !!token;
 
@@ -42,6 +46,7 @@ router.get('/', async function(req, res, next) {
     priceLess: '200',
     user,
     authorization,
+    favouritesCount,
   });
 });
 
@@ -58,8 +63,7 @@ router.get('/sort', async function(req, res, next) {
   let priceLess = 200;
   let allCategories = await getCategories();
 
-  const { token } = req.cookies;
-
+  const { token, favouritesCount } = req.cookies;
   let authorization = !!token;
 
   const user = await usersHelper.userFirst({ token });
@@ -110,6 +114,7 @@ router.get('/sort', async function(req, res, next) {
         priceLess,
         user,
         authorization,
+        favouritesCount
       });
   } else {
       res.render('products', {
@@ -120,6 +125,7 @@ router.get('/sort', async function(req, res, next) {
         priceGre,
         priceLess,
         user,
+        favouritesCount,
         authorization,
       });
     }
@@ -130,7 +136,10 @@ router.get('/sort', async function(req, res, next) {
 /* GET product detail. */
 router.get('/:productId', async function(req, res, next) {
   let product;
-   const { token } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
+  if (!favouritesCount) {
+    favouritesCount = 0;
+  }
 
   let authorization = !!token;
 
@@ -148,6 +157,7 @@ router.get('/:productId', async function(req, res, next) {
     product,
     user,
     authorization,
+    favouritesCount,
   });
 });
 

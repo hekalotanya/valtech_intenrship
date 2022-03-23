@@ -19,3 +19,4 @@ import './auto_format_phone_input';
 import './autho_forms_change';
 import './error_message_auth';
 import './cabinet_pagination';
+import './fav_funtions';

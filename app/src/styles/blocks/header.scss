@@ -207,8 +207,13 @@
 
       .icon__block {
         position: relative;
+        transform: scale(1);
         transition: all 0.6s;
         cursor: pointer;
+
+        &--change {
+          transform: scale(1.5);
+        }
 
         .icon__count {
           position: absolute;

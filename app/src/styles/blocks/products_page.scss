@@ -1,3 +1,23 @@
+.products_page {
+  .error__message_fav {
+    width: 300px;
+    position: fixed;
+    top: 168px;
+    right: -350px;
+    padding: 30px;
+    background-color: #88B13E;
+    border: none;
+    border-radius: 10px;
+    @include button;
+    background-color: rgba(247, 0, 0, 20%);
+    transition: all 1s;
+    
+    &--active {
+      right: 12px;
+    }
+  }
+}
+
 .title_section {
   padding-left: 100px;
   padding-right: 100px;
@@ -616,6 +636,14 @@
       .icon {
         width: 35px;
         height: 35px;
+
+        .icon__circle {
+          fill: white;
+
+          &--checked {
+            fill: #60A00C;
+          }
+        }
       }
     }
   }

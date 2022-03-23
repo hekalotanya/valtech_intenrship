@@ -3,24 +3,32 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const usersHelper = require('./core/usersHelper');
 const orderHelper = require('./core/ordersHelper');
+const favouriteHelper = require('./core/favouriteHelper');
 const bcrypt = require('bcryptjs');
 
 /* GET cabinet page. */
 router.get('/', async function(req, res, next) {
-  const { token } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
+  if (!favouritesCount) {
+    favouritesCount = 0;
+  }
   const { error, success } = req.session;
   req.session.destroy();
   let authorization = !!token;
   let user;
+  let favourites;
   
   try {
     if (token) {
       user = await usersHelper.userFirst({ token });
+      favourites = await favouriteHelper.favouritesByUserId(user.id);
+      favouritesCount = favourites.length;
     }
 
     if (user) {
       const orders = await orderHelper.ordersByUserId(user.id);
-      res.render('cabinet', { title: 'Cabinet', user, authorization, error, success, orders });
+      const favourites = await favouriteHelper.favouritesByUserId(user.id);
+      res.render('cabinet', { title: 'Cabinet', user, authorization, error, success, orders, favourites, favouritesCount });
     } 
   }
 

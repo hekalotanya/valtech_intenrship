@@ -5,14 +5,17 @@ router.use(cors());
 const productsHelper = require('./core/productsHelper');
 const ordersHelper = require('./core/ordersHelper');
 const usersHelper = require('./core/usersHelper');
+const favouriteHelper = require('./core/favouriteHelper');
 
 let products;
 let orderId;
 
 router.get('/', async function(req, res, next) {
   let productsCart;
-   const { token } = req.cookies;
-
+  let { token, favouritesCount } = req.cookies;
+  if (!favouritesCount) {
+    favouritesCount = 0;
+  }
   let authorization = !!token;
 
   const user = await usersHelper.userFirst({ token });
@@ -28,6 +31,7 @@ router.get('/', async function(req, res, next) {
       products: productsCart,
       user,
       authorization,
+      favouritesCount
     });
   } else {
     res.render('checkout',{
@@ -35,6 +39,7 @@ router.get('/', async function(req, res, next) {
       noResult: true,
       user,
       authorization,
+      favouritesCount
     });
   }
 });
@@ -48,8 +53,6 @@ router.post('/order', async function(req, res, next) {
   const { token } = req.cookies;
 
   let authorization = !!token;
-
-  console.log(1);
 
   const user = await usersHelper.userFirst({ token });
 
@@ -97,7 +100,8 @@ router.post('/order', async function(req, res, next) {
 });
 
 router.get('/order', async function(req, res, next) {
-  const { token } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
+  const user = await usersHelper.userFirst({ token });
 
   let authorization = !!token;
 
@@ -105,6 +109,7 @@ router.get('/order', async function(req, res, next) {
     orderId,
     title: 'Checkout',
     authorization,
+    favouritesCount
   })
 });
 
