@@ -28,7 +28,6 @@ router.get('/', async function(req, res, next) {
     res.render('checkout',{
       title: 'Checkout',
       products: productsCart,
-      user,
       authorization,
       favouritesCount
     });
