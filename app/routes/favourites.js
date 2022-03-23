@@ -6,14 +6,15 @@ const jwt = require('jsonwebtoken');
 const { secret } = require('./config');
 
 router.get('/:productId', async function(req, res, next) {
-  const { token } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
   let decoded = jwt.decode(token, secret);
   let favourite;
-
   let authorization = !!token;
 
   if (authorization) {
     favourite = await favouriteHelper.createFavourite({user_id: decoded.id, product_id: parseInt(req.params.productId)});
+    favouritesCount = +favouritesCount + 1;
+    res.cookie('favouritesCount', favouritesCount, { maxAge: 900000, httpOnly: true });
     res.status(304).send() 
   } else {
     res.status(500).send() 
@@ -22,17 +23,20 @@ router.get('/:productId', async function(req, res, next) {
 
 router.get('/delete/:productId', async function(req, res, next) {
   const { token } = req.cookies;
+  let favouritesCount;
   let authorization = !!token;
   let decoded = jwt.decode(token, secret);
+
+  console.log(authorization);
 
   if (authorization) {
     const productId = parseInt(req.params.productId);
     console.log(productId);
-    deletedFavourite = await favouriteHelper.deleteFavourite(decoded.id, productId);
-    res.redirect('/cabinet')
-  } else {
-    res.status(500).send() 
-  }
+    const deletedFavourite = await favouriteHelper.deleteFavourite(decoded.id, productId);
+    favouritesCount = await favouriteHelper.favLengthByUserId(decoded.id);
+    res.cookie('favouritesCount', favouritesCount, { maxAge: 900000, httpOnly: true });
+    res.status(200).send();
+  } 
 });
 
 module.exports = router;

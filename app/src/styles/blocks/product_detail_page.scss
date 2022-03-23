@@ -1,5 +1,23 @@
 .productDetail_page {
 
+  .error__message_fav {
+    width: 300px;
+    position: fixed;
+    top: 168px;
+    right: -350px;
+    padding: 30px;
+    background-color: #88B13E;
+    border: none;
+    border-radius: 10px;
+    @include button;
+    background-color: rgba(247, 0, 0, 50%);
+    transition: all 1s;
+    
+    &--active {
+      right: 12px;
+    }
+  }
+
   .section__product_card {
     padding: 100px 80px;
 

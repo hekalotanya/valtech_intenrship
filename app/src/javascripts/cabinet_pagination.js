@@ -7,6 +7,11 @@ function initPagination() {
   const orders_page = document.querySelector('.pages__my_orders');
   const fav_page = document.querySelector('.pages__my_fav');
 
+
+  const favProducts = document.querySelectorAll('.my__fav__product_card');
+  const orders = document.querySelectorAll('.pages__my_orders__order');
+  const emptyMessage = document.querySelector('.pages__empty_message');
+
   if (inform_button) {
     inform_button.onclick = () => {
       inform_button.classList.toggle('active', true);
@@ -28,6 +33,11 @@ function initPagination() {
       orders_page.classList.toggle('show', true);
       fav_page.classList.toggle('show', false);
       inform_page.classList.toggle('show', false);
+
+      if (!orders.length) {
+        emptyMessage.classList.toggle('pages__empty_message--active', true)
+        orders_page.classList.toggle('show', true);
+      }
     }
   }
 
@@ -40,6 +50,12 @@ function initPagination() {
       fav_page.classList.toggle('show', true);
       inform_page.classList.toggle('show', false);
       orders_page.classList.toggle('show', false);
+
+
+      if (!favProducts.length) {
+        emptyMessage.classList.toggle('pages__empty_message--active', true)
+        fav_page.classList.toggle('show', false);
+      }
     }
   }
 }

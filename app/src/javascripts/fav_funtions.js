@@ -1,7 +1,9 @@
-
 function initFunction() {
   const addToFavButtons = [...document.querySelectorAll('.fav')];
   const deleteFromFavButtons = [...document.querySelectorAll('.delete_fav')]
+
+
+  // FETCH ADD TO FAV
 
   const fetchFav = async (productId) => {
     const response = await fetch(`/favourites/${productId}`);
@@ -35,11 +37,12 @@ function initFunction() {
     }
   })
 
+
+  // DELETE FROM FAV
+
   deleteFromFavButtons.map(button => {
     button.onclick = async () => {
       const productId = button.id;
-      console.log(productId);
-
       const favCountElement = document.querySelector('.fav__count');
       favCountElement.innerHTML = parseInt(favCountElement.innerHTML) - 1;
       
@@ -50,7 +53,18 @@ function initFunction() {
       }
 
       fetchFavDelete(productId).then(res => {
-        console.log(res);
+        const favProducts = [...document.querySelectorAll('.my__fav__product_card')];
+        favProducts.map(element => {
+          if (element.id === productId) {
+            element.remove();
+            if (favProducts.length === 1) {
+              const fav_page = document.querySelector('.pages__my_fav');
+              const emptyMessage = document.querySelector('.pages__empty_message');
+              emptyMessage.classList.toggle('pages__empty_message--active', true)
+              fav_page.classList.toggle('show', false);
+            }
+          }
+        });
       })
     };
   }) 

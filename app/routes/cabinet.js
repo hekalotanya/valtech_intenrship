@@ -28,7 +28,6 @@ router.get('/', async function(req, res, next) {
 
     if (user) {
       const orders = await orderHelper.ordersByUserId(user.id);
-      const favourites = await favouriteHelper.favouritesByUserId(user.id);
       res.render('cabinet', { title: 'Cabinet', user, authorization, error, success, orders, favourites, favouritesCount });
     } 
   }

@@ -24,9 +24,9 @@
   {{> title_section }}
   <main class="grid__item--1--12 grid">
     <div class="main_block__menu grid__item--1--12">
-        <div class="main_block__menu__item item__information active">My information</div>
-        <div class="main_block__menu__item item__orders">My orders</div>
-        <div class="main_block__menu__item item__fav">My favorites</div>
+        <div class="main_block__menu__item item__information active">Information</div>
+        <div class="main_block__menu__item item__orders">Orders</div>
+        <div class="main_block__menu__item item__fav">Favorites</div>
     </div>
     <div class="main__block__pages grid__item--1--12 grid">
       <div class="pages__my_information pages__page grid__item--1--12 show">
@@ -102,7 +102,7 @@
       </div>
       <div class="pages__my_fav pages__page grid__item--1--12">
          {{#each favourites}}
-            <div class="my__fav__product_card product_card pr__detail" id={{this.id}}>
+            <div class="my__fav__product_card product_card pr__detail" id={{this.product.id}}>
                 <img src="{{this.product.images.[0].path}}" alt="" class="product_card__image">
                 <div class="product_card__block">
                   <div class="product_card__text text">
@@ -156,6 +156,9 @@
                 </div>
             </div>
          {{/each}}
+      </div>
+      <div class="pages__empty_message grid__item--1--12">
+        <span class="message">It's empty :(</span>
       </div>
     </div>
   </main>

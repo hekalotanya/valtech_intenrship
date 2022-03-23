@@ -9,7 +9,7 @@
     border: none;
     border-radius: 10px;
     @include button;
-    background-color: rgba(247, 0, 0, 20%);
+    background-color: rgba(247, 0, 0, 50%);
     transition: all 1s;
     
     &--active {

@@ -60,8 +60,21 @@ async function favouritesByUserId(userId) {
 }
 
 
+// GET FAVORUTES LENGTH BY USER ID
+async function favLengthByUserId(userId) {
+  const favourites = await prisma.favourite.findMany({
+    where: {
+      user_id: userId,
+    },
+  })
+
+  return favourites.length;
+}
+
+
 module.exports.getAllFavourites = getAllFavourites;
 module.exports.getFavouriteById = getFavouriteById;
 module.exports.createFavourite = createFavourite;
 module.exports.deleteFavourite = deleteFavourite;
 module.exports.favouritesByUserId = favouritesByUserId;
+module.exports.favLengthByUserId = favLengthByUserId;

@@ -61,12 +61,10 @@ class authController {
     try {
       const { email, password } = req.body;
       const user = await usersHelper.userFirst({email});
-      let favourites;
       let favouritesCount;
 
        if (user) {
-        favourites = await favouriteHelper.favouritesByUserId(user.id);
-        favouritesCount = favourites.length;
+        favouritesCount = await favouriteHelper.favLengthByUserId(user.id);
        }
 
       if (!user) {
