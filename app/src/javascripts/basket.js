@@ -1,4 +1,5 @@
 const initQuanity = require('./product_quantity');
+import { API_URL } from './helpers';
 
 function initEvents() {
 
@@ -64,18 +65,9 @@ function initEvents() {
         }
         localStorage.shop_cart = JSON.stringify(shopList);
         localStorage.quantity = JSON.stringify(quantityList);
-        console.log(localStorage.quantity);
-
-        const basketCircle = document.querySelector(`.basket__circle${buttonsAdd[i].id}`);
-        const basketPath = document.querySelector(`.basket__path${buttonsAdd[i].id}`);
 
         const basketIconBlock = document.querySelector('.basket__block');
         basketIconBlock.classList.toggle('icon__block--change', true);
-        const iconCircle = document.querySelector(`.basket__circle${buttonsAdd[i].id}`);
-
-        if (iconCircle) {
-          iconCircle.classList.toggle('icon__circle--checked', true);
-        }
 
         setTimeout(() => {
           basketIconBlock.classList.toggle('icon__block--change', false);
@@ -103,7 +95,7 @@ function initEvents() {
 
   // GET TOTAL SUMM
 
-  if (document.location.href === 'http://localhost:3000/cart') {
+  if (document.location.href === (`${API_URL}cart`)) {
     const quantityBlocks = document.querySelectorAll('.quantity__block');
 
     for (let i = 0; i < quantityBlocks.length; i++) {
@@ -127,7 +119,7 @@ function initEvents() {
   // SET QUANTITY
 
 
-  if (document.location.href === 'http://localhost:3000/cart') {
+  if (document.location.href === `${API_URL}cart`) {
     const quantityValues = [...document.querySelectorAll('.quantity__block__value')];
     const quantityList = JSON.parse(localStorage.quantity);
 
@@ -165,7 +157,7 @@ const buttonUpdate = document.querySelector('.cart_menu__buttons__update');
 
 function loadBasketPage () {
   async function fetchBasket() {
-    const response = await fetch('http://localhost:3000/cart', {
+    const response = await fetch(`${API_URL}cart`, {
       mode:"cors",
       method: 'POST',
       headers: {
@@ -195,7 +187,7 @@ if (page) {
 if (buttonsCart) {
   for (let i = 0; i < buttonsCart.length; i++) {
     buttonsCart[i].onclick = () => {
-      document.location.href = 'http://localhost:3000/cart';
+      document.location.href = `${API_URL}cart`;
     }
   }
 }
@@ -207,7 +199,7 @@ if (buttonUpdate) {
 // MESSAGE FOR EMPTY CART
 const cartElement = document.querySelector('.cart_list');
 const menuElement = document.querySelector('.cart_list__names_of_column');
-if (document.location.href === 'http://localhost:3000/cart') {
+if (document.location.href === `${API_URL}cart`) {
   if (JSON.parse(localStorage.shop_cart).length === 0) {
     const message = document.createElement('span');
     message.className = 'cart__message grid__item--1--12';

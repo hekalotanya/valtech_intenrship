@@ -16,12 +16,9 @@ router.get('/', async function(req, res, next) {
   }
   let authorization = !!token;
 
-  const user = await usersHelper.userFirst({ token });
-
   res.render('shop_cart',
     {
       title: 'Shop Cart',
-      user,
       authorization,
       favouritesCount
     },

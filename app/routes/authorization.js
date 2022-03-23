@@ -1,13 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-const usersHelper = require('./core/usersHelper');
 const controller = require('./core/authController');
-const { check } = require('express-validator');
-
-
-const accessTokenSecret = 'ilakvngsxldbfwmibmyksecret';
 
 router.use(bodyParser.json());
 

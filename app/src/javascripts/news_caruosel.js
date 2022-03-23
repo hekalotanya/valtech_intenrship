@@ -1,4 +1,6 @@
-if (document.location.href === 'http://localhost:3000/') {
+import { API_URL } from './helpers';
+
+if (document.location.href === `${API_URL}`) {
   // переменные для секции categories
 
   const newsImages = document.querySelectorAll('.post_block__caruosel .post');

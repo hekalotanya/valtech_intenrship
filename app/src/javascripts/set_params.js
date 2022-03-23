@@ -1,3 +1,5 @@
+import { API_URL } from './helpers';
+
 const basketFile = require('./basket');
 const producFile = require('./product_detail');
 const initShowingFunctions = require('./showing_prodcuts');
@@ -9,9 +11,10 @@ const sizes = document.querySelector('.sizes');
 const pages = document.querySelector('.products__pages');
 const priceGre = document.querySelector('.range-slider_gre');
 const priceLess = document.querySelector('.range-slider_less');
-const url = new URL('http://localhost:3000/products/sort');
+const url = new URL(`${API_URL}products/sort`);
 
 const setParam = (paramName) => (e) => {
+  console.log(paramName);
   if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') {
     let params = document.location.search;
 
@@ -109,8 +112,11 @@ if (sizes) {
 
 if (pages) {
   pages.onclick = setParam('page');
-  window.scrollTo(window.pageXOffset, 0);
+  pages.addEventListener('click', (e) => {
+    window.scrollTo(0, 0);
+  })
 }
+
 
 if (priceGre) {
   priceGre.onchange = setParam('price');

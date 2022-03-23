@@ -20,3 +20,4 @@ import './autho_forms_change';
 import './error_message_auth';
 import './cabinet_pagination';
 import './fav_funtions';
+import './helpers';

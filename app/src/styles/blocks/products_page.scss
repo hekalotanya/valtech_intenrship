@@ -640,7 +640,7 @@
         .icon__circle {
           fill: white;
 
-          &--checked {
+          &:active {
             fill: #60A00C;
           }
         }
@@ -651,6 +651,7 @@
   &__pages {
     display: flex;
     gap: 15px;
+    margin-top: 20px;
 
     .page {
       width: 45px;

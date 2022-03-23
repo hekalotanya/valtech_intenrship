@@ -356,6 +356,22 @@
           .icon {
             width: 35px;
             height: 35px;
+
+            .circle__delete_fav {
+              fill: #60A00C;
+    
+              &:active {
+                fill: white;
+              }
+            }
+
+            .icon__circle {
+              fill: white;
+    
+              &:active {
+                fill: #60A00C;
+              }
+            }
           }
         }
       }

@@ -13,7 +13,6 @@ router.get('/', async function(req, res, next) {
   }
 
   let authorization = !!token;
-  const user = await usersHelper.userFirst({ token });
 
   function getProducts() {
     const result =  productsHelper.products(10,4);
@@ -41,7 +40,6 @@ router.get('/', async function(req, res, next) {
     productsDeal: dealProducts,
     categories: allProducts,
     authorization,
-    user,
     favouritesCount,
   });
 });

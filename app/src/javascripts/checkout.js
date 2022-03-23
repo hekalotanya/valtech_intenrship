@@ -1,11 +1,12 @@
+import { API_URL } from './helpers';
 
 // GET CHECKOUT PAGE
-if (document.location.href.includes('http://localhost:3000/cart')) {
+if (document.location.href.includes(`${API_URL}cart`)) {
   const button = document.querySelector('.cart_menu__totals__checkout');
   button.onclick = () => {
     if (JSON.parse(localStorage.shop_cart).length) {
       async function fetchCheckout() {
-        const response = await fetch('http://localhost:3000/checkout', {
+        const response = await fetch(`${API_URL}checkout`, {
           mode: 'cors',
           method: 'POST',
           headers: {
@@ -24,7 +25,7 @@ if (document.location.href.includes('http://localhost:3000/cart')) {
 
 // SET QUANTITY
 
-if (document.location.href.includes('http://localhost:3000/checkout')) {
+if (document.location.href.includes(`${API_URL}checkout`)) {
   const quantityValues = [...document.querySelectorAll('.des__count')];
   const quantityList = JSON.parse(localStorage.quantity);
 
@@ -56,7 +57,7 @@ if (document.location.href.includes('http://localhost:3000/checkout')) {
 }
 
 // SENT ORDER
-if (document.location.href.includes('http://localhost:3000/checkout')) {
+if (document.location.href.includes(`${API_URL}checkout`)) {
   const form = document.querySelector('.checkout_page__form_block');
   if (form) {
     form.onsubmit = (event) => {
@@ -73,7 +74,7 @@ if (document.location.href.includes('http://localhost:3000/checkout')) {
 
       if (JSON.parse(localStorage.shop_cart).length) {
         async function sentOrder() {
-          const response = await fetch('http://localhost:3000/checkout/order', {
+          const response = await fetch(`${API_URL}checkout/order`, {
             mode: 'cors',
             method: 'POST',
             headers: {

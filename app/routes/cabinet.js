@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 const usersHelper = require('./core/usersHelper');
 const orderHelper = require('./core/ordersHelper');
 const favouriteHelper = require('./core/favouriteHelper');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { secret } = require('./config');
 
 /* GET cabinet page. */
 router.get('/', async function(req, res, next) {
@@ -44,8 +45,8 @@ router.post('/updateData', async function(req, res, next) {
   
   try {
     if (authorization) {
-      const user = await usersHelper.userFirst({ token });
-      const updatedUser = usersHelper.updateUser(user.id, {name, phone, email});
+      let decoded = jwt.decode(token, secret);
+      const updatedUser = usersHelper.updateUser(decoded.id, {name, phone, email});
       req.session.success = 'Data was apdated';
       res.redirect('/cabinet')
     }
@@ -65,12 +66,7 @@ router.post('/updatePassword', async function(req, res, next) {
   
   try {
     if (authorization) {
-      user = await usersHelper.userFirst({ token });
-  
-      if (!user) {
-        res.send('error');
-      }
-
+      let decoded = jwt.decode(token, secret);
       const validPassword = bcrypt.compareSync(password, user.password);
 
       if (!validPassword) {
@@ -78,7 +74,7 @@ router.post('/updatePassword', async function(req, res, next) {
         res.redirect('/cabinet');
       } else {
         const hashPassword = bcrypt.hashSync(new_password, 7);
-        const updatedUser = usersHelper.updateUser(user.id, {password: hashPassword});
+        const updatedUser = usersHelper.updateUser(decoded.id, {password: hashPassword});
         req.session.success = 'Data was apdated';
         res.redirect('/cabinet')
       }

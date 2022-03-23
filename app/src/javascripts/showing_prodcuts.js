@@ -1,5 +1,7 @@
+import { API_URL } from './helpers';
+
 function initShowingFunctions() {
-  if (document.location.href.includes('http://localhost:3000/products')) {
+  if (document.location.href.includes(`${API_URL}products`)) {
     const showingTwoCard = document.querySelector('.sorting_two');
     const showingOneCard = document.querySelector('.sorting_list');
 

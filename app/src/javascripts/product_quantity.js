@@ -1,5 +1,7 @@
+import { API_URL } from './helpers';
+
 function initQuantityEvents() {
-  if (document.location.href === 'http://localhost:3000/cart') {
+  if (document.location.href === `${API_URL}cart`) {
     const decrease = document.querySelectorAll('.quantity__block__decrease');
     const increase = document.querySelectorAll('.quantity__block__increase');
 
@@ -27,7 +29,7 @@ function initQuantityEvents() {
   }
 }
 
-if (document.location.href.includes('http://localhost:3000/products')) {
+if (document.location.href.includes(`${API_URL}products`)) {
   const value = document.querySelector('.quantity__block__value');
   const decrease = document.querySelector('.quantity__block__decrease');
   const increase = document.querySelector('.quantity__block__increase');

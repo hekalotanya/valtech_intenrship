@@ -33,8 +33,6 @@ router.get('/', async function(req, res, next) {
 
   let authorization = !!token;
 
-  const user = await usersHelper.userFirst({ token });
-
   res.render('products', {
     products: [...allProducts].slice(0,6),
     firstProduct: 1,
@@ -44,7 +42,6 @@ router.get('/', async function(req, res, next) {
     title: 'Shop List Side Bar',
     priceGre: '0',
     priceLess: '200',
-    user,
     authorization,
     favouritesCount,
   });
@@ -66,7 +63,6 @@ router.get('/sort', async function(req, res, next) {
   const { token, favouritesCount } = req.cookies;
   let authorization = !!token;
 
-  const user = await usersHelper.userFirst({ token });
 
   if (params.category_id) {
     params.category_id = parseInt(params.category_id);
@@ -112,7 +108,6 @@ router.get('/sort', async function(req, res, next) {
         title: 'Shop List Side Bar',
         priceGre,
         priceLess,
-        user,
         authorization,
         favouritesCount
       });
@@ -124,7 +119,6 @@ router.get('/sort', async function(req, res, next) {
         title: 'Shop List Side Bar',
         priceGre,
         priceLess,
-        user,
         favouritesCount,
         authorization,
       });
@@ -143,8 +137,6 @@ router.get('/:productId', async function(req, res, next) {
 
   let authorization = !!token;
 
-  const user = await usersHelper.userFirst({ token });
-
   function getProduct() {
     const result =  productsHelper.productById(parseInt(req.params.productId));
     return result;
@@ -155,7 +147,6 @@ router.get('/:productId', async function(req, res, next) {
   res.render('product_detail', {
     title: 'Product Detail',
     product,
-    user,
     authorization,
     favouritesCount,
   });

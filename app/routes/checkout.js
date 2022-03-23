@@ -6,7 +6,8 @@ const productsHelper = require('./core/productsHelper');
 const ordersHelper = require('./core/ordersHelper');
 const usersHelper = require('./core/usersHelper');
 const favouriteHelper = require('./core/favouriteHelper');
-
+const jwt = require('jsonwebtoken');
+const { secret } = require('./config');
 let products;
 let orderId;
 
@@ -17,8 +18,6 @@ router.get('/', async function(req, res, next) {
     favouritesCount = 0;
   }
   let authorization = !!token;
-
-  const user = await usersHelper.userFirst({ token });
 
   if (products) {
     productsCart = await Promise.all(products);
@@ -37,7 +36,6 @@ router.get('/', async function(req, res, next) {
     res.render('checkout',{
       title: 'Checkout',
       noResult: true,
-      user,
       authorization,
       favouritesCount
     });
@@ -101,7 +99,6 @@ router.post('/order', async function(req, res, next) {
 
 router.get('/order', async function(req, res, next) {
   let { token, favouritesCount } = req.cookies;
-  const user = await usersHelper.userFirst({ token });
 
   let authorization = !!token;
 

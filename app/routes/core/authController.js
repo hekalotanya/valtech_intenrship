@@ -61,8 +61,13 @@ class authController {
     try {
       const { email, password } = req.body;
       const user = await usersHelper.userFirst({email});
-      const favourites = await favouriteHelper.favouritesByUserId(user.id);
-      const favouritesCount = favourites.length;
+      let favourites;
+      let favouritesCount;
+
+       if (user) {
+        favourites = await favouriteHelper.favouritesByUserId(user.id);
+        favouritesCount = favourites.length;
+       }
 
       if (!user) {
         req.session.error = 'User with this login does not exist';

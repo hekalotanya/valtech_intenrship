@@ -1,4 +1,6 @@
-if (document.location.href === 'http://localhost:3000/') {
+import { API_URL } from './helpers';
+
+if (document.location.href === `${API_URL}`) {
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date());
     const seconds = Math.floor((t / 1000) % 60);
