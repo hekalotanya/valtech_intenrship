@@ -20,32 +20,41 @@
     <div class="main_block grid__item--1--12 grid">
       <section class="checkout_page__information_block grid__item--1--8">
       <form class="checkout_page__form_block form_block">
-        <div class="form_block__contact_information contact_information">
-          <div class="contact_information__titles titles">
-            <h2 class="titles__main_title">Contact information</h2>
-            <span class="titles__log_in">Already have an account?
-              <span class="span__log_in">Log in</span>
-            </span>
+        {{#if authorization}}
+        {{else}}
+          <div class="form_block__contact_information contact_information">
+            <div class="contact_information__titles titles">
+              <h2 class="titles__main_title">Contact information</h2>
+              <span class="titles__log_in">Already have an account?
+                <a href="/authorization" class="span__log_in">Log in</a>
+              </span>
+            </div>
+            <input required type="email" name="email" class="contact_information__email form__input" placeholder="Enter your email">
+            <div class="contact_information__checkbox">
+              <input type="checkbox" name="checkbox">
+              <label for="checkbox" class="contact_information__checkbox__label">Keep me up to date on news and exclusive offers</label>
+            </div>
           </div>
-          <input required type="email" name="email" class="contact_information__email form__input" placeholder="Enter your email">
-          <div class="contact_information__checkbox">
-            <input type="checkbox" name="checkbox">
-            <label for="checkbox" class="contact_information__checkbox__label">Keep me up to date on news and exclusive offers</label>
-          </div>
-        </div>
+        {{/if}}
         <div class="form_block__shipping_adress shipping_adress">
         <h2 class="shipping_adress__title">Shipping Adress</h2>
-        <div class="shipping_adress__name">
-          <input required minlength='2' type="text" name="first_name" id="first_name" class="shipping_adress__name__input form__input" placeholder="First name">
-          <input required minlength='2' type="text" name="second_name" id="second_name" class="shipping_adress__name__input form__input" placeholder="Second name">
-        </div>
+        {{#if authorization}}
+        {{else}}
+          <div class="shipping_adress__name">
+            <input required minlength='2' type="text" name="first_name" id="first_name" class="shipping_adress__name__input form__input" placeholder="First name">
+            <input required minlength='2' type="text" name="second_name" id="second_name" class="shipping_adress__name__input form__input" placeholder="Second name">
+          </div>
+        {{/if}}
         <div class="shipping_adress__country">
           <input required minlength='3' type="text" name="country" id="country" placeholder="Country/Region" class="shipping_adress__country__input form__input">
           <input required pattern="[0-9]{3,10}" type="number" name="postcode" id="postcode" placeholder="Postcode" class="shipping_adress__country__input form__input">
         </div>
         <input required minlength='2' type="text" name="city" id="city" placeholder="City" class="shipping_adress__input form__input">
         <input required type="text" minlength='5' pattern="(?=.*\d)(?=.*[a-z]).{8,}" name="adress" id="adress" placeholder="Adress" class="shipping_adress__input form__input">
-        <input required type="text" minlength='16' maxlegth="16" name="phone" id="phone" placeholder="Phone Number" class="shipping_adress__phone__input form__input">
+        {{#if authorization}}
+        {{else}}
+          <input required type="text" minlength='16' maxlegth="16" name="phone" id="phone" placeholder="Phone Number" class="shipping_adress__phone__input form__input">
+        {{/if}}
         </div>
         <button type="submit" class="form_block__submit">PLACE ORDER</button>
     </form>

@@ -42,14 +42,20 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/order', async function(req, res, next) {
+  const { token } = req.cookies;
+  let authorization = !!token;
+  let fullAdress;
+  let fullName;
+
   const { quantityList, email, first_name, second_name, country, postcode, city, adress, phone, totalAmount} = req.body;
-  const fullAdress = `${country}, ${postcode}, city ${city}, ${adress}`;
-  const fullName = `${first_name} ${second_name}`;
+  fullAdress = `${country}, ${postcode}, city ${city}, ${adress}`;
+
+  if (!authorization) {
+    fullName = `${first_name} ${second_name}`;
+  }
+
   const date = new Date();
 
-  const { token } = req.cookies;
-
-  let authorization = !!token;
 
   const user = await usersHelper.userFirst({ token });
 
@@ -78,11 +84,11 @@ router.post('/order', async function(req, res, next) {
 
 
   const orderResult = await ordersHelper.createOrder(order);
+  console.log(orderResult);
   orderId = orderResult;
 
   for (let key in quantityList) {
     const dbProduct = await productsHelper.productById(parseInt(key));
-    console.log(2);
     const total_price = parseInt(quantityList[key]) * dbProduct.price;
     const product = {
       product_id: parseInt(key),

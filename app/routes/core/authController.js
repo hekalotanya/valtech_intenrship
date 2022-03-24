@@ -95,7 +95,7 @@ class authController {
     console.log(0);
     try {
       res.clearCookie('token');
-      res.clearCookie('favouritesCount');
+      res.cookie('favouritesCount', 0, { maxAge: 900000, httpOnly: true });
       res.redirect('/authorization');
     }
     catch (e) {
