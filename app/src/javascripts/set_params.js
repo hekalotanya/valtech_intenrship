@@ -1,4 +1,5 @@
 import { API_URL } from './helpers';
+import { setStylesSort } from './set_style_sort';
 
 const basketFile = require('./basket');
 const producFile = require('./product_detail');
@@ -86,6 +87,7 @@ const setParam = (paramName) => (e) => {
       producFile.initProductDetail();
       initShowingFunctions.initShowingFunctions();
       initFavFunctions.initFunction();
+      setStylesSort();
     });
     const nextTitle = 'My new page title';
     const nextState = { additionalInformation: 'Updated the URL with JS' };

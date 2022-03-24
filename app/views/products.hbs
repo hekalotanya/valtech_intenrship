@@ -71,7 +71,7 @@
           <h1 class="left_side_bar__title">Product categories</h1>
           <div class="categories__list">
             {{#each categories}}
-              <a id="{{this.id}}" class="category_link">{{this.name}}</a>
+              <a id="{{this.id}}" class="category_link category_link{{this.id}}">{{this.name}}</a>
             {{/each}}
           </div>
         </div>
@@ -97,12 +97,12 @@
         <div class="left_side_bar__size">
           <h1 class="left_side_bar__title">Filter by Size</h1>
           <div class="sizes">
-            <a id="1" class="size">1kg</a>
-            <a id="2" class="size">2kg</a>
-            <a id="3"class="size">3kg</a>
-            <a id="5" class="size">5kg</a>
-            <a id="7" class="size">7kg</a>
-            <a  id="8" class="size">8kg</a>
+            <a id="1" class="size size1">1kg</a>
+            <a id="2" class="size size2">2kg</a>
+            <a id="3"class="size size3">3kg</a>
+            <a id="5" class="size size5">5kg</a>
+            <a id="7" class="size size7">7kg</a>
+            <a  id="8" class="size size8">8kg</a>
           </div>
         </div>
       </div>
@@ -181,7 +181,7 @@
                   </defs>
                 </svg>
               </a>
-              <a href="{{this.id}}"" class="icon open">
+              <a href="{{this.id}}" class="icon open">
                 <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g filter="url(#filter0_d_3_5341)">
                   <circle class="icon__circle" cx="21.5" cy="20.5" r="17.5" fill="white"/>

@@ -262,6 +262,10 @@
           text-decoration: none;
           @include text;
           cursor: pointer;
+
+          &--active {
+            color: black;
+          }
         }
       }
 
@@ -438,6 +442,10 @@
           height: 20px;
           border-radius: 100%;
           cursor: pointer;
+
+          &--active {
+            border: 1px solid black;
+          }
         }
 
         .green{
@@ -493,6 +501,10 @@
           text-decoration: none;
           border: 1px solid #ECECEC;
           cursor: pointer;
+
+          &--active {
+            border: 1px solid black;
+          }
         }
       }
     }
@@ -661,6 +673,10 @@
       line-height: 45px;
       cursor: pointer;
       @include button;
+
+      &--active {
+        border: 1px solid black;
+      }
     }
   }
 }
