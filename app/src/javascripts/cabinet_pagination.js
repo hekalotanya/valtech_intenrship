@@ -21,6 +21,7 @@ function initPagination() {
       inform_page.classList.toggle('show', true);
       orders_page.classList.toggle('show', false);
       fav_page.classList.toggle('show', false);
+      emptyMessage.classList.toggle('pages__empty_message--active', false)
     }
   }
 
@@ -33,6 +34,7 @@ function initPagination() {
       orders_page.classList.toggle('show', true);
       fav_page.classList.toggle('show', false);
       inform_page.classList.toggle('show', false);
+      emptyMessage.classList.toggle('pages__empty_message--active', false)
 
       if (!orders.length) {
         emptyMessage.classList.toggle('pages__empty_message--active', true)
@@ -50,6 +52,7 @@ function initPagination() {
       fav_page.classList.toggle('show', true);
       inform_page.classList.toggle('show', false);
       orders_page.classList.toggle('show', false);
+      emptyMessage.classList.toggle('pages__empty_message--active', false)
 
 
       if (!favProducts.length) {

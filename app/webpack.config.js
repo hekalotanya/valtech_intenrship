@@ -10,10 +10,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const plugins = [
-  // new HtmlWebpackPlugin({
-  //   template: './views/index.hbs',
-  // }),
-
   new MiniCssExtractPlugin({
     filename: 'main.css',
   }),

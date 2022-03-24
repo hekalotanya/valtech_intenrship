@@ -38,6 +38,18 @@ async function deleteFavourite(userId, productId) {
   return deletedFavourite;
 }
 
+//FIND FAVORUTE BY PARMS
+async function findFavouriteByParams(userId, productId) {
+  const favourite = await prisma.favourite.findFirst({
+    where: {
+      user_id: userId,
+      product_id: productId,
+    },
+  })
+
+  return favourite;
+}
+
 
 // GET FAVORUTES BY USER ID
 async function favouritesByUserId(userId) {
@@ -78,3 +90,4 @@ module.exports.createFavourite = createFavourite;
 module.exports.deleteFavourite = deleteFavourite;
 module.exports.favouritesByUserId = favouritesByUserId;
 module.exports.favLengthByUserId = favLengthByUserId;
+module.exports.findFavouriteByParams = findFavouriteByParams;

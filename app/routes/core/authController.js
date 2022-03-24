@@ -94,8 +94,8 @@ class authController {
   logout(req, res) {
     console.log(0);
     try {
-      res.clearCookie('token')
-      console.log(1);
+      res.clearCookie('token');
+      res.clearCookie('favouritesCount');
       res.redirect('/authorization');
     }
     catch (e) {

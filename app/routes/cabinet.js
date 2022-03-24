@@ -10,12 +10,17 @@ const { secret } = require('./config');
 /* GET cabinet page. */
 router.get('/', async function(req, res, next) {
   let { token, favouritesCount } = req.cookies;
+  let authorization = !!token;
+
+  if (!authorization) {
+    res.redirect('/authorization');
+  }
+
   if (!favouritesCount) {
     favouritesCount = 0;
   }
   const { error, success } = req.session;
   req.session.destroy();
-  let authorization = !!token;
   let user;
   let favourites;
   
@@ -62,10 +67,12 @@ router.post('/updatePassword', async function(req, res, next) {
   const { password, new_password} = req.body;
   let authorization = !!token;
   let user;
+  let decoded;
   
   try {
     if (authorization) {
-      let decoded = jwt.decode(token, secret);
+      decoded = jwt.decode(token, secret);
+      user = await usersHelper.userById(decoded.id);
       const validPassword = bcrypt.compareSync(password, user.password);
 
       if (!validPassword) {

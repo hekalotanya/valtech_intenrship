@@ -10,7 +10,9 @@ function initFunction() {
 
     if (response.status === 500) {
       const errorMessage = document.querySelector('.error__message_fav');
-      console.log('error');
+      response.json().then(result => {
+        errorMessage.innerHTML = result.error.message;
+      })
       errorMessage.classList.toggle('error__message_fav--active', true);
 
       setTimeout(() => {

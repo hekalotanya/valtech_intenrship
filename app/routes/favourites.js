@@ -12,12 +12,18 @@ router.get('/:productId', async function(req, res, next) {
   let authorization = !!token;
 
   if (authorization) {
+    checkRepeatFav = await favouriteHelper.findFavouriteByParams(decoded.id, parseInt(req.params.productId));
+    if (checkRepeatFav) {
+      res.status(500).send({error: {message: 'It has already been added'}});
+      return;
+    }
+
     favourite = await favouriteHelper.createFavourite({user_id: decoded.id, product_id: parseInt(req.params.productId)});
     favouritesCount = +favouritesCount + 1;
     res.cookie('favouritesCount', favouritesCount, { maxAge: 900000, httpOnly: true });
     res.status(304).send() 
   } else {
-    res.status(500).send() 
+    res.status(500).send({error: {message: 'You must be log in'}});
   }
 });
 
