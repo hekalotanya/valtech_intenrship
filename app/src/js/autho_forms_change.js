@@ -8,7 +8,7 @@ if (joinButton) {
     e.preventDefault();
     registrationForm.style.display = 'block';
     signForm.style.display = 'none';
-  }
+  };
 }
 
 if (signInButton) {
@@ -16,5 +16,5 @@ if (signInButton) {
     e.preventDefault();
     signForm.style.display = 'block';
     registrationForm.style.display = 'none';
-  }
+  };
 }

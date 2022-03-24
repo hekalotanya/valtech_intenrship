@@ -3,6 +3,7 @@ import { API_URL } from './helpers';
 // GET CHECKOUT PAGE
 if (document.location.href.includes(`${API_URL}cart`)) {
   const button = document.querySelector('.cart_menu__totals__checkout');
+
   button.onclick = () => {
     if (JSON.parse(localStorage.shop_cart).length) {
       async function fetchCheckout() {
@@ -10,7 +11,7 @@ if (document.location.href.includes(`${API_URL}cart`)) {
           mode: 'cors',
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: localStorage.shop_cart,
         }).then(res => {
@@ -34,15 +35,18 @@ if (document.location.href.includes(`${API_URL}checkout`)) {
   if (quantityValues) {
     quantityValues.map(value => {
       const key = value.id;
+
       value.innerHTML = quantityList[key];
 
       const amountElement = document.querySelector(`.total${key}`);
       const price = document.querySelector(`.total${key}`);
       const totalPrice = quantityList[key] * parseInt(price.innerHTML);
+
       amountElement.innerHTML = `$${totalPrice}`;
       subtotal += totalPrice;
 
       const subtotalAmount = document.querySelector('.subtotal_amount');
+
       subtotalAmount.innerHTML = `$${subtotal}`;
 
       const taxes = parseInt(subtotal * 0.01);
@@ -52,13 +56,14 @@ if (document.location.href.includes(`${API_URL}checkout`)) {
       const total = subtotal + taxes;
       const totalElement = document.querySelector('.bill__total__amount');
       totalElement.innerHTML = `$${total}`;
-    })
+    });
   }
 }
 
 // SENT ORDER
 if (document.location.href.includes(`${API_URL}checkout`)) {
   const form = document.querySelector('.checkout_page__form_block');
+
   if (form) {
     form.onsubmit = (event) => {
       event.preventDefault();

@@ -6,6 +6,7 @@
   }
 
   const rangeS = parent.querySelectorAll('input[type="range"]'),
+
   numberS = parent.querySelectorAll('input[type="text"]');
 
   rangeS.forEach((el) => {

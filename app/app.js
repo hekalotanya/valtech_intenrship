@@ -3,11 +3,11 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const bp = require('body-parser')
+const bp = require('body-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
-const session = require('express-session')
+const session = require('express-session');
 
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
@@ -20,16 +20,18 @@ const favouritesRouter = require('./routes/favourites');
 const app = express();
 
 app.use(session({
-  secret: 'cat'
+  secret: 'cat',
 }));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(cookieParser())
+app.use(cookieParser());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', '.hbs');
+
 const publicPath = path.join(__dirname, 'dist');
+
 app.use('/', express.static(publicPath));
 
 const helpers = require('./views/helpers');
@@ -50,7 +52,6 @@ app.use('/checkout', checkoutRouter);
 app.use('/authorization', authorizationRouter);
 app.use('/cabinet', cabinetRouter);
 app.use('/favourites', favouritesRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

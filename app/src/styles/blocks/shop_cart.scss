@@ -43,15 +43,11 @@
     padding-bottom: 12px;
 
     @include Phone {
-      display: none
+      display: none;
     }
 
     .name_of_column {
       @include button;
-
-      @include Phone {
-        height: 15px;
-      }
     }
   }
 

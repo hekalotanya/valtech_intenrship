@@ -21,7 +21,6 @@ function initShowingFunctions() {
 
     const productCardButtons = document.querySelectorAll('.product_card__buttons');
 
-
     if (products) {
       function showTwoCards() {
         products.style.flexDirection = 'row';
@@ -72,7 +71,7 @@ function initShowingFunctions() {
 
       if (showingTwoCard) {
         showingTwoCard.addEventListener('click', () => {
-          showTwoCards(); 
+          showTwoCards();
         });
       }
 

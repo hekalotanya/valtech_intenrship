@@ -3,38 +3,36 @@ const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
 const categoriesHelper = require('./core/categoriesHelper');
-const usersHelper = require('./core/usersHelper');
-const favouriteHelper = require('./core/favouriteHelper');
 
 router.use(cors());
 
 function getCategories() {
-  const result =  categoriesHelper.categories();
+  const result = categoriesHelper.categories();
+
   return result;
 }
 
-
-
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-
   function getProducts() {
-    const result =  productsHelper.products();
+    const result = productsHelper.products();
+
     return result;
   }
 
-  let allProducts = await getProducts();
-  let allCategories = await getCategories();
+  const allProducts = await getProducts();
+  const allCategories = await getCategories();
+  let { favouritesCount } = req.cookies;
+  const { token } = req.cookies;
 
-  let { token, favouritesCount } = req.cookies;
   if (!favouritesCount) {
     favouritesCount = 0;
   }
 
-  let authorization = !!token;
+  const authorization = !!token;
 
   res.render('products', {
-    products: [...allProducts].slice(0,6),
+    products: [...allProducts].slice(0, 6),
     firstProduct: 1,
     lastProduct: 6,
     categories: [...allCategories],
@@ -50,19 +48,17 @@ router.get('/', async function(req, res, next) {
 /* GET products with params. */
 router.get('/sort', async function(req, res, next) {
   const { page } = req.query;
-  let { price } = req.query;
-  params = req.query;
+  const { price } = req.query;
+  const params = req.query;
   let searchProducts = [];
-  let limit = 6;
+  const limit = 6;
   let firstProduct = 0;
   let lastProduct = firstProduct + limit;
   let priceGre = 0;
   let priceLess = 200;
-  let allCategories = await getCategories();
-
+  const allCategories = await getCategories();
   const { token, favouritesCount } = req.cookies;
-  let authorization = !!token;
-
+  const authorization = !!token;
 
   if (params.category_id) {
     params.category_id = parseInt(params.category_id);
@@ -74,6 +70,7 @@ router.get('/sort', async function(req, res, next) {
 
   if (price) {
     const priceAmount = price.split('-');
+
     priceGre = priceAmount[0];
     priceLess = priceAmount[1];
   }
@@ -82,10 +79,14 @@ router.get('/sort', async function(req, res, next) {
   delete params.price;
 
   function getProducts() {
-    const result =  productsHelper.productsByParams({ ...params, price: {
-      lte: parseInt(priceLess),
-      gte: parseInt(priceGre),
-    } });
+    const result = productsHelper.productsByParams({
+      ...params,
+      price: {
+        lte: parseInt(priceLess),
+        gte: parseInt(priceGre),
+      },
+    });
+
     return result;
   }
 
@@ -99,50 +100,50 @@ router.get('/sort', async function(req, res, next) {
   }
 
   if (searchProducts.length) {
-      res.render('products', {
-        products: searchProducts.slice(firstProduct,lastProduct),
-        categories: [...allCategories],
-        length: searchProducts.length,
-        firstProduct: firstProduct+1,
-        lastProduct,
-        title: 'Shop List Side Bar',
-        priceGre,
-        priceLess,
-        authorization,
-        favouritesCount
-      });
+    res.render('products', {
+      products: searchProducts.slice(firstProduct, lastProduct),
+      categories: [...allCategories],
+      length: searchProducts.length,
+      firstProduct: firstProduct + 1,
+      lastProduct,
+      title: 'Shop List Side Bar',
+      priceGre,
+      priceLess,
+      authorization,
+      favouritesCount,
+    });
   } else {
-      res.render('products', {
-        noResult: true,
-        categories: [...allCategories],
-        length: searchProducts.length,
-        title: 'Shop List Side Bar',
-        priceGre,
-        priceLess,
-        favouritesCount,
-        authorization,
-      });
-    }
+    res.render('products', {
+      noResult: true,
+      categories: [...allCategories],
+      length: searchProducts.length,
+      title: 'Shop List Side Bar',
+      priceGre,
+      priceLess,
+      favouritesCount,
+      authorization,
+    });
+  }
 });
-
-
 
 /* GET product detail. */
 router.get('/:productId', async function(req, res, next) {
-  let product;
-  let { token, favouritesCount } = req.cookies;
+  let { favouritesCount } = req.cookies;
+  const { token } = req.cookies;
+
   if (!favouritesCount) {
     favouritesCount = 0;
   }
 
-  let authorization = !!token;
+  const authorization = !!token;
 
   function getProduct() {
-    const result =  productsHelper.productById(parseInt(req.params.productId));
+    const result = productsHelper.productById(parseInt(req.params.productId));
+
     return result;
   }
 
-  product = await getProduct();
+  const product = await getProduct();
 
   res.render('product_detail', {
     title: 'Product Detail',
@@ -151,6 +152,5 @@ router.get('/:productId', async function(req, res, next) {
     favouritesCount,
   });
 });
-
 
 module.exports = router;

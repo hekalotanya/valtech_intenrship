@@ -9,8 +9,9 @@ const { secret } = require('./config');
 
 /* GET cabinet page. */
 router.get('/', async function(req, res, next) {
-  let { token, favouritesCount } = req.cookies;
-  let authorization = !!token;
+  let { favouritesCount } = req.cookies;
+  const { token } = req.cookies;
+  const authorization = !!token;
 
   if (!authorization) {
     res.redirect('/authorization');
@@ -19,11 +20,13 @@ router.get('/', async function(req, res, next) {
   if (!favouritesCount) {
     favouritesCount = 0;
   }
+
   const { error, success } = req.session;
-  req.session.destroy();
   let user;
   let favourites;
-  
+
+  req.session.destroy();
+
   try {
     if (token) {
       user = await usersHelper.userFirst({ token });
@@ -33,46 +36,58 @@ router.get('/', async function(req, res, next) {
 
     if (user) {
       const orders = await orderHelper.ordersByUserId(user.id);
-      res.render('cabinet', { title: 'Cabinet', user, authorization, error, success, orders, favourites, favouritesCount });
-    } 
-  }
 
-  catch(e) {
-    res.send(e)
+      res.render('cabinet', {
+        title: 'Cabinet',
+        user,
+        authorization,
+        error,
+        success,
+        orders,
+        favourites,
+        favouritesCount,
+      });
+    }
+  } catch (e) {
+    res.send(e);
   }
 });
 
 router.post('/updateData', async function(req, res, next) {
   const { token } = req.cookies;
-  const { name, phone, email} = req.body;
-  let authorization = !!token;
-  
+  const { name, phone, email } = req.body;
+  const authorization = !!token;
+
   try {
     if (authorization) {
-      let decoded = jwt.decode(token, secret);
-      const updatedUser = usersHelper.updateUser(decoded.id, {name, phone, email});
-      req.session.success = 'Data was apdated';
-      res.redirect('/cabinet')
-    }
-  }
+      const decoded = jwt.decode(token, secret);
 
-  catch(e) {
-    res.send(e)
+      usersHelper.updateUser(decoded.id, {
+        name,
+        phone,
+        email,
+      });
+
+      req.session.success = 'Data was apdated';
+      res.redirect('/cabinet');
+    }
+  } catch (e) {
+    res.send(e);
   }
 });
 
-
 router.post('/updatePassword', async function(req, res, next) {
   const { token } = req.cookies;
-  const { password, new_password} = req.body;
-  let authorization = !!token;
+  const { password, new_password } = req.body;
+  const authorization = !!token;
   let user;
   let decoded;
-  
+
   try {
     if (authorization) {
       decoded = jwt.decode(token, secret);
       user = await usersHelper.userById(decoded.id);
+
       const validPassword = bcrypt.compareSync(password, user.password);
 
       if (!validPassword) {
@@ -80,17 +95,16 @@ router.post('/updatePassword', async function(req, res, next) {
         res.redirect('/cabinet');
       } else {
         const hashPassword = bcrypt.hashSync(new_password, 7);
-        const updatedUser = usersHelper.updateUser(decoded.id, {password: hashPassword});
+
+        usersHelper.updateUser(decoded.id, { password: hashPassword });
+
         req.session.success = 'Data was apdated';
-        res.redirect('/cabinet')
+        res.redirect('/cabinet');
       }
     }
-  }
-
-  catch(e) {
-    res.send(e)
+  } catch (e) {
+    res.send(e);
   }
 });
-
 
 module.exports = router;

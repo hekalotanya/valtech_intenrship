@@ -15,7 +15,6 @@ const priceLess = document.querySelector('.range-slider_less');
 const url = new URL(`${API_URL}products/sort`);
 
 const setParam = (paramName) => (e) => {
-  console.log(paramName);
   if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') {
     let params = document.location.search;
 
@@ -64,24 +63,30 @@ const setParam = (paramName) => (e) => {
       }
     }
     url.search = params;
+
     async function fetchProducts() {
       const response = await fetch(url, {
-        mode:"cors",
+        mode: 'cors',
         method: 'GET',
-      })
+      });
+
       return response.text();
     }
 
-    fetchProducts().then( html => {
-      let parser = new DOMParser();
-      let doc = parser.parseFromString(html, 'text/html');
+    fetchProducts().then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
       const productBlock = document.querySelector('.products');
+
       productBlock.innerHTML = doc.querySelector('.products').innerHTML;
 
       const numberOfResults = document.querySelector('.number_of_results');
-      numberOfResults.innerHTML = doc.querySelector('.number_of_results').innerHTML;
+
+      numberOfResults.innerHTML = doc
+        .querySelector('.number_of_results').innerHTML;
 
       const prodcutsPages = document.querySelector('.products__pages');
+
       prodcutsPages.innerHTML = doc.querySelector('.products__pages').innerHTML;
       basketFile.initEvents();
       producFile.initProductDetail();
@@ -89,16 +94,14 @@ const setParam = (paramName) => (e) => {
       initFavFunctions.initFunction();
       setStylesSort();
     });
+
     const nextTitle = 'My new page title';
     const nextState = { additionalInformation: 'Updated the URL with JS' };
 
     // This will create a new entry in the browser's history, without reloading
     window.history.pushState(nextState, nextTitle, url);
-  } else {
-    return;
-  }
-}
-
+  };
+};
 
 if (circles) {
   circles.onclick = setParam('color');
@@ -114,11 +117,11 @@ if (sizes) {
 
 if (pages) {
   pages.onclick = setParam('page');
+
   pages.addEventListener('click', (e) => {
     window.scrollTo(0, 0);
-  })
+  });
 }
-
 
 if (priceGre) {
   priceGre.onchange = setParam('price');

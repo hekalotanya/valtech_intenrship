@@ -1,10 +1,9 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { LoaderOptionsPlugin } = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 let mode = 'development';
+
 if (process.env.NODE_ENV === 'production') {
   mode = 'production';
 }
@@ -26,10 +25,10 @@ module.exports = {
       fs: false,
       http: false,
       crypto: false,
-      zlib: false
-    }
+      zlib: false,
+    },
   },
-  entry: './src/javascripts/index.js',
+  entry: './src/js/index.js',
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -42,8 +41,11 @@ module.exports = {
   },
 
   module: {
-  	rules: [
-      { test: /\.(hbs)$/, use: ['html-loader'] },
+    rules: [
+      {
+        test: /\.(hbs)$/,
+        use: ['html-loader'],
+      },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -61,8 +63,8 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: 'images',
-          }
-        }]
+          },
+        }],
       },
       {
         test: /\.js$/,
@@ -75,5 +77,5 @@ module.exports = {
         },
       },
     ],
-  }
-}
+  },
+};

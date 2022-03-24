@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const controller = require('./core/authController');
+const controller = require('./authController');
 
 router.use(bodyParser.json());
 
@@ -9,11 +9,11 @@ router.use(bodyParser.json());
 router.get('/', function(req, res, next) {
   const { token } = req.cookies;
   const { error } = req.session;
+
   req.session.destroy();
 
   if (token) {
     res.redirect('/');
-    console.log(token);
   } else {
     res.render('authorization', { error });
   }
@@ -21,6 +21,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', controller.login);
 router.post('/registration', controller.registration);
-router.get('/logout', controller.logout)
+router.get('/logout', controller.logout);
 
 module.exports = router;
