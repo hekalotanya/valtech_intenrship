@@ -22,3 +22,4 @@ import './cabinet_pagination';
 import './fav_funtions';
 import './helpers';
 import './set_style_sort';
+import './add_review';

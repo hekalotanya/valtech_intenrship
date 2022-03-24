@@ -115,42 +115,10 @@
                   </div>
                   <div class="product_card__buttons">
                   <a class="icon delete_fav" id={{this.product.id}}>
-                    <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g filter="url(#filter0_d_3_5350)">
-                      <circle class="circle__delete_fav" cx="21.5" cy="20.5" r="17.5" fill="#60A00C"/>
-                      </g>
-                      <path d="M27.7884 15.5189C27.003 14.6882 25.9631 14.2342 24.8533 14.2342C23.7435 14.2342 22.7004 14.6916 21.915 15.5223L21.5048 15.9561L21.0882 15.5156C20.3027 14.6849 19.2565 14.2241 18.1467 14.2241C17.0401 14.2241 15.997 14.6815 15.2148 15.5088C14.4293 16.3395 13.9968 17.4427 14 18.6164C14 19.7901 14.4357 20.8899 15.2211 21.7206L21.1931 28.0366C21.2758 28.124 21.3871 28.1711 21.4952 28.1711C21.6034 28.1711 21.7147 28.1274 21.7973 28.0399L27.7821 21.734C28.5675 20.9033 29 19.8002 29 18.6265C29.0032 17.4527 28.5739 16.3496 27.7884 15.5189ZM27.1779 21.0917L21.4952 27.0781L15.8253 21.0816C15.202 20.4224 14.8586 19.548 14.8586 18.6164C14.8586 17.6848 15.1989 16.8104 15.8221 16.1546C16.4422 15.4988 17.269 15.1355 18.1467 15.1355C19.0276 15.1355 19.8575 15.4988 20.4808 16.1579L21.1995 16.918C21.368 17.0963 21.6383 17.0963 21.8069 16.918L22.5192 16.1647C23.1425 15.5055 23.9724 15.1423 24.8501 15.1423C25.7278 15.1423 26.5546 15.5055 27.1779 16.1613C27.8011 16.8205 28.1414 17.6949 28.1414 18.6265C28.1446 19.5581 27.8011 20.4325 27.1779 21.0917Z" fill="black"/>
-                      <defs>
-                      <filter id="filter0_d_3_5350" x="0" y="0" width="43" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dy="1"/>
-                      <feGaussianBlur stdDeviation="2"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.623529 0 0 0 0 0.658824 0 0 0 0.15 0"/>
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_5350"/>
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_5350" result="shape"/>
-                      </filter>
-                      </defs>
-                    </svg>
+                    {{> fav_icon}}
                   </a>
                   <a href="products/{{this.product.id}}" class="icon open">
-                    <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g filter="url(#filter0_d_3_5341)">
-                      <circle cx="21.5" cy="20.5" r="17.5" fill="white"/>
-                      </g>
-                      <path d="M28.8687 27.235L25.2234 23.5898C26.2013 22.4656 26.7933 20.9989 26.7933 19.3958C26.7933 15.867 23.923 13 20.3975 13C16.8687 13 14.0017 15.8703 14.0017 19.3958C14.0017 22.9213 16.872 25.7916 20.3975 25.7916C22.0006 25.7916 23.4673 25.1996 24.5915 24.2217L28.2367 27.867C28.3232 27.9534 28.4396 28 28.5527 28C28.6658 28 28.7822 27.9568 28.8687 27.867C29.0416 27.694 29.0416 27.408 28.8687 27.235ZM14.8964 19.3958C14.8964 16.3625 17.3642 13.898 20.3942 13.898C23.4274 13.898 25.892 16.3659 25.892 19.3958C25.892 22.4257 23.4274 24.8969 20.3942 24.8969C17.3642 24.8969 14.8964 22.429 14.8964 19.3958Z" fill="black"/>
-                      <defs>
-                      <filter id="filter0_d_3_5341" x="0" y="0" width="43" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dy="1"/>
-                      <feGaussianBlur stdDeviation="2"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.623529 0 0 0 0 0.658824 0 0 0 0.15 0"/>
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_5341"/>
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_5341" result="shape"/>
-                      </filter>
-                      </defs>
-                    </svg>
+                    {{> open_icon}}
                   </a>
                   </div>
                 </div>

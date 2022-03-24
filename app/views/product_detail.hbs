@@ -15,7 +15,8 @@
 </head>
 <body class="productDetail_page grid">
   {{> header_grid }}
-  <div class="error__message_fav">You must log in</div>
+  <div class="error__message_fav error__message_review">You must log in</div>
+  <div class="success__message_review">Review was added</div>
   <main class="grid grid__item--1--12">
     {{> title_section }}
     <div class="section__product_card grid__item--1--12 grid">
@@ -63,10 +64,17 @@
           <div class="reviews_menu__text">
             <div class="text--isActive" id="text__description">{{product.description}}</div>
             <div class="text" id="text__reviews">
-              {{product.reviews.[0].body}}
+              {{#each product.reviews}}
+                <div class="review__user">{{this.user.name}}</div>
+                {{this.body}}
+              {{/each}}
             </div>
           </div>
         </div>
+        <form action="/review" class="description__review_form review_form" method="POST" id={{product.id}}>
+            <textarea required class="review_form__input" name="review_body" cols="30" rows="10" placeholder="Leave your review..."></textarea>
+            <button type="submit" class="review_form__submit">Send a review</button>
+        </form>
       </div>
     </div>
   </main>

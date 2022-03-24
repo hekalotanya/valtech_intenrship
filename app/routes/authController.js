@@ -16,7 +16,7 @@ const generateAccessToken = (id, role) => {
 class AuthController {
   async registration(req, res) {
     try {
-      const { firstName, secondName, email, phone, password } = req.body;
+      const { first_name, second_name, email, phone, password } = req.body;
       const favouritesCount = 0;
       let newUser = await usersHelper.userFirst({ email });
 
@@ -26,7 +26,7 @@ class AuthController {
       }
 
       const hashPassword = bcrypt.hashSync(password, 7);
-      const fullName = `${firstName} ${secondName}`;
+      const fullName = `${first_name} ${second_name}`;
 
       newUser = await usersHelper.createUser({
         email,

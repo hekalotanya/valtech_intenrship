@@ -34,7 +34,7 @@ function initFunction() {
   };
 
   addToFavButtons.map(button => {
-    button.onclick = async () => {
+    button.onclick = async() => {
       const productId = button.id;
 
       fetchFav(productId);
@@ -67,7 +67,7 @@ function initFunction() {
               const favPage = document.querySelector('.pages__my_fav');
               const emptyMessage = document.querySelector('.pages__empty_message');
 
-              emptyMessage.classList.toggle('pages__empty_message--active', true)
+              emptyMessage.classList.toggle('pages__empty_message--active', true);
               favPage.classList.toggle('show', false);
             }
           }

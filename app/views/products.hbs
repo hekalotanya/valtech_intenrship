@@ -124,43 +124,10 @@
               </div>
               <div class="product_card__buttons">
               <a class="icon fav" id={{this.id}}>
-                <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g filter="url(#filter0_d_3_5350)">
-                  <circle class="icon__circle" cx="21.5" cy="20.5" r="17.5" fill="white"/>
-                  </g>
-                  <path d="M27.7884 15.5189C27.003 14.6882 25.9631 14.2342 24.8533 14.2342C23.7435 14.2342 22.7004 14.6916 21.915 15.5223L21.5048 15.9561L21.0882 15.5156C20.3027 14.6849 19.2565 14.2241 18.1467 14.2241C17.0401 14.2241 15.997 14.6815 15.2148 15.5088C14.4293 16.3395 13.9968 17.4427 14 18.6164C14 19.7901 14.4357 20.8899 15.2211 21.7206L21.1931 28.0366C21.2758 28.124 21.3871 28.1711 21.4952 28.1711C21.6034 28.1711 21.7147 28.1274 21.7973 28.0399L27.7821 21.734C28.5675 20.9033 29 19.8002 29 18.6265C29.0032 17.4527 28.5739 16.3496 27.7884 15.5189ZM27.1779 21.0917L21.4952 27.0781L15.8253 21.0816C15.202 20.4224 14.8586 19.548 14.8586 18.6164C14.8586 17.6848 15.1989 16.8104 15.8221 16.1546C16.4422 15.4988 17.269 15.1355 18.1467 15.1355C19.0276 15.1355 19.8575 15.4988 20.4808 16.1579L21.1995 16.918C21.368 17.0963 21.6383 17.0963 21.8069 16.918L22.5192 16.1647C23.1425 15.5055 23.9724 15.1423 24.8501 15.1423C25.7278 15.1423 26.5546 15.5055 27.1779 16.1613C27.8011 16.8205 28.1414 17.6949 28.1414 18.6265C28.1446 19.5581 27.8011 20.4325 27.1779 21.0917Z" fill="black"/>
-                  <defs>
-                  <filter id="filter0_d_3_5350" x="0" y="0" width="43" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                  <feOffset dy="1"/>
-                  <feGaussianBlur stdDeviation="2"/>
-                  <feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.623529 0 0 0 0 0.658824 0 0 0 0.15 0"/>
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_5350"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_5350" result="shape"/>
-                  </filter>
-                  </defs>
-                </svg>
+                {{> fav_icon_2}}
               </a>
               <a class="icon">
-                <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g filter="url(#filter0_d_3_5345)">
-                  <circle class="icon__circle" cx="21.5" cy="20.5" r="17.5" fill="white"/>
-                  </g>
-                  <path d="M17.4354 16.4115C19.6499 14.2929 22.9641 14.2605 25.2093 16.1945L23.4297 16.2657C23.2 16.2754 23.0223 16.4763 23.0315 16.7193C23.0407 16.9557 23.2245 17.1404 23.445 17.1404C23.4512 17.1404 23.4542 17.1404 23.4604 17.1404L26.1926 17.0335C26.4162 17.0238 26.5908 16.8326 26.5908 16.5962V16.5638C26.5908 16.5573 26.5908 16.554 26.5908 16.5476V16.5443L26.4897 13.6871C26.4805 13.4442 26.2875 13.2563 26.0609 13.266C25.8311 13.2757 25.6535 13.4766 25.6627 13.7195L25.727 15.5109C24.6151 14.5488 23.2459 13.9916 21.7818 13.9139C19.9685 13.8167 18.2256 14.4743 16.881 15.7636C15.0309 17.5356 14.2468 20.2308 14.8349 22.7965C14.8808 22.9973 15.0493 23.1302 15.2361 23.1302C15.2698 23.1302 15.3004 23.1269 15.3341 23.1172C15.5547 23.0589 15.6925 22.8224 15.6374 22.5892C15.1228 20.3345 15.8089 17.9664 17.4354 16.4115Z" fill="#60A00C"/>
-                  <path d="M28.1651 19.5992C28.11 19.3659 27.8864 19.2202 27.6659 19.2785C27.4453 19.3368 27.3075 19.5733 27.3626 19.8065C27.8803 22.0612 27.1911 24.4292 25.5646 25.9842C24.4221 27.0758 22.9886 27.6136 21.5612 27.6136C20.1982 27.6136 18.8382 27.1244 17.7416 26.1591L19.5427 25.9874C19.7694 25.9647 19.9378 25.7541 19.9164 25.5112C19.8949 25.2682 19.6958 25.0933 19.4661 25.116L16.7431 25.3751C16.5164 25.3978 16.348 25.6084 16.3694 25.8513L16.6144 28.7312C16.6328 28.958 16.8135 29.1297 17.0249 29.1297C17.0371 29.1297 17.0494 29.1297 17.0616 29.1264C17.2883 29.1037 17.4568 28.8932 17.4353 28.6502L17.2883 26.8977C18.4002 27.8501 19.7632 28.404 21.2182 28.4818C21.3346 28.4882 21.451 28.4915 21.5643 28.4915C23.252 28.4915 24.8571 27.8371 26.119 26.632C27.9691 24.8601 28.7532 22.1681 28.1651 19.5992Z" fill="#60A00C"/>
-                  <defs>
-                  <filter id="filter0_d_3_5345" x="0" y="0" width="43" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                  <feOffset dy="1"/>
-                  <feGaussianBlur stdDeviation="2"/>
-                  <feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.623529 0 0 0 0 0.658824 0 0 0 0.15 0"/>
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_5345"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_5345" result="shape"/>
-                  </filter>
-                  </defs>
-                </svg>
+                {{> refresh_icon}}
               </a>
               <a class="icon cart" id={{this.id}}>
                 <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,23 +149,7 @@
                 </svg>
               </a>
               <a href="{{this.id}}" class="icon open">
-                <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g filter="url(#filter0_d_3_5341)">
-                  <circle class="icon__circle" cx="21.5" cy="20.5" r="17.5" fill="white"/>
-                  </g>
-                  <path d="M28.8687 27.235L25.2234 23.5898C26.2013 22.4656 26.7933 20.9989 26.7933 19.3958C26.7933 15.867 23.923 13 20.3975 13C16.8687 13 14.0017 15.8703 14.0017 19.3958C14.0017 22.9213 16.872 25.7916 20.3975 25.7916C22.0006 25.7916 23.4673 25.1996 24.5915 24.2217L28.2367 27.867C28.3232 27.9534 28.4396 28 28.5527 28C28.6658 28 28.7822 27.9568 28.8687 27.867C29.0416 27.694 29.0416 27.408 28.8687 27.235ZM14.8964 19.3958C14.8964 16.3625 17.3642 13.898 20.3942 13.898C23.4274 13.898 25.892 16.3659 25.892 19.3958C25.892 22.4257 23.4274 24.8969 20.3942 24.8969C17.3642 24.8969 14.8964 22.429 14.8964 19.3958Z" fill="black"/>
-                  <defs>
-                  <filter id="filter0_d_3_5341" x="0" y="0" width="43" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                  <feOffset dy="1"/>
-                  <feGaussianBlur stdDeviation="2"/>
-                  <feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.623529 0 0 0 0 0.658824 0 0 0 0.15 0"/>
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_5341"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_5341" result="shape"/>
-                  </filter>
-                  </defs>
-                </svg>
+                {{> open_icon}}
               </a>
               </div>
             </div>

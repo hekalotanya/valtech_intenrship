@@ -1,5 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-const { TRUE } = require('sass');
 const prisma = new PrismaClient();
 
 // GET ALL PRODCUTS
@@ -8,31 +7,32 @@ async function products(skip, take) {
     include: {
       category: true,
       images: true,
-      reviews: true
+      reviews: true,
     },
     skip,
     take,
-  })
+  });
+
   return allProducts;
 }
 
-//GET ALL PRODCUTS BY PARAMS
+// GET ALL PRODCUTS BY PARAMS
 async function productsByParams(paramsObject, skip, take) {
   const products = await prisma.product.findMany({
     where: paramsObject,
     include: {
       category: true,
       images: true,
-      reviews: true
+      reviews: true,
     },
     skip,
     take,
-  })
+  });
 
   return products;
 }
 
-//GET PRODUCT BY ID
+// GET PRODUCT BY ID
 async function productById(id) {
   const product = await prisma.product.findUnique({
     where: {
@@ -41,39 +41,44 @@ async function productById(id) {
     include: {
       category: true,
       images: true,
-      reviews: true
-    }
-  })
+      reviews: true,
+      reviews: {
+        include: {
+          user: true,
+        },
+      },
+    },
+  });
 
   return product;
 }
 
-//CREATE PRODUCT
+// CREATE PRODUCT
 async function createProduct(productObject) {
   const product = await prisma.product.create({ data: productObject })
 
   return product;
 }
 
-//UPDATE PRODUCT BY ID
+// UPDATE PRODUCT BY ID
 async function updateProduct(id, productObject) {
-const updateProduct = await prisma.product.update({
-  where: {
-    id,
-  },
-  data: productObject,
-})
+  const updateProduct = await prisma.product.update({
+    where: {
+      id,
+    },
+    data: productObject,
+  });
 
   return updateProduct;
 }
 
-//DELETE PRODUCT BY ID
+// DELETE PRODUCT BY ID
 async function deleteProduct(id) {
   const deleteProduct = await prisma.product.delete({
     where: {
       id,
     },
-  })
+  });
 
   return deleteProduct;
 }
@@ -84,4 +89,3 @@ module.exports.productById = productById;
 module.exports.createProduct = createProduct;
 module.exports.updateProduct = updateProduct;
 module.exports.deleteProduct = deleteProduct;
-

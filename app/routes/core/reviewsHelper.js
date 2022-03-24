@@ -3,30 +3,43 @@ const prisma = new PrismaClient();
 
 // GET ALL REVIEWS
 async function reviews() {
-  const allReviews = await prisma.review.findMany({
-    include: {
-      user: true,
-    }
-  })
-  return allReviews;
+  try {
+    const allReviews = await prisma.review.findMany({
+      include: {
+        user: true,
+      },
+    });
+
+    return allReviews;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-//GET REVIEW BY ID
+// GET REVIEW BY ID
 async function reviewById(id) {
-  const review = await prisma.review.findUnique({
-    where: {
-      id,
-    },
-  })
+  try {
+    const review = await prisma.review.findUnique({
+      where: {
+        id,
+      },
+    });
 
-  return review;
+    return review;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-//CREATE REVIEW
+// CREATE REVIEW
 async function createReview(reviewObject) {
-  const review = await prisma.review.create({ data: reviewObject })
+  try {
+    const review = await prisma.review.create({ data: reviewObject });
 
-  return review;
+    return review;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 module.exports.reviews = reviews;

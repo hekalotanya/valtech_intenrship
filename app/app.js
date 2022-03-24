@@ -16,6 +16,7 @@ const checkoutRouter = require('./routes/checkout');
 const authorizationRouter = require('./routes/authorization');
 const cabinetRouter = require('./routes/cabinet');
 const favouritesRouter = require('./routes/favourites');
+const reviewRouter = require('./routes/review');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/', express.static(publicPath));
 const helpers = require('./views/helpers');
 
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/svg');
 hbs.registerHelper(helpers);
 
 app.use(logger('dev'));
@@ -52,6 +54,7 @@ app.use('/checkout', checkoutRouter);
 app.use('/authorization', authorizationRouter);
 app.use('/cabinet', cabinetRouter);
 app.use('/favourites', favouritesRouter);
+app.use('/review', reviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

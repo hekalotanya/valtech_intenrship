@@ -1,6 +1,6 @@
 .productDetail_page {
 
-  .error__message_fav {
+  .error__message_fav, .error__message_review {
     width: 300px;
     position: fixed;
     top: 168px;
@@ -18,8 +18,26 @@
     }
   }
 
+  .success__message_review {
+    width: 300px;
+    position: fixed;
+    top: 168px;
+    right: -350px;
+    padding: 30px;
+    background-color: #88B13E;
+    border: none;
+    border-radius: 10px;
+    @include button;
+    background-color: rgba(136, 177, 62, 50%);
+    transition: all 1s;
+    
+    &--active {
+      right: 12px;
+    }
+  }
+
   .section__product_card {
-    padding: 100px 80px;
+    padding: 100px 80px 20px;
 
     @include Phone {
       padding: 50px 20px;
@@ -45,7 +63,7 @@
 
       .main_image {
         width: 100%;
-        height: 80%;
+        height: 60%;
         background-color: wheat;
         object-fit: cover;
       }
@@ -197,12 +215,81 @@
         }
 
         .reviews_menu__text {
+
+          .review__user {
+            margin-bottom: 10px;
+            margin-top: 20px;
+            @include text;
+          }
+
           .text {
             display: none;
 
             &--isActive {
               @include button;
             }
+          }
+        }
+      }
+
+      &__review_form {
+        margin-top: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+
+        .review_form__input {
+          height: 60px;
+          width: 100;
+          max-width: 470px;
+          background-color: #F5F5F5;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          padding-left: 20px;
+          @include text;
+          border: none;
+  
+          &:focus {
+            border-bottom: 1px solid black;
+          }
+    
+          &:invalid:not(:focus):not(:placeholder-shown) {
+            color: #eb5757;
+            border-bottom: 1px solid #eb5757 ;
+          }
+    
+          &:invalid:focus:not(:placeholder-shown) {
+            color: #eb5757;
+            border-bottom: 1px solid #eb5757 ;
+          }
+    
+          &:valid:not(:placeholder-shown) {
+            color: #60A00C;
+            border-bottom: 1px solid #60A00C;
+          }
+        }
+
+        .review_form__submit {
+          width: 100%;
+          max-width: 470px;
+          align-self: center;
+          border: none;
+          padding: 0 5px;
+          background-color: black;
+          height: 46px;
+          @include button;
+          font-size: 20px;
+          font-weight: bold;
+          text-align: center;
+          line-height: 100%;
+          transition: all 0.5s;
+          color: white;
+    
+          &:hover {
+            background-color: white;
+            color: black
           }
         }
       }
