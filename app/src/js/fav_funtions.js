@@ -1,80 +1,96 @@
+import { setStyle } from './set_fav_icon_styles';
+
 function initFunction() {
-  const addToFavButtons = [...document.querySelectorAll('.fav')];
-  const deleteFromFavButtons = [...document.querySelectorAll('.delete_fav')];
+  const FavButtons = [...document.querySelectorAll('.fav')];
 
-  // FETCH ADD TO FAV
+  // FETCH DELETE FAV
+  const fetchFavDelete = async(productId) => {
+    const response = await fetch(`/favourites/delete/${productId}`);
 
-  const fetchFav = async(productId) => {
-    const response = await fetch(`/favourites/${productId}`);
+    return response;
+  };
 
-    if (response.status === 500) {
-      const errorMessage = document.querySelector('.error__message_fav');
+  // FAV PROCESS
 
-      response.json().then(result => {
-        errorMessage.innerHTML = result.error.message;
-      });
-      errorMessage.classList.toggle('error__message_fav--active', true);
+  const processFav = async(productId) => {
+    let favArray = JSON.parse(localStorage.fav);
 
-      setTimeout(() => {
-        errorMessage.classList.toggle('error__message_fav--active', false);
-      }, 6000);
-    } else {
-      const favIconBlock = document.querySelector('.fav__block');
+    if (favArray.includes(parseInt(productId))) {
+      // DELETE FAV PROCESS
 
-      favIconBlock.classList.toggle('icon__block--change', true);
-
-      setTimeout(() => {
-        favIconBlock.classList.toggle('icon__block--change', false);
-      }, 2000);
+      favArray = favArray.filter(value => value !== parseInt(productId));
+      localStorage.fav = JSON.stringify(favArray);
+      setStyle();
 
       const favCountElement = document.querySelector('.fav__count');
 
-      favCountElement.innerHTML = parseInt(favCountElement.innerHTML) + 1;
+      favCountElement.innerHTML = parseInt(favCountElement.innerHTML) - 1;
+
+      fetchFavDelete(productId).then(res => {
+        const favProducts
+          = [...document.querySelectorAll('.my__fav__product_card')];
+
+        if (favProducts) {
+          favProducts.map(element => {
+            if (element.id === productId) {
+              element.remove();
+
+              if (favProducts.length === 1) {
+                const favPage = document.querySelector('.pages__my_fav');
+                const emptyMessage
+                  = document.querySelector('.pages__empty_message');
+
+                emptyMessage.classList
+                  .toggle('pages__empty_message--active', true);
+                favPage.classList.toggle('show', false);
+              }
+            }
+          });
+        }
+      });
+    } else {
+      const response = await fetch(`/favourites/${productId}`);
+
+      if (response.status === 500) {
+        const errorMessage = document.querySelector('.error__message_fav');
+
+        response.json().then(result => {
+          errorMessage.innerHTML = result.error.message;
+        });
+        errorMessage.classList.toggle('error__message_fav--active', true);
+
+        setTimeout(() => {
+          errorMessage.classList.toggle('error__message_fav--active', false);
+        }, 6000);
+      } else {
+        const favArray = JSON.parse(localStorage.fav);
+
+        favArray.push(parseInt(productId));
+        localStorage.fav = JSON.stringify(favArray);
+        setStyle();
+
+        const favIconBlock = document.querySelector('.fav__block');
+
+        favIconBlock.classList.toggle('icon__block--change', true);
+
+        setTimeout(() => {
+          favIconBlock.classList.toggle('icon__block--change', false);
+        }, 2000);
+
+        const favCountElement = document.querySelector('.fav__count');
+
+        favCountElement.innerHTML = parseInt(favCountElement.innerHTML) + 1;
+      }
     }
   };
 
   // ADDING EVENT LISTENERS
 
-  addToFavButtons.map(button => {
+  FavButtons.map(button => {
     button.onclick = async() => {
       const productId = button.id;
 
-      fetchFav(productId);
-    };
-  });
-
-  // DELETE FROM FAV
-
-  deleteFromFavButtons.map(button => {
-    button.onclick = async() => {
-      const productId = button.id;
-      const favCountElement = document.querySelector('.fav__count');
-
-      favCountElement.innerHTML = parseInt(favCountElement.innerHTML) - 1;
-
-      const fetchFavDelete = async(productId) => {
-        const response = await fetch(`/favourites/delete/${productId}`);
-
-        return response;
-      };
-
-      fetchFavDelete(productId).then(res => {
-        const favProducts = [...document.querySelectorAll('.my__fav__product_card')];
-
-        favProducts.map(element => {
-          if (element.id === productId) {
-            element.remove();
-
-            if (favProducts.length === 1) {
-              const favPage = document.querySelector('.pages__my_fav');
-              const emptyMessage = document.querySelector('.pages__empty_message');
-
-              emptyMessage.classList.toggle('pages__empty_message--active', true);
-              favPage.classList.toggle('show', false);
-            }
-          }
-        });
-      });
+      processFav(productId);
     };
   });
 };

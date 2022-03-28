@@ -94,17 +94,41 @@ async function favouritesByUserId(userId) {
   }
 }
 
-// GET FAVORUTES LENGTH BY USER ID
+// GET FAVORUTES IDs BY USER ID
+async function favouritesIDsByUserId(userId) {
+  let arrayId = [];
 
-async function favLengthByUserId(userId) {
   try {
     const favourites = await prisma.favourite.findMany({
       where: {
         user_id: userId,
       },
+      include: {
+        product: true,
+      },
     });
 
-    return favourites.length;
+    favourites.map(fav => {
+      arrayId.push(fav.product.id);
+    });
+
+    return arrayId;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+// GET FAVORUTES LENGTH BY USER ID
+
+async function favLengthByUserId(userId) {
+  try {
+    const favourites = await prisma.favourite.count({
+      where: {
+        user_id: userId,
+      },
+    });
+
+    return favourites;
   } catch (e) {
     console.log(e);
   }
@@ -117,3 +141,4 @@ module.exports.deleteFavourite = deleteFavourite;
 module.exports.favouritesByUserId = favouritesByUserId;
 module.exports.favLengthByUserId = favLengthByUserId;
 module.exports.findFavouriteByParams = findFavouriteByParams;
+module.exports.favouritesIDsByUserId = favouritesIDsByUserId;

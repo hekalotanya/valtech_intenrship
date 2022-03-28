@@ -24,3 +24,4 @@ import './helpers';
 import './set_style_sort';
 import './add_review';
 import './preloader';
+import './set_fav_icon_styles';

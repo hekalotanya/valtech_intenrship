@@ -3,6 +3,9 @@ const router = express.Router();
 const cors = require('cors');
 const productsHelper = require('./core/productsHelper');
 const categoriesHelper = require('./core/categoriesHelper');
+const favouriteHelper = require('./core/favouriteHelper');
+const { secret } = require('./config');
+const jwt = require('jsonwebtoken');
 
 router.use(cors());
 
@@ -14,11 +17,13 @@ function getCategories() {
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-  let resultLength = await productsHelper.resultLength({});
+  const resultLength = await productsHelper.resultLength({});
   const allProducts = await productsHelper.products(0, 6);
   const allCategories = await getCategories();
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;
+  const decoded = jwt.decode(token, secret);
+  let favouritesId = [];
 
   if (!favouritesCount) {
     favouritesCount = 0;
@@ -26,7 +31,10 @@ router.get('/', async function(req, res, next) {
 
   const authorization = !!token;
 
-  console.log(resultLength);
+  if (authorization) {
+    favouritesId = await favouriteHelper.favouritesIDsByUserId(decoded.id);
+  }
+  console.log(favouritesId);
 
   res.render('products', {
     products: [...allProducts],
@@ -39,6 +47,7 @@ router.get('/', async function(req, res, next) {
     authorization,
     favouritesCount,
     resultLength,
+    favouritesId: JSON.stringify(favouritesId),
   });
 });
 

@@ -1,5 +1,6 @@
 import { API_URL } from './helpers';
 import { setStylesSort } from './set_style_sort';
+import { setStyle } from './set_fav_icon_styles';
 
 const basketFile = require('./basket');
 const producFile = require('./product_detail');
@@ -68,6 +69,7 @@ const renderingProducts = (newUrl) => {
     initShowingFunctions.initShowingFunctions();
     initFavFunctions.initFunction();
     setStylesSort();
+    setStyle();
   });
 
   const nextTitle = 'My new page title';

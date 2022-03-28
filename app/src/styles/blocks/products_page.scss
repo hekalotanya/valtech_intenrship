@@ -686,6 +686,14 @@
           &:hover {
             fill: #60A00C;
           }
+
+          &--active {
+            fill: #60A00C;
+
+            &:hover {
+              fill: white;
+            }
+          }
         }
       }
     }

@@ -11,15 +11,6 @@ router.get('/:productId', async function(req, res, next) {
   const authorization = !!token;
 
   if (authorization) {
-    const checkRepeatFav = await favouriteHelper
-      .findFavouriteByParams(decoded.id, parseInt(req.params.productId));
-
-    if (checkRepeatFav) {
-      res.status(500).send({ error: { message: 'It has already been added' } });
-
-      return;
-    }
-
     await favouriteHelper.createFavourite({
       user_id: decoded.id,
       product_id: parseInt(req.params.productId),
