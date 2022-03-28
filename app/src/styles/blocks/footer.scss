@@ -87,6 +87,7 @@
           width: 30%;
           max-width: 130px;
           height: 50px;
+          user-select: none; 
 
           @include Phone {
             width: 100%;

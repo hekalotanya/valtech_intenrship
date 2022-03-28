@@ -15,7 +15,7 @@
 </head>
 <body class="authorization_page grid">
   <main class="grid grid__item--1--12">
-    <div class="autho__block grid__item--3--10" id="sign_form">
+    <div class="autho__block autho__block--active grid__item--3--10" id="sign_form">
       <form
         action="authorization/login"
         method="POST"
@@ -83,7 +83,7 @@
       </form>
     </div>
     {{#if error}}
-    <div class="error__message grid__item--3--10">{{error}}</div>
+    <div class="error__message  error__message--auth grid__item--3--10">{{error}}</div>
     {{/if}}
   </main>
   <script src="/bundle.js"></script>

@@ -47,6 +47,7 @@
       text-decoration: none;
       @include button;
       transition: color 0.5s;
+      user-select: none; 
     }
   }
 

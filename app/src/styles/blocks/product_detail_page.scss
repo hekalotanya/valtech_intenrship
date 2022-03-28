@@ -64,6 +64,7 @@
       .main_image {
         width: 100%;
         height: 60%;
+        max-height: 430px;
         background-color: wheat;
         object-fit: cover;
       }
@@ -173,6 +174,7 @@
           color: white;
           cursor: pointer;
           transition: all 0.5s;
+          user-select: none; 
 
           &:hover {
             background-color: white;
@@ -182,6 +184,16 @@
 
         .icon {
           cursor: pointer;
+
+          &_rect {
+            transition: all 0.5s;
+          }
+
+          &:hover {
+            .icon_rect {
+              fill: #60A00C;
+            }
+          }
         }
       }
 
@@ -190,6 +202,8 @@
         display: flex;
         flex-direction: column;
         gap: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #ECECEC;
 
         .reviews_menu__nav {
           display: flex;
@@ -217,9 +231,12 @@
         .reviews_menu__text {
 
           .review__user {
-            margin-bottom: 10px;
-            margin-top: 20px;
             @include text;
+            margin-bottom: 10px;
+
+            &:nth-child(n+2) {
+              margin-top: 20px;
+            }
           }
 
           .text {
@@ -233,8 +250,7 @@
       }
 
       &__review_form {
-        margin-top: 20px;
-        padding: 20px;
+        margin-top: 40px;
         display: flex;
         flex-direction: column;
         gap: 30px;
@@ -242,7 +258,7 @@
 
         .review_form__input {
           height: 60px;
-          width: 100;
+          width: 100%;
           max-width: 470px;
           background-color: #F5F5F5;
           padding-top: 12px;
@@ -286,6 +302,7 @@
           line-height: 100%;
           transition: all 0.5s;
           color: white;
+          user-select: none; 
     
           &:hover {
             background-color: white;

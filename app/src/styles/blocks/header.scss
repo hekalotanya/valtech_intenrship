@@ -134,6 +134,7 @@
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  box-shadow: 5px 2px 2px rgb(201, 197, 197);
 
   @include Phone {
     display: flex;

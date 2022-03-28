@@ -3,86 +3,112 @@ const prisma = new PrismaClient();
 
 // GET ALL FAVORUTES
 async function getAllFavourites() {
-  const allFavourites = await prisma.favourite.findMany()
-  return allFavourites;
+  try {
+    const allFavourites = await prisma.favourite.findMany();
+
+    return allFavourites;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-//GET FAVORUTE BY ID
+// GET FAVORUTE BY ID
 async function getFavouriteById(id) {
-  const favourite = await prisma.favourite.findUnique({
-    where: {
-      id,
-    },
-  })
+  try {
+    const favourite = await prisma.favourite.findUnique({
+      where: {
+        id,
+      },
+    });
 
-  return favourite;
+    return favourite;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-//CREATE FAVORUTE
+// CREATE FAVORUTE
 async function createFavourite(favouriteObject) {
-  const favourite = await prisma.favourite.create({ data: favouriteObject })
+  try {
+    const favourite = await prisma.favourite.create({ data: favouriteObject });
 
-  return favourite;
+    return favourite;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-
-//DELETE FAVORUTE BY PARMS
+// DELETE FAVORUTE BY PARMS
 async function deleteFavourite(userId, productId) {
-  const deletedFavourite = await prisma.favourite.deleteMany({
-    where: {
-      user_id: userId,
-      product_id: productId,
-    },
-  })
+  try {
+    const deletedFavourite = await prisma.favourite.deleteMany({
+      where: {
+        user_id: userId,
+        product_id: productId,
+      },
+    });
 
-  return deletedFavourite;
+    return deletedFavourite;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-//FIND FAVORUTE BY PARMS
+// FIND FAVORUTE BY PARMS
 async function findFavouriteByParams(userId, productId) {
-  const favourite = await prisma.favourite.findFirst({
-    where: {
-      user_id: userId,
-      product_id: productId,
-    },
-  })
+  try {
+    const favourite = await prisma.favourite.findFirst({
+      where: {
+        user_id: userId,
+        product_id: productId,
+      },
+    });
 
-  return favourite;
+    return favourite;
+  } catch (e) {
+    console.log(e);
+  }
 }
-
 
 // GET FAVORUTES BY USER ID
 async function favouritesByUserId(userId) {
-  const favourites = await prisma.favourite.findMany({
-    where: {
-      user_id: userId,
-    },
-    include: {
-      product: true,
-      product: {
-        include: {
-          images: true,
-        }
+  try {
+    const favourites = await prisma.favourite.findMany({
+      where: {
+        user_id: userId,
       },
-      user: true,
-    }
-  })
+      include: {
+        product: true,
+        product: {
+          include: {
+            images: true,
+          },
+        },
+        user: true,
+      },
+    });
 
-  return favourites;
+    return favourites;
+  } catch (e) {
+    console.log(e);
+  }
 }
-
 
 // GET FAVORUTES LENGTH BY USER ID
+
 async function favLengthByUserId(userId) {
-  const favourites = await prisma.favourite.findMany({
-    where: {
-      user_id: userId,
-    },
-  })
+  try {
+    const favourites = await prisma.favourite.findMany({
+      where: {
+        user_id: userId,
+      },
+    });
 
-  return favourites.length;
+    return favourites.length;
+  } catch (e) {
+    console.log(e);
+  }
 }
-
 
 module.exports.getAllFavourites = getAllFavourites;
 module.exports.getFavouriteById = getFavouriteById;

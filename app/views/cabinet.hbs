@@ -31,7 +31,7 @@
     <div class="main__block__pages grid__item--1--12 grid">
       <div class="pages__my_information pages__page grid__item--1--12 show">
         <form action="cabinet/updateData" method="POST" class="my_information__form form">
-        <span class="form__label">Change data</span>
+        <span class="form__label">Change information</span>
         <input
           class="form__user_name__input form__input"
           type="text" name="name" 
@@ -116,6 +116,9 @@
                   <div class="product_card__buttons">
                   <a class="icon delete_fav" id={{this.product.id}}>
                     {{> fav_icon}}
+                  </a>
+                  <a class="icon cart" id={{this.product.id}}>
+                    {{> basket_icon}}
                   </a>
                   <a href="products/{{this.product.id}}" class="icon open">
                     {{> open_icon}}

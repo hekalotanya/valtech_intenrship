@@ -17,19 +17,24 @@
     @include Phone {
       grid-column: 2/12;
     }
-  }
 
-  .registration {
-    display: none;
+    &--disabled {
+      display: none;
+    }
   }
 
   .autho__block {
-    max-width: 520px;
-    width: 100%;
-    justify-self: center;
+    display: none;
 
     @include Phone {
       grid-column: 2/12;
+    }
+
+    &--active {
+      display: grid;
+      max-width: 520px;
+      width: 100%;
+      justify-self: center;
     }
   
     &__form {
@@ -90,6 +95,7 @@
         color: black;
         line-height: 46px;
         border-radius: 4px;
+        user-select: none; 
 
         &-active {
           color: white;

@@ -137,6 +137,14 @@
       display: flex;
       gap: 10px;
 
+      &__showing_icon--active {
+        fill: #60A00C;
+      }
+
+      &__showing_icon--disabled {
+        fill: white;
+      }
+
       @include Phone {
         flex-direction: column;
       }
@@ -522,6 +530,12 @@
   flex-direction: column;
   gap: 40px;
 
+  &--two-in-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4%;
+  }
+
   &__result {
     @include sign;
     text-align: center;
@@ -539,9 +553,23 @@
     border: 1px solid #ECECEC;
     max-width: 920px;
 
+    // &--active {
+    //   display: flex;
+    // }
+
+
+    &--two-card {
+      width: 48%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
     @include Phone {
       flex-direction: column;
-      // flex-wrap: wrap;
       align-items: flex-start;
       gap: 10px;
     }
@@ -638,7 +666,9 @@
 
       @include Phone {
         flex-direction: row;
-        padding: 0;
+        flex-wrap: wrap;
+        padding: 0px;
+        gap: 5px;
       }
 
       @include Tablet {
@@ -651,8 +681,9 @@
 
         .icon__circle {
           fill: white;
+          transition: all 0.5s;
 
-          &:active {
+          &:hover {
             fill: #60A00C;
           }
         }

@@ -1,0 +1,24 @@
+<div class="products__product_card product_card pr__detail" id={{this.id}}>
+  <img src="{{this.images.[0].path}}" alt="" class="product_card__image">
+  <div class="product_card__block">
+    <div class="product_card__text text">
+    <span class="text__name">{{this.name}}{{this.id}}</span>
+    <span class="text__price">${{this.price}}</span>
+    <span class="text__color">{{this.color}}</span>
+    <span class="text__size">Size: {{this.size}}</span>
+    <span class="text__category">Category: {{this.category.name}}</span>
+    <span class="text__description">{{this.description}}</span>
+    </div>
+    <div class="product_card__buttons">
+    <a class="icon fav" id={{this.id}}>
+      {{> fav_icon_2}}
+    </a>
+    <a class="icon cart" id={{this.id}}>
+      {{> basket_icon}}
+    </a>
+    <a href="{{this.id}}" class="icon open">
+      {{> open_icon}}
+    </a>
+    </div>
+  </div>
+</div>

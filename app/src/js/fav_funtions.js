@@ -33,6 +33,8 @@ function initFunction() {
     }
   };
 
+  // ADDING EVENT LISTENERS
+
   addToFavButtons.map(button => {
     button.onclick = async() => {
       const productId = button.id;

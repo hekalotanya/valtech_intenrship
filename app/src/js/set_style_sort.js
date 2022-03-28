@@ -59,7 +59,10 @@ function setStylesSort() {
       pageLinkElement.classList.toggle('page--active', true);
     } else {
       pageLinkElement = document.querySelector(`.page${value}`);
-      pageLinkElement.classList.toggle('page--active', true);
+
+      if (pageLinkElement) {
+        pageLinkElement.classList.toggle('page--active', true);
+      }
     }
   } else {
     const pageLinkElement = document.querySelector(`.page1`);

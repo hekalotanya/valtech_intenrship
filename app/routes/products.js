@@ -14,13 +14,8 @@ function getCategories() {
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
-  function getProducts() {
-    const result = productsHelper.products();
-
-    return result;
-  }
-
-  const allProducts = await getProducts();
+  let resultLength = await productsHelper.resultLength({});
+  const allProducts = await productsHelper.products(0, 6);
   const allCategories = await getCategories();
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;
@@ -31,22 +26,25 @@ router.get('/', async function(req, res, next) {
 
   const authorization = !!token;
 
+  console.log(resultLength);
+
   res.render('products', {
-    products: [...allProducts].slice(0, 6),
+    products: [...allProducts],
     firstProduct: 1,
     lastProduct: 6,
     categories: [...allCategories],
-    length: allProducts.length,
     title: 'Shop List Side Bar',
     priceGre: '0',
     priceLess: '200',
     authorization,
     favouritesCount,
+    resultLength,
   });
 });
 
 /* GET products with params. */
 router.get('/sort', async function(req, res, next) {
+  let resultLength;
   const { page } = req.query;
   const { price } = req.query;
   const params = req.query;
@@ -85,25 +83,36 @@ router.get('/sort', async function(req, res, next) {
         lte: parseInt(priceLess),
         gte: parseInt(priceGre),
       },
-    });
+    }, firstProduct, 6);
 
     return result;
   }
 
-  searchProducts = await getProducts();
+  resultLength = await productsHelper.resultLength({
+    ...params,
+    price: {
+      lte: parseInt(priceLess),
+      gte: parseInt(priceGre),
+    },
+  });
 
   if (page) {
-    if (searchProducts.length > limit) {
+    if (resultLength > limit) {
       firstProduct = limit * (page - 1);
       lastProduct = firstProduct + limit;
     }
   }
 
+  searchProducts = await getProducts();
+
+  if (resultLength < limit) {
+    lastProduct = searchProducts.length;
+  }
+
   if (searchProducts.length) {
     res.render('products', {
-      products: searchProducts.slice(firstProduct, lastProduct),
+      products: searchProducts,
       categories: [...allCategories],
-      length: searchProducts.length,
       firstProduct: firstProduct + 1,
       lastProduct,
       title: 'Shop List Side Bar',
@@ -111,6 +120,7 @@ router.get('/sort', async function(req, res, next) {
       priceLess,
       authorization,
       favouritesCount,
+      resultLength,
     });
   } else {
     res.render('products', {
@@ -122,6 +132,7 @@ router.get('/sort', async function(req, res, next) {
       priceLess,
       favouritesCount,
       authorization,
+      resultLength,
     });
   }
 });

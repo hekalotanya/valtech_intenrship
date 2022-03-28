@@ -195,6 +195,7 @@
         line-height: 100%;
         transition: all 0.5s;
         color: white;
+        user-select: none; 
   
         &:hover {
           background-color: white;

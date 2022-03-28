@@ -205,19 +205,14 @@ if (buttonUpdate) {
 }
 
 // MESSAGE FOR EMPTY CART
-const cartElement = document.querySelector('.cart_list');
 const menuElement = document.querySelector('.cart_list__names_of_column');
 
 if (document.location.href === `${API_URL}cart`) {
   if (JSON.parse(localStorage.shop_cart).length === 0) {
-    const message = document.createElement('span');
+    const message = document.querySelector('.cart__message');
 
-    message.className = 'cart__message grid__item--1--12';
-    message.innerHTML = `It's empty :(`;
-    cartElement.append(message);
-    menuElement.style.display = 'none';
-  } else {
-    menuElement.style.display = 'grid';
+    message.classList.toggle('cart__message--active', true);
+    menuElement.classList.toggle('cart_list__names_of_column--disabled', true);
   }
 }
 

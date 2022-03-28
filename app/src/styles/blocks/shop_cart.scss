@@ -25,6 +25,7 @@
     @include title;
     color: #88B13E;
     text-align: center;
+    display: none;
 
 
     @include Tablet {
@@ -35,6 +36,10 @@
     @include Phone {
       margin-left: 20px;
       margin-right: 20px;
+    }
+
+    &--active {
+      display: block;
     }
   }
 
@@ -48,6 +53,10 @@
 
     .name_of_column {
       @include button;
+    }
+
+    &--disabled {
+      display: none;
     }
   }
 
@@ -136,6 +145,7 @@
             @include button;
             font-size: 18px;
             font-weight: bold;
+            user-select: none; 
           }
 
           .arrow {
@@ -148,6 +158,7 @@
 
       .item__total {
         @include button;
+        user-select: none; 
       }
 
       .item__delete {
@@ -193,6 +204,7 @@
       font-weight: bold;
       background-color: rgba(236, 236, 236, 45%);
       transition: all 0.5s;
+      user-select: none; 
 
       &:hover {
         background-color: black;
@@ -210,6 +222,7 @@
       font-weight: bold;
       background-color: rgba(236, 236, 236, 45%);
       transition: all 0.5s;
+      user-select: none; 
 
       &:hover {
         background-color: black;
@@ -262,6 +275,7 @@
       line-height: 100%;
       transition: all 0.5s;
       color: white;
+      user-select: none; 
 
       &:hover {
         background-color: white;

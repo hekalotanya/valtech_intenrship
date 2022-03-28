@@ -61,7 +61,8 @@
     }
 
     .active {
-      color: black;
+      color: #88B13E;
+      font-weight: 800;
     }
   }
 
@@ -266,7 +267,6 @@
     
         @include Phone {
           flex-direction: column;
-          // flex-wrap: wrap;
           align-items: flex-start;
           gap: 10px;
         }
@@ -376,16 +376,18 @@
 
             .circle__delete_fav {
               fill: #60A00C;
+              transition: all 0.5s;
     
-              &:active {
+              &:hover {
                 fill: white;
               }
             }
 
             .icon__circle {
               fill: white;
+              transition: all 0.5s;
     
-              &:active {
+              &:hover {
                 fill: #60A00C;
               }
             }

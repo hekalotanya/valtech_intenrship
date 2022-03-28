@@ -62,13 +62,13 @@ router.post('/updateData', async function(req, res, next) {
     if (authorization) {
       const decoded = jwt.decode(token, secret);
 
-      usersHelper.updateUser(decoded.id, {
+      await usersHelper.updateUser(decoded.id, {
         name,
         phone,
         email,
       });
 
-      req.session.success = 'Data was apdated';
+      req.session.success = 'Data was updated';
       res.redirect('/cabinet');
     }
   } catch (e) {
@@ -98,7 +98,7 @@ router.post('/updatePassword', async function(req, res, next) {
 
         usersHelper.updateUser(decoded.id, { password: hashPassword });
 
-        req.session.success = 'Data was apdated';
+        req.session.success = 'Data was updated';
         res.redirect('/cabinet');
       }
     }
