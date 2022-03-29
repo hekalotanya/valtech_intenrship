@@ -187,11 +187,19 @@
 
           &_rect {
             transition: all 0.5s;
+
+            &--active {
+              fill: #60A00C;
+            }
           }
 
           &:hover {
             .icon_rect {
               fill: #60A00C;
+
+              &--active {
+                fill: white;
+              };
             }
           }
         }

@@ -29,13 +29,17 @@
           name="email"
           placeholder="email"
         >
-        <input
-          required
-          class="form__user_password__input form__input"
+        <div class="form__user_password__input">
+          <input
+          class="form__input form__input--password password"
           type="password"
           name="password"
+          required
           placeholder="password"
-        >
+          minlength="5"
+          >
+          {{> eye_show}}
+        </div>
         <button type="submit" class="autho__block__form__sign_in form__button form__button-active">Sign in</button>
         <button class="autho__block__form__join form__button switch_join">Join</button>
       </form>
@@ -71,14 +75,17 @@
           required
           placeholder="email"
         >
-        <input
-          class="form__user_password__input form__input"
+        <div class="form__user_password__input">
+          <input
+          class="form__input form__input--password password"
           type="password"
           name="password"
           required
           placeholder="password"
           minlength="5"
-        >
+          >
+          {{> eye_show}}
+        </div>
         <button type="submit" class="autho__block__form__join form__button form__button-active">Join</button>
         <button class="autho__block__form__sign_in sign_in form__button form__button switch_signin">I have an account</button>
       </form>

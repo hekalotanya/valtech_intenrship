@@ -32,6 +32,27 @@ function setStyleFav() {
   }
 };
 
-setStyleFav();
+function setStyleFavPrPage() {
+  const favArray = JSON.parse(localStorage.fav);
 
-export { setStyleFav };
+  if (favArray) {
+    const icons = [...document.querySelectorAll('.icon_rect')];
+
+    icons.map(icon => {
+      icon.classList.toggle('icon_rect--active', false);
+    });
+
+    favArray.map(favId => {
+      const icon = document.querySelector(`.icon_rect${favId}`);
+
+      if (icon) {
+        icon.classList.toggle('icon_rect--active', true);
+      }
+    });
+  }
+};
+
+setStyleFav();
+setStyleFavPrPage();
+
+export { setStyleFav, setStyleFavPrPage };

@@ -98,6 +98,7 @@
     "jwt-decode": "^3.1.2",
     "morgan": "^1.10.0",
     "net": "^1.0.2",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "validator": "^13.7.0"
   }
 }

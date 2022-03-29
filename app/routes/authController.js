@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const favouriteHelper = require('./core/favouriteHelper');
 const { secret } = require('./config');
+const validator = require('validator');
 
 const generateAccessToken = (id, role) => {
   const payload = {
@@ -18,11 +19,43 @@ class AuthController {
     try {
       const { first_name, second_name, email, phone, password } = req.body;
       const favouritesCount = 0;
+
+      const checkValidation = () => {
+        if (!validator.isEmail(email)) {
+          return false;
+        }
+
+        if (!validator.isLength(phone, { min: 16 })) {
+          return false;
+        }
+
+        if (!validator.isLength(first_name.trim(), { min: 2 })) {
+          return false;
+        }
+
+        if (!validator.isLength(second_name.trim(), { min: 2 })) {
+          return false;
+        }
+
+        if (!validator.isLength(password.trim(), { min: 5 })) {
+          return false;
+        }
+
+        return true;
+      };
+
+      if (!checkValidation()) {
+        req.session.error = 'Ivalid data';
+        res.redirect('/authorization');
+      }
+
       let newUser = await usersHelper.userFirst({ email });
 
       if (newUser) {
         req.session.error = 'User with this login already exists';
         res.redirect('/authorization');
+
+        return res.send();
       }
 
       const hashPassword = bcrypt.hashSync(password, 7);
@@ -59,6 +92,25 @@ class AuthController {
   async login(req, res) {
     try {
       const { email, password } = req.body;
+      const checkValidation = () => {
+        if (!validator.isEmail(email)) {
+          return false;
+        }
+
+        if (!validator.isLength(password.trim(), { min: 5 })) {
+          return false;
+        }
+
+        return true;
+      };
+
+      if (!checkValidation()) {
+        req.session.error = 'Ivalid data';
+        res.redirect('/authorization');
+
+        return res.send();
+      }
+
       const user = await usersHelper.userFirst({ email });
       let favouritesCount;
 

@@ -78,6 +78,7 @@ async function sentOrder(body) {
     localStorage.shop_cart = JSON.stringify([]);
     document.location.href = res.url;
   });
+  document.querySelector('.preloader').classList.toggle('preloader--hiding', true);
 }
 
 // SENT ORDER
@@ -87,6 +88,7 @@ if (document.location.href.includes(`${API_URL}checkout`)) {
   if (form) {
     form.onsubmit = (event) => {
       event.preventDefault();
+      document.querySelector('.preloader').classList.toggle('preloader--hiding', false);
 
       const data = new FormData(event.target);
       const value = Object.fromEntries(data.entries());

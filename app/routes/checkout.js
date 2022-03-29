@@ -6,6 +6,7 @@ const ordersHelper = require('./core/ordersHelper');
 const usersHelper = require('./core/usersHelper');
 let products;
 let orderId;
+const validator = require('validator');
 
 router.use(cors());
 
@@ -57,6 +58,48 @@ router.post('/order', async function(req, res, next) {
     phone,
     totalAmount,
   } = req.body;
+
+  const checkValidation = () => {
+    if (!validator.isEmail(email)) {
+      return false;
+    }
+
+    if (!validator.isLength(phone, { min: 16 })) {
+      return false;
+    }
+
+    if (!validator.isLength(first_name.trim(), { min: 2 })) {
+      return false;
+    }
+
+    if (!validator.isLength(second_name.trim(), { min: 2 })) {
+      return false;
+    }
+
+    if (!validator.isLength(country.trim(), { min: 5 })) {
+      return false;
+    }
+
+    if (!validator.isLength(city.trim(), { min: 4 })) {
+      return false;
+    }
+
+    if (!validator.isLength(adress.trim(), { min: 5 })) {
+      return false;
+    }
+
+    if (!validator.isLength(postcode.trim(), { min: 3 })) {
+      return false;
+    }
+
+    return true;
+  };
+
+  if (!checkValidation()) {
+    res.redirect('/checkout');
+
+    return res.send();
+  }
 
   const fullAdress = `${country}, ${postcode}, city ${city}, ${adress}`;
 

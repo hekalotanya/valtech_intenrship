@@ -59,6 +59,11 @@ function initEvents() {
         const quantityList = JSON.parse(localStorage.quantity);
 
         if (!shopList.find(id => id === parseInt(productId))) {
+          const icon = document.querySelector(`.icon__cart${productId}`);
+
+          if (icon) {
+            icon.classList.toggle('icon__circle--active', true);
+          }
           shopList.push(parseInt(productId));
 
           if (quantity) {
@@ -75,6 +80,12 @@ function initEvents() {
             basketIconBlock.classList.toggle('icon__block--change', false);
           }, 2000);
         } else {
+          const icon = document.querySelector(`.icon__cart${productId}`);
+
+          if (icon) {
+            icon.classList.toggle('icon__circle--active', false);
+          }
+
           shopList = shopList
             .filter(product => product !== parseInt(cartIcons[i].id));
 

@@ -6,6 +6,7 @@ const favouriteHelper = require('./core/favouriteHelper');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { secret } = require('./config');
+const validator = require('validator');
 
 /* GET cabinet page. */
 router.get('/', async function(req, res, next) {
@@ -56,6 +57,34 @@ router.get('/', async function(req, res, next) {
 router.post('/updateData', async function(req, res, next) {
   const { token } = req.cookies;
   const { name, phone, email } = req.body;
+
+  const checkValidation = () => {
+    if (!validator.isEmail(email)) {
+      return false;
+    }
+
+    if (!validator.isLength(phone, { min: 16 })) {
+      return false;
+    }
+
+    if (!validator.isLength(name.trim(), { min: 5 })) {
+      return false;
+    }
+
+    if (!validator.contains(name, ' ')) {
+      return false;
+    }
+
+    return true;
+  };
+
+  if (!checkValidation()) {
+    req.session.error = 'Invalid data';
+    res.redirect('/cabinet');
+
+    return res.send();
+  }
+
   const authorization = !!token;
 
   try {
@@ -70,15 +99,38 @@ router.post('/updateData', async function(req, res, next) {
 
       req.session.success = 'Data was updated';
       res.redirect('/cabinet');
+
+      return res.send();
     }
   } catch (e) {
     res.send(e);
   }
 });
 
-router.post('/updatePassword', async function(req, res, next) {
+router.post('/updatePassword', async function(req, res) {
   const { token } = req.cookies;
   const { password, new_password } = req.body;
+
+  const checkValidation = () => {
+    if (!validator.isLength(password, { min: 5 })) {
+      return false;
+    }
+
+    if (!validator.isLength(new_password, { min: 5 })) {
+      return false;
+    }
+
+    return true;
+  };
+
+  if (!checkValidation()) {
+    console.log('error');
+    req.session.error = 'Invalid data';
+    res.redirect('/cabinet');
+
+    return res.send();
+  }
+
   const authorization = !!token;
   let user;
   let decoded;

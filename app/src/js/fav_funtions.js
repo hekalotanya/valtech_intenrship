@@ -1,4 +1,4 @@
-import { setStyleFav } from './set_fav_icon_styles';
+import { setStyleFav, setStyleFavPrPage } from './set_fav_icon_styles';
 
 function initFunction() {
   const FavButtons = [...document.querySelectorAll('.fav')];
@@ -17,10 +17,22 @@ function initFunction() {
 
     if (favArray.includes(parseInt(productId))) {
       // DELETE FAV PROCESS
+      const icon = document.querySelector(`.icon__fav${productId}`);
+
+      if (icon) {
+        icon.classList.toggle('icon__circle--active', false);
+      }
+
+      const iconPrPage = document.querySelector(`.icon_rect${productId}`);
+
+      if (iconPrPage) {
+        iconPrPage.classList.toggle('icon_rect--active', false);
+      }
 
       favArray = favArray.filter(value => value !== parseInt(productId));
       localStorage.fav = JSON.stringify(favArray);
       setStyleFav();
+      setStyleFavPrPage();
 
       const favCountElement = document.querySelector('.fav__count');
 
@@ -49,9 +61,29 @@ function initFunction() {
         }
       });
     } else {
+      const icon = document.querySelector(`.icon__fav${productId}`);
+
+      if (icon) {
+        icon.classList.toggle('icon__circle--active', true);
+      }
+
+      const iconPrPage = document.querySelector(`.icon_rect${productId}`);
+
+      if (iconPrPage) {
+        iconPrPage.classList.toggle('icon_rect--active', true);
+      }
+
       const response = await fetch(`/favourites/${productId}`);
 
       if (response.status === 500) {
+        if (icon) {
+          icon.classList.toggle('icon__circle--active', false);
+        }
+
+        if (iconPrPage) {
+          iconPrPage.classList.toggle('icon_rect--active', false);
+        }
+
         const errorMessage = document.querySelector('.error__message_fav');
 
         response.json().then(result => {
@@ -68,6 +100,7 @@ function initFunction() {
         favArray.push(parseInt(productId));
         localStorage.fav = JSON.stringify(favArray);
         setStyleFav();
+        setStyleFavPrPage();
 
         const favIconBlock = document.querySelector('.fav__block');
 
