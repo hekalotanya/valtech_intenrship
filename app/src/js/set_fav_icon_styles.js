@@ -12,18 +12,18 @@ if (document.location.href === (`${API_URL}products/`)) {
 
 // SET STYLES
 
-function setStyle() {
+function setStyleFav() {
   const favArray = JSON.parse(localStorage.fav);
 
   if (favArray) {
-    const icons = [...document.querySelectorAll('.icon__circle')];
+    const icons = [...document.querySelectorAll('.icon__fav')];
 
     icons.map(icon => {
       icon.classList.toggle('icon__circle--active', false);
     });
 
     favArray.map(favId => {
-      const icon = document.querySelector(`.icon__circle${favId}`);
+      const icon = document.querySelector(`.icon__fav${favId}`);
 
       if (icon) {
         icon.classList.toggle('icon__circle--active', true);
@@ -32,6 +32,6 @@ function setStyle() {
   }
 };
 
-setStyle();
+setStyleFav();
 
-export { setStyle };
+export { setStyleFav };

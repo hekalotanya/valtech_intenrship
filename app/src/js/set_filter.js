@@ -1,6 +1,7 @@
 import { API_URL } from './helpers';
 import { setStylesSort } from './set_style_sort';
-import { setStyle } from './set_fav_icon_styles';
+import { setStyleFav } from './set_fav_icon_styles';
+import { setStyleCart } from './set_cart_icon_styes';
 
 const basketFile = require('./basket');
 const producFile = require('./product_detail');
@@ -45,6 +46,7 @@ function getUrl(paramName, e) {
 // FETCH PRODUCTS WITH PARAMS
 
 const renderingProducts = (newUrl) => {
+  document.querySelector('.preloader').classList.toggle('preloader--hiding', false);
   const response = fetch(newUrl).then(result => {
     return result.text();
   });
@@ -64,12 +66,14 @@ const renderingProducts = (newUrl) => {
     const prodcutsPages = document.querySelector('.products__pages');
 
     prodcutsPages.innerHTML = doc.querySelector('.products__pages').innerHTML;
+    document.querySelector('.preloader').classList.toggle('preloader--hiding', true);
     basketFile.initEvents();
     producFile.initProductDetail();
     initShowingFunctions.initShowingFunctions();
     initFavFunctions.initFunction();
     setStylesSort();
-    setStyle();
+    setStyleFav();
+    setStyleCart();
   });
 
   const nextTitle = 'My new page title';
@@ -85,7 +89,6 @@ const renderingProducts = (newUrl) => {
 if (circles) {
   circles.addEventListener('click', (e) => {
     const newUrl = getUrl('color', e);
-
     renderingProducts(newUrl);
   });
 }

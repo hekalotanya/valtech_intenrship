@@ -1,4 +1,4 @@
-import { setStyle } from './set_fav_icon_styles';
+import { setStyleFav } from './set_fav_icon_styles';
 
 function initFunction() {
   const FavButtons = [...document.querySelectorAll('.fav')];
@@ -20,7 +20,7 @@ function initFunction() {
 
       favArray = favArray.filter(value => value !== parseInt(productId));
       localStorage.fav = JSON.stringify(favArray);
-      setStyle();
+      setStyleFav();
 
       const favCountElement = document.querySelector('.fav__count');
 
@@ -67,7 +67,7 @@ function initFunction() {
 
         favArray.push(parseInt(productId));
         localStorage.fav = JSON.stringify(favArray);
-        setStyle();
+        setStyleFav();
 
         const favIconBlock = document.querySelector('.fav__block');
 

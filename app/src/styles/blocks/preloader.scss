@@ -7,6 +7,12 @@
   overflow: hidden;
   background: rgba(224, 224, 224, 70%);
   z-index: 1001;
+  transition: all 0.5s;
+}
+
+.preloader--hiding {
+  display: none;
+  opacity: 0;
 }
 
 .preloader__image {
@@ -25,13 +31,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-.loaded_hiding .preloader {
-  transition: 0.3s opacity;
-  opacity: 0;
-}
-
-.loaded .preloader {
-  display: none;
 }

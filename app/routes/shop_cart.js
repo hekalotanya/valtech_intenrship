@@ -9,12 +9,11 @@ router.use(cors());
 router.get('/', async function(req, res, next) {
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;
+  const authorization = !!token;
 
-  if (!favouritesCount) {
+  if (!authorization) {
     favouritesCount = 0;
   }
-
-  const authorization = !!token;
 
   res.render('shop_cart',
     {

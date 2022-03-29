@@ -25,16 +25,15 @@ router.get('/', async function(req, res, next) {
   const decoded = jwt.decode(token, secret);
   let favouritesId = [];
 
-  if (!favouritesCount) {
+  const authorization = !!token;
+
+  if (!authorization) {
     favouritesCount = 0;
   }
-
-  const authorization = !!token;
 
   if (authorization) {
     favouritesId = await favouriteHelper.favouritesIDsByUserId(decoded.id);
   }
-  console.log(favouritesId);
 
   res.render('products', {
     products: [...allProducts],

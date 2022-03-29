@@ -45,7 +45,6 @@ if (form) {
         }, 6000);
       }
     }
-
     sentReview();
   };
 }

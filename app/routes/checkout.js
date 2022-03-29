@@ -13,12 +13,12 @@ router.get('/', async function(req, res, next) {
   let productsCart;
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;
+  const authorization = !!token;
 
-  if (!favouritesCount) {
+  if (!authorization) {
     favouritesCount = 0;
   }
 
-  const authorization = !!token;
 
   if (products) {
     productsCart = await Promise.all(products);

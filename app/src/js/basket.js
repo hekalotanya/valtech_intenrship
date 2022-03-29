@@ -1,4 +1,5 @@
 import { API_URL } from './helpers';
+import { setStyleCart } from './set_cart_icon_styes';
 
 const initQuanity = require('./product_quantity');
 
@@ -20,6 +21,7 @@ function initEvents() {
   if (buttonsDelete) {
     for (let i = 0; i < buttonsDelete.length; i++) {
       buttonsDelete[i].onclick = () => {
+        document.querySelector('.preloader').classList.toggle('preloader--hiding', false);
         let shopList = [...JSON.parse(localStorage.shop_cart)];
 
         shopList = shopList
@@ -36,24 +38,24 @@ function initEvents() {
     }
   }
 
-  // ADD TO BASKET
+  // BASKET PROCESS
 
-  const buttonsAdd = document.querySelectorAll('.cart');
+  const cartIcons = document.querySelectorAll('.cart');
 
-  if (buttonsAdd) {
+  if (cartIcons) {
     const quantity = document.querySelector('.quantity__block__value');
 
-    for (let i = 0; i < buttonsAdd.length; i++) {
-      const productId = buttonsAdd[i].id;
+    for (let i = 0; i < cartIcons.length; i++) {
+      const productId = cartIcons[i].id;
 
-      buttonsAdd[i].onclick = () => {
+      cartIcons[i].onclick = () => {
         if (!localStorage.shop_cart) {
           const value = [];
 
           localStorage.shop_cart = JSON.stringify(value);
         }
 
-        const shopList = [...JSON.parse(localStorage.shop_cart)];
+        let shopList = [...JSON.parse(localStorage.shop_cart)];
         const quantityList = JSON.parse(localStorage.quantity);
 
         if (!shopList.find(id => id === parseInt(productId))) {
@@ -64,18 +66,24 @@ function initEvents() {
           } else {
             quantityList[parseInt(productId)] = 1;
           }
+
+          const basketIconBlock = document.querySelector('.basket__block');
+
+          basketIconBlock.classList.toggle('icon__block--change', true);
+
+          setTimeout(() => {
+            basketIconBlock.classList.toggle('icon__block--change', false);
+          }, 2000);
+        } else {
+          shopList = shopList
+            .filter(product => product !== parseInt(cartIcons[i].id));
+
+          delete quantityList[cartIcons[i].id];
+          console.log(shopList, quantityList);
         }
         localStorage.shop_cart = JSON.stringify(shopList);
         localStorage.quantity = JSON.stringify(quantityList);
-
-        const basketIconBlock = document.querySelector('.basket__block');
-
-        basketIconBlock.classList.toggle('icon__block--change', true);
-
-        setTimeout(() => {
-          basketIconBlock.classList.toggle('icon__block--change', false);
-        }, 2000);
-
+        setStyleCart();
         setCountBasket();
       };
     }
@@ -183,12 +191,14 @@ function loadBasketPage() {
       .querySelector('.cart_list__products').innerHTML;
     initEvents();
     initQuanity.initQuantityEvents();
+    document.querySelector('.preloader').classList.toggle('preloader--hiding', true);
   });
 }
 
 const page = document.querySelector('.cart_page');
 
 if (page) {
+  document.querySelector('.preloader').classList.toggle('preloader--hiding', false);
   window.onload = () => loadBasketPage();
 }
 

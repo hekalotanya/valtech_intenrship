@@ -23,5 +23,6 @@ import './fav_funtions';
 import './helpers';
 import './set_style_sort';
 import './add_review';
-import './preloader';
 import './set_fav_icon_styles';
+import './set_cart_icon_styes';
+import './loader';

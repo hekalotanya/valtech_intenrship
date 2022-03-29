@@ -6,34 +6,17 @@ const productsHelper = require('./core/productsHelper');
 router.get('/', async function(req, res, next) {
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;
+  const authorization = !!token;
 
-  if (!favouritesCount) {
+  if (!authorization) {
     favouritesCount = 0;
   }
 
-  const authorization = !!token;
-
-  function getProducts() {
-    const result = productsHelper.products(10, 4);
-
-    return result;
-  }
-
-  function getDealProducts() {
-    const result = productsHelper.productsByParams({ sale: true }, 10, 4);
-
-    return result;
-  }
-
-  function getSpecialProducts() {
-    const result = productsHelper.productsByParams({ best_seller: true }, 0, 7);
-
-    return result;
-  }
-
-  const allProducts = await getProducts();
-  const dealProducts = await getDealProducts();
-  const specialProducts = await getSpecialProducts();
+  const allProducts = await productsHelper.products(10, 4);
+  const dealProducts = await productsHelper
+    .productsByParams({ sale: true }, 10, 4);
+  const specialProducts = await productsHelper
+    .productsByParams({ best_seller: true }, 0, 7);
 
   res.render('index', {
     products: allProducts,

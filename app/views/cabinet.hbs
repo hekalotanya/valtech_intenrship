@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/main.css">
 </head>
 <body class="cabinet_page grid">
+  {{> preloader}}
   {{#if error}}
     <div class="error__message">{{error}}</div>
   {{/if}}
@@ -118,7 +119,7 @@
                     {{> fav_icon}}
                   </a>
                   <a class="icon cart" id={{this.product.id}}>
-                    {{> basket_icon}}
+                    {{> basket_icon_cabinet}}
                   </a>
                   <a href="products/{{this.product.id}}" class="icon open">
                     {{> open_icon}}
