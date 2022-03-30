@@ -51,13 +51,21 @@ router.get('/?', async function(req, res, next) {
   delete params.price;
   delete params.sort;
 
-  function getProducts() {
-    if (sort) {
+  switch (sort) {
+    case 'expensive':
+      sort = { price: 'desc' };
+      break;
+    case 'cheap':
+      sort = { price: 'asc' };
+      break;
+    case undefined:
+      break;
+    default:
       sort = { [sort]: 'desc' };
-    } else {
-      sort = undefined;
-    }
+      break;
+  }
 
+  function getProducts() {
     const result = productsHelper.productsByParams({
       ...params,
       price: {
