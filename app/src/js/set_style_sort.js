@@ -3,21 +3,24 @@ function setStylesSort() {
   const url = new URL(urlString);
 
   // SET STYLE FOR CATEGORY LINK
-
-  if (url.searchParams.has('category_id')) {
+  function setStyleCategory() {
     const value = url.searchParams.get('category_id');
     const categoryLinkElement = document.querySelector(`.category_link${value}`);
     const categoryLinks = [...document.querySelectorAll('.category_link')];
 
-    categoryLinks.map(link => {
-      link.classList.toggle('category_link--active', false);
-    });
-    categoryLinkElement.classList.toggle('category_link--active', true);
+    if (categoryLinks) {
+      categoryLinks.map(link => {
+        link.classList.toggle('category_link--active', false);
+      });
+    }
+
+    if (url.searchParams.has('category_id')) {
+      categoryLinkElement.classList.toggle('category_link--active', true);
+    }
   }
 
   // SET STYLE FOR COLOR LINK
-
-  if (url.searchParams.has('color')) {
+  function setStyleColor() {
     const value = url.searchParams.get('color');
     const colorLinkElement = document.querySelector(`.${value}`);
     const colorLinks = [...document.querySelectorAll('.circle')];
@@ -25,12 +28,14 @@ function setStylesSort() {
     colorLinks.map(link => {
       link.classList.toggle('circle--active', false);
     });
-    colorLinkElement.classList.toggle('circle--active', true);
+
+    if (url.searchParams.has('color')) {
+      colorLinkElement.classList.toggle('circle--active', true);
+    }
   }
 
   // SET STYLE FOR SIZE LINK
-
-  if (url.searchParams.has('size')) {
+  function setStyleSize() {
     const value = url.searchParams.get('size');
 
     const sizeLinkElement = document.querySelector(`.size${value}`);
@@ -39,7 +44,10 @@ function setStylesSort() {
     sizeLinks.map(link => {
       link.classList.toggle('size--active', false);
     });
-    sizeLinkElement.classList.toggle('size--active', true);
+
+    if (url.searchParams.has('size')) {
+      sizeLinkElement.classList.toggle('size--active', true);
+    }
   }
 
   // SET STYLE FOR PAGE LINK
@@ -52,6 +60,7 @@ function setStylesSort() {
 
   if (url.searchParams.has('page')) {
     const value = url.searchParams.get('page');
+    console.log(url);
     let pageLinkElement;
 
     if (value > 3) {
@@ -61,6 +70,7 @@ function setStylesSort() {
       pageLinkElement = document.querySelector(`.page${value}`);
 
       if (pageLinkElement) {
+        console.log(pageLinkElement);
         pageLinkElement.classList.toggle('page--active', true);
       }
     }
@@ -71,6 +81,10 @@ function setStylesSort() {
       pageLinkElement.classList.toggle('page--active', true);
     }
   }
+
+  setStyleCategory();
+  setStyleColor();
+  setStyleSize();
 }
 
 setStylesSort();

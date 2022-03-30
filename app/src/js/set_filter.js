@@ -14,12 +14,15 @@ const sizes = document.querySelector('.sizes');
 const pages = document.querySelector('.products__pages');
 const priceGre = document.querySelector('.range-slider_gre');
 const priceLess = document.querySelector('.range-slider_less');
-const url = new URL(`${API_URL}products/sort`);
+const sortValue = document.getElementById('sort');
+const url = new URL(document.location.href);
 
 // GET URL WITH NEW PARAMS
 
 function getUrl(paramName, e) {
   if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') {
+    const url = new URL(document.location.href);
+
     switch (paramName) {
       case 'price':
         if (priceGre.valueAsNumber < priceLess.valueAsNumber) {
@@ -31,7 +34,11 @@ function getUrl(paramName, e) {
       default:
         const value = e.target.id;
 
-        url.searchParams.set(`${paramName}`, value);
+        if (url.searchParams.get(`${paramName}`) === value) {
+          url.searchParams.delete(`${paramName}`);
+        } else {
+          url.searchParams.set(`${paramName}`, value);
+        }
         break;
     }
 
@@ -47,6 +54,7 @@ function getUrl(paramName, e) {
 
 const renderingProducts = (newUrl) => {
   document.querySelector('.preloader').classList.toggle('preloader--hiding', false);
+
   const response = fetch(newUrl).then(result => {
     return result.text();
   });
@@ -80,8 +88,7 @@ const renderingProducts = (newUrl) => {
   const nextState = { additionalInformation: 'Updated the URL with JS' };
 
   // This will create a new entry in the browser's history, without reloading
-  window.history.pushState(nextState, nextTitle, url);
-  setStylesSort();
+  window.history.pushState(nextState, nextTitle, newUrl);
 };
 
 // ADDING EVENT LISTENERS
@@ -134,5 +141,20 @@ if (priceLess) {
     const newUrl = getUrl('price', e);
 
     renderingProducts(newUrl);
+  });
+}
+
+// SET SORT
+
+if (sortValue) {
+  sortValue.addEventListener('change', () => {
+    const url = new URL(document.location.href);
+
+    url.searchParams.set('sort', sortValue.value);
+
+    if (sortValue.value === 'default') {
+      url.searchParams.delete('sort');
+    }
+    renderingProducts(url.href);
   });
 }

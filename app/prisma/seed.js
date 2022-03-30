@@ -14,17 +14,21 @@ const arrayId = [ 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
   264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276 ];
 
 async function main() {
-  const order = await prisma.order.deleteMany({});
+  const order = await prisma.product.updateMany({
+    data: {
+      last_price: 200,
+    },
+  });
 
   console.log(order);
 }
 
-// main()
-//   .catch((e) => {
-//     console.log(123);
-//     console.error(e)
-//     process.exit(1)
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect()
-//   })
+main()
+  .catch((e) => {
+    console.log(123);
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  });

@@ -9,17 +9,108 @@ const jwt = require('jsonwebtoken');
 
 router.use(cors());
 
-function getCategories() {
-  const result = categoriesHelper.categories();
+/* GET products with params. */
+router.get('/?', async function(req, res, next) {
+  let resultLength;
+  const { page } = req.query;
+  const { price } = req.query;
+  let { sort } = req.query;
+  const params = req.query;
+  let searchProducts = [];
+  const limit = 6;
+  let firstProduct = 0;
+  let lastProduct = firstProduct + limit;
+  let favouritesId = 0;
+  let priceGre = 0;
+  let priceLess = 200;
+  const allCategories = await categoriesHelper.categories();
+  const { token, favouritesCount } = req.cookies;
+  const authorization = !!token;
+  const decoded = jwt.decode(token, secret);
 
-  return result;
-}
+  if (authorization) {
+    favouritesId = await favouriteHelper.favouritesIDsByUserId(decoded.id);
+  }
 
-/* GET products listing. */
+  if (params.category_id) {
+    params.category_id = parseInt(params.category_id);
+  }
+
+  if (params.size) {
+    params.size = parseInt(params.size);
+  }
+
+  if (price) {
+    const priceAmount = price.split('-');
+
+    priceGre = priceAmount[0];
+    priceLess = priceAmount[1];
+  }
+
+  delete params.page;
+  delete params.price;
+  delete params.sort;
+
+  function getProducts() {
+    if (sort) {
+      sort = { [sort]: 'desc' };
+    } else {
+      sort = undefined;
+    }
+
+    const result = productsHelper.productsByParams({
+      ...params,
+      price: {
+        lte: parseInt(priceLess),
+        gte: parseInt(priceGre),
+      },
+    }, firstProduct, 6, sort);
+
+    return result;
+  }
+
+  resultLength = await productsHelper.resultLength({
+    ...params,
+    price: {
+      lte: parseInt(priceLess),
+      gte: parseInt(priceGre),
+    },
+  });
+
+  if (page) {
+    if (resultLength > limit) {
+      firstProduct = limit * (page - 1);
+      lastProduct = firstProduct + limit;
+    }
+  }
+
+  searchProducts = await getProducts();
+
+  if (resultLength < limit) {
+    lastProduct = searchProducts.length;
+  }
+
+  res.render('products', {
+    noResult: (!searchProducts.length),
+    products: searchProducts,
+    categories: [...allCategories],
+    firstProduct: firstProduct + 1,
+    lastProduct,
+    title: 'Shop List Side Bar',
+    priceGre,
+    priceLess,
+    authorization,
+    favouritesCount,
+    resultLength,
+    favouritesId: JSON.stringify(favouritesId),
+  });
+});
+
+/* GET products PAGE. */
 router.get('/', async function(req, res, next) {
   const resultLength = await productsHelper.resultLength({});
   const allProducts = await productsHelper.products(0, 6);
-  const allCategories = await getCategories();
+  const allCategories = await categoriesHelper.categories();
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;
   const decoded = jwt.decode(token, secret);
@@ -50,102 +141,7 @@ router.get('/', async function(req, res, next) {
   });
 });
 
-/* GET products with params. */
-router.get('/sort', async function(req, res, next) {
-  let resultLength;
-  const { page } = req.query;
-  const { price } = req.query;
-  const params = req.query;
-  let searchProducts = [];
-  const limit = 6;
-  let firstProduct = 0;
-  let lastProduct = firstProduct + limit;
-  let priceGre = 0;
-  let priceLess = 200;
-  const allCategories = await getCategories();
-  const { token, favouritesCount } = req.cookies;
-  const authorization = !!token;
-
-  if (params.category_id) {
-    params.category_id = parseInt(params.category_id);
-  }
-
-  if (params.size) {
-    params.size = parseInt(params.size);
-  }
-
-  if (price) {
-    const priceAmount = price.split('-');
-
-    priceGre = priceAmount[0];
-    priceLess = priceAmount[1];
-  }
-
-  delete params.page;
-  delete params.price;
-
-  function getProducts() {
-    const result = productsHelper.productsByParams({
-      ...params,
-      price: {
-        lte: parseInt(priceLess),
-        gte: parseInt(priceGre),
-      },
-    }, firstProduct, 6);
-
-    return result;
-  }
-
-  resultLength = await productsHelper.resultLength({
-    ...params,
-    price: {
-      lte: parseInt(priceLess),
-      gte: parseInt(priceGre),
-    },
-  });
-
-  if (page) {
-    if (resultLength > limit) {
-      firstProduct = limit * (page - 1);
-      lastProduct = firstProduct + limit;
-    }
-  }
-
-  searchProducts = await getProducts();
-
-  if (resultLength < limit) {
-    lastProduct = searchProducts.length;
-  }
-
-  if (searchProducts.length) {
-    res.render('products', {
-      products: searchProducts,
-      categories: [...allCategories],
-      firstProduct: firstProduct + 1,
-      lastProduct,
-      title: 'Shop List Side Bar',
-      priceGre,
-      priceLess,
-      authorization,
-      favouritesCount,
-      resultLength,
-    });
-  } else {
-    res.render('products', {
-      noResult: true,
-      categories: [...allCategories],
-      length: searchProducts.length,
-      title: 'Shop List Side Bar',
-      priceGre,
-      priceLess,
-      favouritesCount,
-      authorization,
-      resultLength,
-    });
-  }
-});
-
-/* GET product detail. */
+/* GET product detail PAGE. */
 router.get('/:productId', async function(req, res, next) {
   let { favouritesCount } = req.cookies;
   const { token } = req.cookies;

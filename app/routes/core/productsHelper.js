@@ -21,9 +21,10 @@ async function products(skip, take) {
 }
 
 // GET ALL PRODCUTS BY PARAMS
-async function productsByParams(paramsObject, skip, take) {
+async function productsByParams(paramsObject, skip, take, orderObject) {
   try {
     const products = await prisma.product.findMany({
+      orderBy: orderObject,
       where: paramsObject,
       include: {
         category: true,

@@ -631,6 +631,20 @@
         }
       }
 
+      &__best_seller {
+        @include sign;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      &__last_price {
+        @include sign;
+        font-size: 13px;
+        color: rgb(136, 11, 11);
+        margin-bottom: 5px;
+        text-decoration: line-through;
+      }
+
       &__price {
         @include sign;
         margin-bottom: 20px;
