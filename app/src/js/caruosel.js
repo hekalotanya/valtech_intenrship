@@ -1,4 +1,4 @@
-// переменные для секции categories
+// variables for the categories section
 
 const categoriesImages = document.querySelectorAll('.list__caruosel img');
 const categoriesList = document.getElementById('list');
@@ -8,13 +8,13 @@ const categoriesArrowPrev = document.getElementById('arrow_prev');
 let count = 0;
 let width;
 
-// функция прокрутки изображений
+// image scroll function
 
 const rollSlider = () => {
   categoriesSliderLine.style.transform = `translate(-${width * count}px)`;
 };
 
-// установка нужного размера для блока
+// setting the right size for the block
 
 const init = () => {
   if (categoriesList) {
@@ -30,7 +30,7 @@ const init = () => {
   }
 };
 
-// добавление событий на кнопки прокрутки
+// adding events to scroll buttons
 
 if (categoriesArrowPrev) {
   categoriesArrowPrev.onclick = function() {
@@ -56,7 +56,7 @@ if (categoriesArrowNext) {
   };
 }
 
-// вызов функций для карусели на секции categories
+// calling functions for the carousel on the categories section
 
 if (categoriesImages) {
   init(categoriesList, categoriesSliderLine, categoriesImages);

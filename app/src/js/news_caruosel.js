@@ -1,4 +1,4 @@
-// переменные для секции categories
+// variables for the news section
 
 const newsImages = document.querySelectorAll('.post_block__caruosel .post');
 const newsList = document.querySelector('.news__post_block');
@@ -8,13 +8,13 @@ const newsArrowPrev = document.querySelector('.post_block__prev');
 let newsCount = 0;
 let newsWidth;
 
-// функция прокрутки изображений
+// image scroll function
 
 const rollSlider = () => {
   newsSliderLine.style.transform = `translate(-${newsWidth * newsCount}px)`;
 };
 
-// установка нужного размера для блока
+// setting the right size for the block
 
 const init = () => {
   if (newsList) {
@@ -30,7 +30,7 @@ const init = () => {
   }
 };
 
-// добавление событий на кнопки прокрутки
+// adding events to scroll buttons
 
 if (newsArrowPrev) {
   newsArrowPrev.onclick = function() {
@@ -56,7 +56,7 @@ if (newsArrowNext) {
   };
 }
 
-// вызов функций для карусели на секции news
+// call functions for the carousel on the news section
 
 if (newsImages) {
   init();
