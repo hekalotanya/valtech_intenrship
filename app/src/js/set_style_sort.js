@@ -60,24 +60,34 @@ function setStylesSort() {
 
   if (url.searchParams.has('page')) {
     const value = url.searchParams.get('page');
-    console.log(url);
-    let pageLinkElement;
+    const currentPageElement = document.querySelector('.currentPage');
+    const decreaseElement = document.querySelector('.pageDecrease');
 
     if (value > 3) {
-      pageLinkElement = document.querySelector(`.pageArrow`);
-      pageLinkElement.classList.toggle('page--active', true);
+      currentPageElement.innerHTML = value;
+      currentPageElement.classList.toggle('page--active', true);
+      decreaseElement.classList.toggle('pageDecrease--active', true);
     } else {
-      pageLinkElement = document.querySelector(`.page${value}`);
+      const pageLinkElement = document.querySelector(`.page${value}`);
 
       if (pageLinkElement) {
-        console.log(pageLinkElement);
+        currentPageElement.style.display = 'none';
         pageLinkElement.classList.toggle('page--active', true);
       }
     }
   } else {
     const pageLinkElement = document.querySelector(`.page1`);
+    const decreaseElement = document.querySelector('.pageDecrease');
+
+    if (decreaseElement) {
+      decreaseElement.classList.toggle('pageDecrease--active', false);
+    }
 
     if (pageLinkElement) {
+      const currentPageElement = document.querySelector('.currentPage');
+
+      currentPageElement.classList.toggle('page--active', false);
+      currentPageElement.style.display = 'none';
       pageLinkElement.classList.toggle('page--active', true);
     }
   }

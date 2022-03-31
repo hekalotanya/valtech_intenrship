@@ -47,31 +47,38 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
-    .card:hover {
-      transform: scale(1.1);
-    }
-
     .card {
       display: flex;
       align-items: center;
       gap: 10px;
       background-color: white;
       cursor: pointer;
-      transition: transform 0.5s;
 
-      &__image {
+      .image_block {
+        overflow: hidden;
         height: 180px;
         width: 180px;
-        object-fit: cover;
 
         @include Tablet {
           width: 50%;
+          height: auto;
         }
 
         @include Phone {
           width: 50%;
+          height: auto;
         }
+      }
 
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
 
       &__title {

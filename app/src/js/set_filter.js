@@ -22,17 +22,33 @@ const url = new URL(document.location.href);
 function getUrl(paramName, e) {
   if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') {
     const url = new URL(document.location.href);
+    let value;
 
     switch (paramName) {
       case 'price':
         if (priceGre.valueAsNumber < priceLess.valueAsNumber) {
-          const value = `${priceGre.valueAsNumber}-${priceLess.valueAsNumber}`;
+          value = `${priceGre.valueAsNumber}-${priceLess.valueAsNumber}`;
 
           url.searchParams.set(`price`, value);
         }
         break;
+      case 'page':
+        value = e.target.id;
+
+        switch (value) {
+          case 'increase':
+            value = (url.searchParams.get('page'))
+              ? (parseInt(url.searchParams.get('page')) + 1) : 1;
+            break;
+          case 'decrease':
+            value = (url.searchParams.get('page'))
+              ? (parseInt(url.searchParams.get('page')) - 1) : 1;
+            break;
+        }
+        url.searchParams.set('page', value);
+        break;
       default:
-        const value = e.target.id;
+        value = e.target.id;
 
         if (url.searchParams.get(`${paramName}`) === value) {
           url.searchParams.delete(`${paramName}`);
@@ -82,6 +98,7 @@ const renderingProducts = (newUrl) => {
     setStylesSort();
     setStyleFav();
     setStyleCart();
+    console.log('height');
   });
 
   const nextTitle = 'My new page title';

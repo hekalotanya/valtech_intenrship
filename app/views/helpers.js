@@ -9,10 +9,12 @@ hbs.registerHelper('page2', (value) => {
 
   if (Math.ceil(value / 6) >= 3) {
     result += '<a id="3" class="page page3">3</a>';
+    result += '<a class="page currentPage">4</a>';
   }
 
   if (Math.ceil(value / 6) >= 4) {
     result += '<a id="increase" class="page pageArrow">></a>';
+    result = '<a id="decrease" class="page pageArrow pageDecrease"><</a>' + result;
   }
 
   return result;

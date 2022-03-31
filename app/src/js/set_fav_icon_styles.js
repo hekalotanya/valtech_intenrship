@@ -7,14 +7,19 @@ if (document.location.href === (`${API_URL}products/`)) {
     let fav = [...favouritesId];
 
     localStorage.fav = JSON.stringify(fav);
+  } else {
+    localStorage.fav = JSON.stringify([]);
   }
-  localStorage.fav = JSON.stringify([]);
 }
 
 // SET STYLES
 
 function setStyleFav() {
-  const favArray = JSON.parse(localStorage.fav);
+  let favArray;
+
+  if (localStorage.fav) {
+    favArray = JSON.parse(localStorage.fav);
+  }
 
   if (favArray) {
     const icons = [...document.querySelectorAll('.icon__fav')];
@@ -34,7 +39,11 @@ function setStyleFav() {
 };
 
 function setStyleFavPrPage() {
-  const favArray = JSON.parse(localStorage.fav);
+  let favArray;
+
+  if (localStorage.fav) {
+    favArray = JSON.parse(localStorage.fav);
+  }
 
   if (favArray) {
     const icons = [...document.querySelectorAll('.icon_rect')];

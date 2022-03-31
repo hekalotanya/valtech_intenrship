@@ -4,6 +4,12 @@ function initProductDetail() {
   const productCards = document.querySelectorAll('.pr__detail');
 
   function getProductDetail(e) {
+    if (e.currentTarget.classList.contains('cart')
+      || e.currentTarget.classList.contains('cart__icon')
+      || e.currentTarget.classList.contains('cart__sign')) {
+      return;
+    }
+
     if (e.target.tagName === 'IMG' || e.target.tagName === 'SPAN') {
       const productId = e.currentTarget.id;
       const path = new URL(`${API_URL}products/${productId}`);
