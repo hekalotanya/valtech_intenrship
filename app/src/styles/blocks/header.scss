@@ -24,8 +24,10 @@
   @include Tablet {
     padding-left: 50px;
     padding-right: 50px;
+    flex-flow: 1;
+    display: flex;
+    flex-direction: column;
   }
-
 
   &__logo {
     display: none;
@@ -40,6 +42,20 @@
       text-align: center;
       cursor: pointer;
       color: white;
+
+      &:after {
+        content: '▼';
+        font-size: 13px;
+        color: white;
+        padding: 5px 5px 0;
+      }
+    }
+    @include Tablet {
+      display: inline;
+      color: white;
+      margin-top: 10px;
+      text-align: center;
+      order: 2;
     }
   }
 
@@ -145,6 +161,9 @@
   }
 
   @include Tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     padding-left: 50px;
     padding-right: 50px;
   }
@@ -156,6 +175,10 @@
     justify-self: center;
 
     @include Phone {
+      display: none;
+    }
+
+    @include Tablet {
       display: none;
     }
 

@@ -65,13 +65,15 @@ function setStylesSort() {
 
     if (value > 3) {
       currentPageElement.innerHTML = value;
-      currentPageElement.classList.toggle('page--active', true);
-      decreaseElement.classList.toggle('pageDecrease--active', true);
+      currentPageElement.classList.add('page--active');
+      decreaseElement.classList.add('pageDecrease--active');
     } else {
       const pageLinkElement = document.querySelector(`.page${value}`);
 
       if (pageLinkElement) {
-        currentPageElement.style.display = 'none';
+        if (currentPageElement) {
+          currentPageElement.style.display = 'none';
+        }
         pageLinkElement.classList.toggle('page--active', true);
       }
     }
@@ -97,6 +99,10 @@ function setStylesSort() {
   setStyleSize();
 }
 
-setStylesSort();
+try {
+  setStylesSort();
+} catch (e) {
+  console.log(e);
+}
 
 export { setStylesSort };

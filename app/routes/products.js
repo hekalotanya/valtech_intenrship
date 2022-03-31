@@ -24,9 +24,13 @@ router.get('/?', async function(req, res, next) {
   let priceGre = 0;
   let priceLess = 200;
   const allCategories = await categoriesHelper.categories();
-  const { token, favouritesCount } = req.cookies;
+  let { token, favouritesCount } = req.cookies;
   const authorization = !!token;
   const decoded = jwt.decode(token, secret);
+
+  if (!authorization) {
+    favouritesCount = 0;
+  }
 
   if (authorization) {
     favouritesId = await favouriteHelper.favouritesIDsByUserId(decoded.id);
@@ -168,12 +172,16 @@ router.get('/:productId', async function(req, res, next) {
 
   const product = await getProduct();
 
-  res.render('product_detail', {
-    title: 'Product Detail',
-    product,
-    authorization,
-    favouritesCount,
-  });
+  if (product) {
+    res.render('product_detail', {
+      title: 'Product Detail',
+      product,
+      authorization,
+      favouritesCount,
+    });
+  } else {
+    res.redirect('/error');
+  }
 });
 
 module.exports = router;

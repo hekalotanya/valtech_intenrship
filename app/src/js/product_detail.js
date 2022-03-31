@@ -4,9 +4,9 @@ function initProductDetail() {
   const productCards = document.querySelectorAll('.pr__detail');
 
   function getProductDetail(e) {
-    if (e.currentTarget.classList.contains('cart')
-      || e.currentTarget.classList.contains('cart__icon')
-      || e.currentTarget.classList.contains('cart__sign')) {
+    if (e.target.classList.contains('cart')
+      || e.target.classList.contains('cart__icon')
+      || e.target.classList.contains('cart__sign')) {
       return;
     }
 

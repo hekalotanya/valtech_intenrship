@@ -11,16 +11,17 @@ router.post('/', async function(req, res, next) {
 
   if (!validator.isEmail(email)) {
     res.status(400).send();
+
+    return;
   }
 
   const checkedEmail = await subscriberHelper.getSubscriberByEmail(email);
 
   if (!checkedEmail) {
-    const subs = await subscriberHelper.createSubscriber(email);
-    console.log(subs);
+    await subscriberHelper.createSubscriber(email);
   }
 
-  res.status(200).send();
+  res.status(304).send();
 });
 
 module.exports = router;

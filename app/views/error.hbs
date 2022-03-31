@@ -16,9 +16,16 @@
 <body class="checkout_page grid">
   {{> header_grid }}
   <main class="grid grid__item--1--12">
-    <h1>{{message}}</h1>
-    <h2>{{error.status}}</h2>
-    <pre>{{error.stack}}</pre>
+    <h2 class="error__sign grid__item--1--12">Please, try again</h2>
+    {{#if message}}
+      <h1>{{message}}</h1>
+    {{/if}}
+    {{#if error.status}}
+      <h2>{{error.status}}</h2>
+    {{/if}}
+    {{#if error.stack}}
+      <pre>{{error.stack}}</pre>
+    {{/if}}
   </main>
   {{> footer_grid }}
   {{> copyright }}

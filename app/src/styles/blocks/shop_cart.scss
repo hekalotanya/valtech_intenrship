@@ -65,6 +65,10 @@
     flex-direction: column;
     gap: 40px;
 
+    @include Phone {
+      flex-grow: 1;
+    }
+
     .cart__result {
       @include title_jost;
       font-size: 30px;
@@ -75,13 +79,12 @@
       padding-top: 40px;
 
       @include Phone {
-        padding-top: 0px;
-        padding-bottom: 20px;
+        padding: 15px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 30px;
-        border-bottom: 2px solid #ECECEC;
+        box-shadow: 3px 3px 28px 2px rgba(0,0,0,0.75);
       }
 
       .item__name {
@@ -128,8 +131,8 @@
         height: 46px;
 
         .quantity__block {
-          width: 130px;
-          height: 46px;
+          width: 150px;
+          height: 50px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -149,8 +152,9 @@
           }
 
           .arrow {
-            width: 11px;
-            height: 11px;
+            width: 33px;
+            height: 23px;
+            padding: 4px;
             cursor: pointer;
           }
         }
@@ -276,6 +280,7 @@
       transition: all 0.5s;
       color: white;
       user-select: none; 
+      border: 1px solid black;
 
       &:hover {
         background-color: white;

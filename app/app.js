@@ -58,6 +58,10 @@ app.use('/favourites', favouritesRouter);
 app.use('/review', reviewRouter);
 app.use('/subscribe', subscriberRouter);
 
+app.get('/error', function(req, res) {
+  res.render('error');
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

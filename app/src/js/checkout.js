@@ -67,18 +67,23 @@ if (document.location.href.includes(`${API_URL}checkout`)) {
 // FETCH CREATE ORDER
 
 async function sentOrder(body) {
-  await fetch(`${API_URL}checkout/order`, {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body,
-  }).then(res => {
-    localStorage.quantity = JSON.stringify({});
-    localStorage.shop_cart = JSON.stringify([]);
-    document.location.href = res.url;
-  });
+  try {
+    await fetch(`${API_URL}checkout/order`, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body,
+    }).then(res => {
+      localStorage.quantity = JSON.stringify({});
+      localStorage.shop_cart = JSON.stringify([]);
+      document.location.href = res.url;
+    });
+  } catch (e) {
+    console.log(e);
+  }
+
   document.querySelector('.preloader').classList.toggle('preloader--hiding', true);
 }
 
@@ -96,6 +101,11 @@ if (document.location.href.includes(`${API_URL}checkout`)) {
       const totalAmount
         = parseInt(document.querySelector('.bill__total__amount')
           .innerHTML.slice(1));
+
+      if (!totalAmount) {
+        location.reload();
+      }
+
       const body = {
         quantityList: JSON.parse(localStorage.quantity),
         ...value,

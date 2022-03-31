@@ -5,7 +5,6 @@ const productsHelper = require('./core/productsHelper');
 const ordersHelper = require('./core/ordersHelper');
 const usersHelper = require('./core/usersHelper');
 let products;
-let orderId;
 const validator = require('validator');
 
 router.use(cors());
@@ -19,7 +18,6 @@ router.get('/', async function(req, res, next) {
   if (!authorization) {
     favouritesCount = 0;
   }
-
 
   if (products) {
     productsCart = await Promise.all(products);
@@ -60,20 +58,22 @@ router.post('/order', async function(req, res, next) {
   } = req.body;
 
   const checkValidation = () => {
-    if (!validator.isEmail(email)) {
-      return false;
-    }
+    if (!authorization) {
+      if (!validator.isEmail(email)) {
+        return false;
+      }
 
-    if (!validator.isLength(phone, { min: 16 })) {
-      return false;
-    }
+      if (!validator.isLength(phone, { min: 16 })) {
+        return false;
+      }
 
-    if (!validator.isLength(first_name.trim(), { min: 2 })) {
-      return false;
-    }
+      if (!validator.isLength(first_name.trim(), { min: 2 })) {
+        return false;
+      }
 
-    if (!validator.isLength(second_name.trim(), { min: 2 })) {
-      return false;
+      if (!validator.isLength(second_name.trim(), { min: 2 })) {
+        return false;
+      }
     }
 
     if (!validator.isLength(country.trim(), { min: 5 })) {
@@ -96,7 +96,7 @@ router.post('/order', async function(req, res, next) {
   };
 
   if (!checkValidation()) {
-    res.redirect('/cart');
+    res.redirect('/error');
 
     return res.send();
   }
@@ -134,8 +134,6 @@ router.post('/order', async function(req, res, next) {
 
   const orderResult = await ordersHelper.createOrder(order);
 
-  orderId = orderResult;
-
   for (const key in quantityList) {
     const dbProduct = await productsHelper.productById(parseInt(key));
     const total_price = parseInt(quantityList[key]) * dbProduct.price;
@@ -149,13 +147,14 @@ router.post('/order', async function(req, res, next) {
     ordersHelper.createOrderProduct(product);
   }
 
-  res.redirect('/checkout/order');
+  res.redirect(`/checkout/order/${orderResult}`);
 });
 
-router.get('/order', async function(req, res, next) {
+router.get('/order/:orderId', async function(req, res, next) {
   const { favouritesCount } = req.cookies;
   const { token } = req.cookies;
   const authorization = !!token;
+  const { orderId } = req.params;
 
   res.render('order', {
     orderId,

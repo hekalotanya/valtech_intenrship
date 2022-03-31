@@ -44,12 +44,15 @@ router.post('/', async function(req, res, next) {
     cartProducts = await Promise.all(cartProducts);
   }
 
-  if (cartProducts) {
+  console.log(!!cartProducts.length);
+
+  if (cartProducts.length) {
     res.render('shop_cart', {
       title: 'Shop Cart',
       products: cartProducts,
       user,
       authorization,
+      noResult: false,
     });
   } else {
     res.render('shop_cart', {

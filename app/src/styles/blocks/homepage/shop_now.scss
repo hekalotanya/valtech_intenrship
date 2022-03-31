@@ -63,7 +63,9 @@
     user-select: none; 
 
     .button {
-      width: max-content;
+      width: 100%;
+      text-align: center;
+      line-height: 46px;
       text-decoration: none;
       @include button;
       transition: color 0.5s;

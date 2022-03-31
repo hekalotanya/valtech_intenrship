@@ -3,14 +3,18 @@ import { API_URL } from './helpers';
 // FETCH SUBSCRIBE
 
 async function fetchSubscribe(body) {
-  await fetch(`${API_URL}subscribe`, {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
+  try {
+    await fetch(`${API_URL}subscribe`, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 const form = document.querySelector('.subscribe__form');
