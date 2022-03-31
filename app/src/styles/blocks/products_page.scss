@@ -97,12 +97,13 @@
 
     .form {
       display: flex;
-      justify-content: space-between;
+      justify-content: stretch;
       align-items: center;
     }
 
     .input {
       border: none;
+      width: 90%;
       @include button;
 
       &::placeholder {
@@ -113,6 +114,12 @@
     .button {
       background-color: transparent;
       border: none;
+      padding: 5px;
+      transition: all 0.5s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -699,6 +706,10 @@
 
           &:hover {
             fill: #60A00C;
+
+            @include Phone {
+              fill: white;
+            }
           }
 
           &--active {
@@ -706,6 +717,10 @@
 
             &:hover {
               fill: white;
+
+              @include Phone {
+                fill: #60A00C;
+              }
             }
           }
         }

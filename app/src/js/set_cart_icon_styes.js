@@ -1,6 +1,10 @@
 // SET STYLES
 
 function setStyleCart() {
+  if (!localStorage.shop_cart) {
+    localStorage.shop_cart = JSON.stringify([]);
+  }
+
   let shopList = [...JSON.parse(localStorage.shop_cart)];
 
   if (shopList) {

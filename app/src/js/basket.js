@@ -3,17 +3,17 @@ import { setStyleCart } from './set_cart_icon_styes';
 
 const initQuanity = require('./product_quantity');
 
+// SET LOCAL STORAGE
+
+if (!localStorage.shop_cart) {
+  localStorage.shop_cart = JSON.stringify([]);
+}
+
+if (!localStorage.quantity) {
+  localStorage.quantity = JSON.stringify({});
+}
+
 function initEvents() {
-  // SET LOCAL STORAGE
-
-  if (!localStorage.shop_cart) {
-    localStorage.shop_cart = JSON.stringify([]);
-  }
-
-  if (!localStorage.quantity) {
-    localStorage.quantity = JSON.stringify({});
-  }
-
   // DELETE ITEM FROM BASKET
 
   const buttonsDelete = document.querySelectorAll('.item__delete');
@@ -116,7 +116,7 @@ function initEvents() {
 
   // GET TOTAL SUMM
 
-  if (document.location.href === (`${API_URL}cart`)) {
+  if (document.location.href.includes(`${API_URL}cart`)) {
     const quantityBlocks = document.querySelectorAll('.quantity__block');
 
     for (let i = 0; i < quantityBlocks.length; i++) {
@@ -141,7 +141,7 @@ function initEvents() {
 
   // SET QUANTITY
 
-  if (document.location.href === `${API_URL}cart`) {
+  if (document.location.href.includes(`${API_URL}cart`)) {
     const quantityValues
       = [...document.querySelectorAll('.quantity__block__value')];
     const quantityList = JSON.parse(localStorage.quantity);

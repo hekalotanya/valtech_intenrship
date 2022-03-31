@@ -24,7 +24,7 @@ if (form) {
         body: JSON.stringify(body),
       });
 
-      if (response.status === 500) {
+      if (response.status === 400) {
         const errorMessage = document.querySelector('.error__message_review');
 
         errorMessage.classList.toggle('error__message_fav--active', true);

@@ -96,7 +96,7 @@ router.post('/order', async function(req, res, next) {
   };
 
   if (!checkValidation()) {
-    res.redirect('/checkout');
+    res.redirect('/cart');
 
     return res.send();
   }

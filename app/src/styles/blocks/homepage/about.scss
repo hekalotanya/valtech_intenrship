@@ -52,6 +52,7 @@
       line-height: 100%;
       margin-top: 40px;
       transition: background-color, 0.5s;
+      background-color: black;
       cursor: pointer;
   
       .button {
@@ -65,10 +66,10 @@
     }
 
     &__button:hover {
-      background-color: black;
+      background-color: white;
       
       .button {
-        color: white;
+        color: black;
       }
     }
   }

@@ -27,3 +27,4 @@ import './set_fav_icon_styles';
 import './set_cart_icon_styes';
 import './loader';
 import './show_password';
+import './subscribe';

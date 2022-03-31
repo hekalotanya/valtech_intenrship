@@ -21,7 +21,7 @@
     {{> title_section }}
     <section class="main__search search grid__item--1--12 grid">
       <div class="search__input_block grid__item--1--4">
-        <form action="http://localhost:3000/products/params" class="search__form form" method="GET">
+        <form action="http://localhost:3000/products/" class="search__form form" method="GET">
           <input class="input plp_search" type="text" name="name" id="search" placeholder="Search" required>
           <button type="submit" class="button">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +108,7 @@
             <img src="{{this.images.[0].path}}" alt="" class="product_card__image">
             <div class="product_card__block">
               <div class="product_card__text text">
-              <span class="text__name">{{this.name}}{{this.id}}</span>
+              <span class="text__name">{{this.name}}</span>
               {{#if this.best_seller}}
                   <span class="text__best_seller">BEST SELLER</span>
                 {{/if}}

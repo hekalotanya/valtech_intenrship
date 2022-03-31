@@ -59,6 +59,10 @@ model Image {
   product_id Int
 }
 
+model Subscriber {
+  email     String      @unique @db.VarChar(255)
+}
+
 model Review {
   id         Int     @id @default(autoincrement())
   user_id    Int

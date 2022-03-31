@@ -31,7 +31,7 @@
     background-color: white;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: stretch;
 
     @include Phone {
       width: 80%;
@@ -42,7 +42,7 @@
       @include text;
       background-color: white;
       border: none;
-      width: 70%;
+      width: 90%;
 
       &:invalid:focus:not(:placeholder-shown) {
         border-bottom: 1px solid #FF5D73;
@@ -53,7 +53,13 @@
       background-color: white;
       border: none;
       cursor: pointer;
-      user-select: none; 
+      user-select: none;
+      padding: 5px;
+      transition: all 0.5s;
+
+      &:hover {
+        transform: scale(1.3);
+      }
     }
   }
 

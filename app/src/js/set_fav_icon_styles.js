@@ -8,6 +8,7 @@ if (document.location.href === (`${API_URL}products/`)) {
 
     localStorage.fav = JSON.stringify(fav);
   }
+  localStorage.fav = JSON.stringify([]);
 }
 
 // SET STYLES

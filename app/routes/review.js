@@ -21,9 +21,9 @@ router.post('/', async function(req, res, next) {
       product_id: parseInt(productId),
     });
 
-    res.status(304).send();
+    res.status(200).send();
   }
-  res.status(500).send();
+  res.status(400).send();
 });
 
 module.exports = router;

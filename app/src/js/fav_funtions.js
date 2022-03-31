@@ -75,7 +75,7 @@ function initFunction() {
 
       const response = await fetch(`/favourites/${productId}`);
 
-      if (response.status === 500) {
+      if (response.status === 400) {
         if (icon) {
           icon.classList.toggle('icon__circle--active', false);
         }

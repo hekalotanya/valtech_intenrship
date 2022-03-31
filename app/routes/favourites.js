@@ -22,9 +22,9 @@ router.get('/:productId', async function(req, res, next) {
       maxAge: 900000,
       httpOnly: true,
     });
-    res.status(304).send();
+    res.status(200).send();
   } else {
-    res.status(500).send({ error: { message: 'You must be log in' } });
+    res.status(400).send({ error: { message: 'You must be log in' } });
   }
 });
 

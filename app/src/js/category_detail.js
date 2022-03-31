@@ -4,7 +4,7 @@ const categoryCards = document.querySelectorAll('.cat__detail');
 
 function getCategoryDetail(e) {
   const categoryId = e.currentTarget.id;
-  const path = new URL(`${API_URL}products/sort?category_id=${categoryId}`);
+  const path = new URL(`${API_URL}products/?category_id=${categoryId}`);
 
   document.location.href = path;
 }
