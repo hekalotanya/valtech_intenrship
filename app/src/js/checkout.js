@@ -19,12 +19,13 @@ if (document.location.href.includes(`${API_URL}cart`)) {
   const button = document.querySelector('.cart_menu__totals__checkout');
 
   // GET CHECKOUT PAGE
-
-  button.onclick = () => {
-    if (JSON.parse(localStorage.shop_cart).length) {
-      fetchCheckout(localStorage.shop_cart);
-    }
-  };
+  if (button) {
+    button.onclick = () => {
+      if (JSON.parse(localStorage.shop_cart).length) {
+        fetchCheckout(localStorage.shop_cart);
+      }
+    };
+  }
 }
 
 // SET QUANTITY

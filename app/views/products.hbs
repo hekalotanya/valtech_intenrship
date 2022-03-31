@@ -70,12 +70,18 @@
         </div>
         <div class="left_side_bar__price">
           <h1 class="left_side_bar__title">Filter by Price</h1>
-          <div class="range-slider">
-            <input class="range-slider_gre" value='{{priceGre}}' min="0" max="200" step="5" type="range">
-            <input class="range-slider_less" value='{{priceLess}}' min="0" max="200" step="5" type="range">
-            <svg width="100%" height="24"></svg>
-            <div class="range-slider__sign"><span>Price:</span><input type="text" value={{priceGre}} readonly><input type="text" value={{priceLess}} min="0" readonly></div>
-        </div>
+          <div class="wrapper">
+            <div class="values">
+              <input class="input" type="text" id="range1" value={{priceGre}} readonly>
+              <span> &dash; </span>
+              <input class="input" type="text" id="range2" value={{priceLess}} readonly>
+            </div>
+            <div class="container">
+              <div class="slider-track"></div>
+              <input type="range" min="0" max="200" value={{priceGre}} id="slider-1">
+              <input type="range" min="0" max="200" value={{priceLess}} id="slider-2">
+            </div>
+          </div>
         </div>
         <div class="left_side_bar__color">
           <h1 class="left_side_bar__title">Filter by Color</h1>

@@ -111,7 +111,9 @@ function initEvents() {
       totalAmount += parseInt(item.innerHTML.slice(1));
     });
 
-    totalOfAll.innerHTML = `$${totalAmount}`;
+    if (totalOfAll) {
+      totalOfAll.innerHTML = `$${totalAmount}`;
+    }
   }
 
   // GET TOTAL SUMM

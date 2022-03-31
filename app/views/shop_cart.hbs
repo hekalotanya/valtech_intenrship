@@ -65,14 +65,16 @@
         <button class="cart_menu__buttons__update">UPDATE CART</button>
         <a  href="/products/" class="cart_menu__buttons__continue">CONTINUE SHOPPING</a>
       </div>
-      <div class="cart_menu__totals grid__item--8--12">
-        <h2 class="cart_menu__totals__sign">CART TOTALS</h2>
-        <div class="cart_menu__totals__amount">
-          <span class="amount__sign">Total</span>
-          <span class="amount__summ">${{totalPrice}}</span>
+      {{#if products}}
+        <div class="cart_menu__totals grid__item--8--12">
+          <h2 class="cart_menu__totals__sign">CART TOTALS</h2>
+          <div class="cart_menu__totals__amount">
+            <span class="amount__sign">Total</span>
+            <span class="amount__summ">${{totalPrice}}</span>
+          </div>
+          <button class="cart_menu__totals__checkout">PROCEED TO CHECKOUT</button>
         </div>
-        <button class="cart_menu__totals__checkout">PROCEED TO CHECKOUT</button>
-      </div>
+      {{/if}}
     </section>
   </main>
   {{> footer_grid }}

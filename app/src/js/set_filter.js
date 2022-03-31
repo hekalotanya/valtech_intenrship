@@ -12,8 +12,8 @@ const circles = document.querySelector('.color__circles');
 const categories = document.querySelector('.categories__list');
 const sizes = document.querySelector('.sizes');
 const pages = document.querySelector('.products__pages');
-const priceGre = document.querySelector('.range-slider_gre');
-const priceLess = document.querySelector('.range-slider_less');
+const priceLess = document.getElementById('slider-2');
+const priceGre = document.getElementById('slider-1');
 const sortValue = document.getElementById('sort');
 const url = new URL(document.location.href);
 
@@ -98,7 +98,6 @@ const renderingProducts = (newUrl) => {
     setStylesSort();
     setStyleFav();
     setStyleCart();
-    console.log('height');
   });
 
   const nextTitle = 'My new page title';
