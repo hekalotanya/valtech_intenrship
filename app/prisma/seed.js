@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
+const { idText } = require('typescript');
 const prisma = new PrismaClient();
-const arrayId = [ 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
+
+const arrayId = [ 1118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
   130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141,
   142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153,
   154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165,
@@ -13,25 +15,24 @@ const arrayId = [ 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
   252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263,
   264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276 ];
 
-async function main() {
-  const order = await prisma.image.updateMany({
-    where {
-      path: '	https://user-images.githubusercontent.com/77466385…5409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg'
-    }
-    data: {
-      path: 'https://user-images.githubusercontent.com/77466385/161225743-8110b19a-c867-4c78-b6ab-087f1804bc2b.jpeg',
-    },
-  });
+// async function main() {
+//   arrayId.map(async(id) => {
+//     const order = await prisma.image.create({
+//       data: {
+//         path: 'https://user-images.githubusercontent.com/77466385/161229427-ab99bf2b-30d4-47c0-a7a2-328c651d406b.jpeg',
+//         product_id: id,
+//       },
+//     });
 
-  console.log(order);
-}
+//     console.log(order);
+//   })
+// }
 
-main()
-  .catch((e) => {
-    console.log(123);
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async() => {
-    await prisma.$disconnect();
-  });
+// main()
+//   .catch((e) => {
+//     console.error(e);
+//     process.exit(1);
+//   })
+//   .finally(async() => {
+//     await prisma.$disconnect();
+//   });

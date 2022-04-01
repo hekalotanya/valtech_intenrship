@@ -30,7 +30,7 @@ async function categoryById(id) {
 // CREATE CATEGORY
 async function createCategory(categoryObject) {
   try {
-    const category = await prisma.category.create({ data: categoryObject })
+    const category = await prisma.category.create({ data: categoryObject });
 
     return category;
   } catch (e) {

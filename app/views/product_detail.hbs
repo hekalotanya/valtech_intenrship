@@ -26,7 +26,7 @@
         <div class="list_of_images">
           <img class="list_image" src={{product.images.[1].path}} alt="img">
           <img class="list_image" src={{product.images.[2].path}} alt="img">
-          <img class="list_image" src={{product.images.[0].path}} alt="img">
+          <img class="list_image" src={{product.images.[3].path}} alt="img">
           <img class="list_image" src={{product.images.[1].path}} alt="img">
         </div>
       </div>
@@ -66,7 +66,7 @@
           </div>
         </div>
         <form action="/review" class="description__review_form review_form" method="POST" id={{product.id}}>
-            <textarea required class="review_form__input" name="review_body" cols="30" rows="10" placeholder="Leave your review..."></textarea>
+            <textarea required class="review_form__input" name="review_body" cols="30" rows="10" placeholder="Leave your review...(You must be logged in)"></textarea>
             <button type="submit" class="review_form__submit">Send a review</button>
         </form>
       </div>

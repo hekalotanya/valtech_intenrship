@@ -1,4 +1,3 @@
-import { API_URL } from './helpers';
 import { setStylesSort } from './set_style_sort';
 import { setStyleFav } from './set_fav_icon_styles';
 import { setStyleCart } from './set_cart_icon_styes';
@@ -112,6 +111,7 @@ const renderingProducts = (newUrl) => {
 if (circles) {
   circles.addEventListener('click', (e) => {
     const newUrl = getUrl('color', e);
+
     renderingProducts(newUrl);
   });
 }

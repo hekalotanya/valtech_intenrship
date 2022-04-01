@@ -8,7 +8,6 @@ const logger = require('morgan');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-
 const indexRouter = require('./routes/home');
 const productsRouter = require('./routes/products');
 const shopCartRouter = require('./routes/shop_cart');
@@ -18,7 +17,6 @@ const cabinetRouter = require('./routes/cabinet');
 const favouritesRouter = require('./routes/favourites');
 const reviewRouter = require('./routes/review');
 const subscriberRouter = require('./routes/subscriber');
-
 const app = express();
 
 app.use(session({
