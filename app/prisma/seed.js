@@ -14,9 +14,12 @@ const arrayId = [ 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
   264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276 ];
 
 async function main() {
-  const order = await prisma.product.updateMany({
+  const order = await prisma.image.updateMany({
+    where {
+      path: '	https://user-images.githubusercontent.com/77466385…5409424-afea2a39-8ffa-41ed-8675-3bbcbc6ec0c3.jpeg'
+    }
     data: {
-      last_price: 200,
+      path: 'https://user-images.githubusercontent.com/77466385/161225743-8110b19a-c867-4c78-b6ab-087f1804bc2b.jpeg',
     },
   });
 
@@ -26,9 +29,9 @@ async function main() {
 main()
   .catch((e) => {
     console.log(123);
-    console.error(e)
-    process.exit(1)
+    console.error(e);
+    process.exit(1);
   })
-  .finally(async () => {
-    await prisma.$disconnect()
+  .finally(async() => {
+    await prisma.$disconnect();
   });

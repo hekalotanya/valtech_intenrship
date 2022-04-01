@@ -24,7 +24,7 @@ router.get('/:productId', async function(req, res, next) {
     });
     res.status(200).send();
   } else {
-    res.status(400).send({ error: { message: 'You must be log in' } });
+    res.status(400).send({ error: { message: 'You must be logged in' } });
   }
 });
 
