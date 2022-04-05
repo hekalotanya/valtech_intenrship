@@ -111,6 +111,7 @@ const renderingProducts = (newUrl) => {
 if (circles) {
   circles.addEventListener('click', (e) => {
     const newUrl = getUrl('color', e);
+    console.log(newUrl);
 
     renderingProducts(newUrl);
   });

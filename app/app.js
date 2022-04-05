@@ -17,6 +17,7 @@ const cabinetRouter = require('./routes/cabinet');
 const favouritesRouter = require('./routes/favourites');
 const reviewRouter = require('./routes/review');
 const subscriberRouter = require('./routes/subscriber');
+const apiProducts = require('./routes/api/apiProducts');
 const app = express();
 
 app.use(session({
@@ -55,6 +56,7 @@ app.use('/cabinet', cabinetRouter);
 app.use('/favourites', favouritesRouter);
 app.use('/review', reviewRouter);
 app.use('/subscribe', subscriberRouter);
+app.use('/api/products', apiProducts);
 
 app.get('/error', function(req, res) {
   res.render('error');

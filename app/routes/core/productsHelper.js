@@ -16,7 +16,7 @@ async function products(skip, take) {
 
     return allProducts;
   } catch (e) {
-    console.log(e);
+    return `error ${e}`;
   }
 }
 
@@ -37,7 +37,7 @@ async function productsByParams(paramsObject, skip, take, orderObject) {
 
     return products;
   } catch (e) {
-    console.log(e);
+    return `error ${e}`;
   }
 }
 
@@ -103,7 +103,7 @@ async function updateProduct(id, productObject) {
 
     return updateProduct;
   } catch (e) {
-    console.log(e);
+    return `error ${e}`;
   }
 }
 
