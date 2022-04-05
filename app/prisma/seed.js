@@ -16,16 +16,6 @@ const arrayId = [ 1118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
   264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276 ];
 
 // async function main() {
-//   arrayId.map(async(id) => {
-//     const order = await prisma.image.create({
-//       data: {
-//         path: 'https://user-images.githubusercontent.com/77466385/161229427-ab99bf2b-30d4-47c0-a7a2-328c651d406b.jpeg',
-//         product_id: id,
-//       },
-//     });
-
-//     console.log(order);
-//   })
 // }
 
 // main()
